@@ -1,6 +1,6 @@
 ---
 layout: post
-title: CocoaPods系列之---CocoaPods的安装
+title: CocoaPods的安装
 date: 2016-04-14
 tag: iOS
 ---
