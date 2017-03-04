@@ -1,6 +1,6 @@
 ---
 layout: post
-title: CocoaPods系列之二: CocoaPods的使用
+title: CocoaPods系列之--CocoaPods的使用
 date: 2016-04-16 
 tag: iOS 
 ---
