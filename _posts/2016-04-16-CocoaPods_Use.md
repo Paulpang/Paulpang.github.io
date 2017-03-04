@@ -2,7 +2,7 @@
 layout: post
 title: CocoaPods系列之二: CocoaPods的使用
 date: 2016-04-16 
-tag: 工具 
+tag: iOS 
 ---
 上一篇我们已经介绍了[cocoapods的安装](https://paulpang.github.io/2017/02/28/cocoapods系列之----cocoapods的安装/),接下来我们来说一下cocoapods是如何使用的.对于cocoapods的使用分为两种:<strong>使用框架的人</strong>和<strong>开发框架的人</strong>分别需要怎么操作. 
 
