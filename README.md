@@ -23,6 +23,7 @@ git clone https://github.com/leopardpan/leopardpan.github.io.git
 
 ```bash
 gem install jekyll
+
 注意:如果您的Homebrew安装在/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)",这时候需要下面的安装方式
 
 sudo gem install -n /usr/local/bin jekyll
