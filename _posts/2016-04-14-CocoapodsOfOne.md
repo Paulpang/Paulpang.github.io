@@ -1,5 +1,9 @@
 ---
-title: cocoapods系列之cocoapods的安装
+layout: post
+title: CocoaPods系列之一: CocoaPods的安装
+date: 2016-04-14
+tags: 工具
+
 ---
 cocoapods能够帮助我们快速的搜索到第三方框架,然后自动集成到工程里面,并编译成一个libPod.a的静态库给我们项目使用.
 
