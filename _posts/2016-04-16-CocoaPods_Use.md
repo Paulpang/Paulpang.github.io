@@ -1,15 +1,14 @@
 ---
 layout: post
-title: CocoaPods的使用
+title: 使用框架的人如何用CocoaPods ?
 date: 2016-04-16 
 tag: iOS 
 ---
-上一篇我们已经介绍了[cocoapods的安装](https://paulpang.github.io/2017/02/28/cocoapods系列之----cocoapods的安装/),接下来我们来说一下cocoapods是如何使用的.对于cocoapods的使用分为两种:<strong>使用框架的人</strong>和<strong>开发框架的人</strong>分别需要怎么操作. 
+上一篇我们已经介绍了[cocoapods的安装](https://paulpang.github.io/2017/02/28/cocoapods系列之----cocoapods的安装/),接下来我们来说一下使用框架的人该如何使用cocoapods. 
 
-接下来我们首先介绍一下使用框架的人改如何操作:
-### 一. 使用框架的人如何做
+### 一. 使用框架的人如何使用CocoaPods
 
-#### 1.检索第三方框架
+#### 1. 检索第三方框架
 
 ```bash
 pod search 框架关键字
@@ -62,63 +61,7 @@ pod update
 如果以后大家需要统一升级第三方框架, 那么每个人在执行 pod update
 ```
 
-### 二. 开发框架的人如何做
-
-##### 1. 创建库工程, 添加源文件到Classes文件夹
-
-#### 2. 上传项目到github, 并且打好标签
-
-```bash
-git push origin master
-git tag '1.0.0' 
-git push --tags 
-```
-#### 3. 配置并上传框架的  PodSpec 文件, 并使用trunk的方式上传
-
-##### 3.1 创建Podspec文件
-
-```bash
-pod spec create 文件名称
-```
-PodSpec文件主要是描述自己的框架信息,如:作者,版本,下载地址等等.pod install 就是根据这个文件里面的源文件路径进行安装的.<strong>注意: 一般这个文件的名称和工程名称保持一致</strong>
-
-##### 3.2 验证文件内容格式
-
-```bash
-pod spec lint podspec文件
-```
-##### 3.3. 注册trunk
-
-```bash
-pod trunk register xxx@qq.com 'Paulpang'  --verbose
-
---verbose参数是为了便于输出注册过程中的调试信息
-```
-如果出现<font color= red size= 2>ACE,YOU'RE SET UP.</font>说明已经注册成功,然后在终端输入 pod trunk push 项目名 进行提交
-
-##### 3.4 通过trunk推送podsspec文件进行提交
-
-```bash
-pod trunk push 项目名
-```
-注意: 这种方式其实就是上传这个描述文件到cocoapods在github上的仓库中[https://github.com/CocoaPods/Specs](https://github.com/CocoaPods/Specs);你也可以按照正常的操作, 先fork , 然后提交 pull request
-
-##### 3.5 等待审核
-
-#### 4. 更新本地pod 第三方框架信息数据源
-
-```bash
-pod setup
-```
-注意: 可以省略这一步骤, 因为上述提交, 直接更新了本地索引库
-
-#### 5. 测试
-
-```bash
-使用pod search 命令搜索自己的框架, 如果可以搜索到, 那么代表审核通过了
-```
-
-### 三. cocoapods相关操作
+### 二. CocoaPods相关操作
 
 #### 1. 查看第三方框架仓库源
 
@@ -141,7 +84,7 @@ pod repo add master http://git.oschina.net/akuandev/Specs.git
 pod setup
 ```
 
-### 四. cocoapods几个重要的路径介绍
+### 三. CocoaPods几个重要的路径介绍
 
 #### 1. 索引缓存路径
 
