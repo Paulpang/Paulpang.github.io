@@ -4,7 +4,7 @@ title: 使用框架的人如何用CocoaPods ?
 date: 2016-04-16 
 tag: iOS 
 ---
-上一篇我们已经介绍了[cocoapods的安装](https://paulpang.github.io/2017/02/28/cocoapods系列之----cocoapods的安装/),接下来我们来说一下使用框架的人该如何使用cocoapods. 
+上一篇我们已经介绍了[cocoapods的安装](https://paulpang.github.io/2016/04/Cocoapods_Install/),接下来我们来说一下使用框架的人该如何使用cocoapods. 
 
 ### 一. 使用框架的人如何使用CocoaPods
 
