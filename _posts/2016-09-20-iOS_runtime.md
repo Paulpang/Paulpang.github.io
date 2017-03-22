@@ -9,11 +9,19 @@ tag: iOS
 ```
 1. runtime是一套比较底层的C语言的API,属于1个C语言库,包含了很多底层的C语言的API
 2. 在开发中编写的OC代码,在程序运行过程中,最终都是转换成runtime的C语言进行编译和运行.
- 例如: Persion *p = [[Persion alloc] init];
- 在运行过程中转换成:
- 	objc_msgSend(objc_msgSend("Persion","alloc"),"init")
 
 ```
+例如: 
+```
+Persion *p = [[Persion alloc] init];
+```
+
+在运行过程中转换成:
+
+```
+objc_msgSend(objc_msgSend("Persion","alloc"),"init")
+```
+
 
 ## runtime的主要用途:
 
