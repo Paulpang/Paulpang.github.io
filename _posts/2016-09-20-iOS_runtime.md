@@ -41,6 +41,7 @@ objc_msgSend(objc_msgSend("Persion","alloc"),"init")
  * 动态的创建一个类
  * 动态的为某个类添加(修改)属性\方法
  * 遍历一个雷的所有成员变量\属性\方法
+ * 交换方法
  
 ---
 
@@ -106,6 +107,60 @@ objc_msgSend(objc_msgSend("Persion","alloc"),"init")
     // 从本地读取数据
    Person *p =  [NSKeyedUnarchiver unarchiveObjectWithFile:@"/Users/zhaoxiaohu/Desktop/person.data"];
     NSLog(@"%@", p);
+
+```
+### 4.交换方法
+
+在开发中,有时候我们需要交换两个方法,让我们在调用系统的方法的时候,直接换成我们自己定义的方法,这时候我们用runtime来实现,给系统的某个类添加一个分类,动态的交换两个方法.例如,给NSURL添加一个分类动态的改变URLWithString方法:
+
+#### 在NSURL分类的.h文件中
+
+```
+@interface NSURL (url)
+
++(instancetype)xj_urlWithString:(NSString *)urlstr;
+
+@end
+
+
+```
+
+#### 在NSURL分类的.m文件中
+
+```
+#import "NSURL+url.h"
+#import <objc/message.h>
+
+@implementation NSURL (url)
+
+// 当某个类被加载的时候,调用这个方法
++ (void)load {
+    
+    // 1. 获取系统自带的方法
+    Method urlWithString = class_getClassMethod([NSURL class], @selector(URLWithString:));
+    // 2. 获取自己要交换的方法
+    Method xj_urlWithString = class_getClassMethod([NSURL class], @selector(xj_urlWithString:));
+    
+    // 3. 交换上面两个方法
+    method_exchangeImplementations(urlWithString, xj_urlWithString);
+
+}
+
+// 交换xj_urlWithString和系统的URLWithString方法
++ (instancetype)xj_urlWithString:(NSString *)urlstr {
+    
+    NSURL *url = [NSURL xj_urlWithString:urlstr];
+    
+    if (url == nil) {
+        NSLog(@"url不能为空");
+    }
+    
+    return url;
+}
+
+
+@end
+
 
 ```
 
