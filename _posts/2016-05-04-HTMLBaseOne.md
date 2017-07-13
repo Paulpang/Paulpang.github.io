@@ -303,20 +303,20 @@ tag: HTML
 ```
 <input type="file">
 ```
-#### 2.9 表单提交按钮
+#### 2.8 表单提交按钮
 
 ```
 <input type="submit">   // 表单提交按钮
 ```
 
-#### 2.91 普通按钮
+#### 2.9 普通按钮
 
 ```
 <input type="button" value="普通按钮">   // 表单提交按钮
 ```
 <strong>注意：该按钮不能进行表单提交。通常和js代码配合使用</strong>
 
-#### 2.92 重置按钮
+#### 2.10 重置按钮
 
 ```
 <input type="reset">  
@@ -325,7 +325,7 @@ tag: HTML
 	将控件中的值恢复到默认值状态
 </strong>
 
-#### 2.93 图片按钮
+#### 2.11 图片按钮
 
 ```
 <input type="image" src="button.jpg">  
@@ -334,7 +334,7 @@ tag: HTML
 	该控件也可以进行表单的提交
 </strong>
 
-#### 2.94 表单分支控件
+#### 2.12 表单分支控件
 
 ```
 <fieldset>  
