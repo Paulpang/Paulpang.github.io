@@ -6,12 +6,12 @@ description: Keep It Simple Do It Well~
 avatarTitle: Paulpang
 # 头像里面的描述
 avatarDesc: iOS / Swift / HTML
-url: "https://paulpang.github.io"
+url: "http://paulpang.github.io"
 
 # Comment
 comment:
     # disqus: leopard
-    duoshuo: Paulpang520 
+    Disqus: Paulpang520 
 
 # Social
 social:
