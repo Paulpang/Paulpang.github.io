@@ -4,7 +4,7 @@ title: React Native版本管理
 date: 2017-05-10
 tag: HTML+ReactNative
 ---
-## 、管理React Native库的版本
+## 一、管理React Native库的版本
 
 
 在开发中，会经常的去控制React Native的版本库，得以适配各种条件下的开发，那该如何查看、控制ReactNative的版本呢？
@@ -25,7 +25,7 @@ react-native --version
 
  NPM的全称是Node Package Manager ，是一个NodeJS包管理和分发工具，已经成为了非官方的发布Node模块（包）的标准。
    
-####npm包地址 ：
+#### npm包地址 ：
    `https://www.npmjs.com/package/react-native
    `
     
