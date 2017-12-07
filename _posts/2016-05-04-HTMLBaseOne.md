@@ -2,7 +2,7 @@
 layout: post
 title: HTML基础(一)
 date: 2016-05-04
-tag: HTML
+tag: HTML + ReactNative
 ---
 ## 一、HTML标签介绍:
 
@@ -136,7 +136,12 @@ tag: HTML
 * 格式
 
 	```
-	 <dl>		<dt>售后服务</dt>  小标题		<dd>收货地址</dd> 列表项		<dd>在线支付</dd>		<dd>客服电话</dd>	 </dl>
+	 <dl>
+		<dt>售后服务</dt>  小标题
+		<dd>收货地址</dd> 列表项
+		<dd>在线支付</dd>
+		<dd>客服电话</dd>
+	 </dl>
 	```
 
 ### 4.特殊字符
@@ -239,7 +244,8 @@ tag: HTML
 	</form>
 ```
 #### 1.4 属性
-* action：  处理用户数据信息* Method：get 或者 post
+* action：  处理用户数据信息
+* Method：get 或者 post
 
 ### 2. 表单控件
 
@@ -248,7 +254,11 @@ tag: HTML
 ```
 <input type= "text" maxlength="6">
 ```
-* maxlength：  设置文本输入框最多能输多少字符* readonly="readonly"   设置文本输入框为只读（只能读不能编辑）* disabled="disabled”	  控件属于非激活的状态* name="username"				  给输入框设置名称* Value=””				   设置或者显示输入的值
+* maxlength：  设置文本输入框最多能输多少字符
+* readonly="readonly"   设置文本输入框为只读（只能读不能编辑）
+* disabled="disabled”	  控件属于非激活的状态
+* name="username"				  给输入框设置名称
+* Value=””				   设置或者显示输入的值
 
 
 #### 2.2 密码输入框
@@ -256,7 +266,11 @@ tag: HTML
 ```
 <input type= "password">
 ```
-* maxlength：  设置文本输入框最多能输多少字符* readonly="readonly"   设置文本输入框为只读（只能读不能编辑）* disabled="disabled”	  控件属于非激活的状态* name="username"				  给输入框设置名称* Value=””				   设置或者显示输入的值
+* maxlength：  设置文本输入框最多能输多少字符
+* readonly="readonly"   设置文本输入框为只读（只能读不能编辑）
+* disabled="disabled”	  控件属于非激活的状态
+* name="username"				  给输入框设置名称
+* Value=””				   设置或者显示输入的值
 
 
 #### 2.3 单选按钮
