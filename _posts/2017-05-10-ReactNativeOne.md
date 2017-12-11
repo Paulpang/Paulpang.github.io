@@ -59,3 +59,19 @@ git clone https://github.com/virtoolswebplayer/ReactNative-LiveTemplate
 ```bash
 将ReactNative.xml复制到 ~/Library/Preferences/WebStorm10/templates ，然后重启 WebStrom。
 ```
+
+## 三、创建RN项目
+
+init命令默认会创建最新的版本，而目前最新的0.45及以上版本需要下载boost等几个第三方库编译。这些库在国内即便翻墙也很难下载成功，导致很多人无法运行iOS项目！！！中文网在论坛中提供了这些库的国内下载链接。如果你嫌麻烦，又没有对新版本的需求，那么可以暂时创建0.44.3的版本
+
+> 提示：你可以使用--version参数（注意是两个杠）创建指定版本的项目。例如react-native init MyApp --version 0.44.3。注意版本号必须精确到两个小数点。
+
+#### 代码命令
+
+```bash
+react-native init 项目名称
+cd 改项目名称
+react-native run-ios
+```
+
+> 提示：如果run-ios无法正常运行，请使用Xcode运行来查看具体错误（run-ios的报错没有任何具体信息）。
