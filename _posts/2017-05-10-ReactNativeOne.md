@@ -75,3 +75,23 @@ react-native run-ios
 ```
 
 > 提示：如果run-ios无法正常运行，请使用Xcode运行来查看具体错误（run-ios的报错没有任何具体信息）。
+
+## 四、运行项目
+
+ 运行在iOS平台上
+ 
+ ```bash
+$ cd RN项目名称
+$ react-native run-ios
+		or
+Open ios/ImageRN.xcodeproj in Xcode
+Hit the Run button
+ ```
+ 运行在Android平台上
+ 
+ ```bash
+$ cd RN项目名称
+Have an Android emulator running (quickest way to get started), or a device connected
+  
+react-native run-android
+ ```
