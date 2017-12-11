@@ -65,7 +65,9 @@ Attributes.style = {
 
 > `textDecorationColor` 线的颜色
 
->`writingDirection` 文本方向("auto", 'ltr', 'rtl')
+> `writingDirection` 文本方向("auto", 'ltr', 'rtl')
+
+> `transparent` 去除Text的背景颜色,变为透明色
 
 
 ## 三、Text组件中样式的继承
