@@ -25,7 +25,11 @@ render是一个组件中必须有的方法，本质上是一个函数，并返�
 
 ![](/images/posts/RNLifeTime/2.png)### 二、存在期阶段函数功能分析
 * componentWillReceiveProps    指父元素对组件的props或state进行了修改
-* shouldComponentUpdate    一般用于优化，可以返回false或true来控制是否进行渲染* componentWillUpdate组件刷新前调用，类似componentWillMount* componentDidUpdate更新后的hook### 三、销毁期阶段函数功能分析    用于清理一些无用的内容，如：点击事件Listener，只有一个过程：`componentWillUnmount`### 四、常用知识点分析#### 4.1  this.state      开发中组件免不了要与用户互动，React 的一大创新，就是将组件看成是一个状态机，一开始有一个初始状态，然后用户互动，导致状态变化，从而触发重新渲染 UI。举个例子：![](/images/posts/RNLifeTime/3.png)当用户点击组件，导致状态变化，`this.setState` 方法就修改状态值，每次修改以后，自动调用 `this.render` 方法，再次渲染组件。可以把组件看成一个“状态机”. 根据不同的status有不同的UI展示。只要使用setState改变状态值，根据diff算法算出来有差以后，就会执行ReactDom的render方法，重新渲染页面。 
+* shouldComponentUpdate    一般用于优化，可以返回false或true来控制是否进行渲染* componentWillUpdate组件刷新前调用，类似componentWillMount
+* componentDidUpdate更新后的hook
+
+### 三、销毁期阶段函数功能分析    
+用于清理一些无用的内容，如：点击事件Listener，只有一个过程：`componentWillUnmount`### 四、常用知识点分析#### 4.1  this.state      开发中组件免不了要与用户互动，React 的一大创新，就是将组件看成是一个状态机，一开始有一个初始状态，然后用户互动，导致状态变化，从而触发重新渲染 UI。举个例子：![](/images/posts/RNLifeTime/3.png)当用户点击组件，导致状态变化，`this.setState` 方法就修改状态值，每次修改以后，自动调用 `this.render` 方法，再次渲染组件。可以把组件看成一个“状态机”. 根据不同的status有不同的UI展示。只要使用setState改变状态值，根据diff算法算出来有差以后，就会执行ReactDom的render方法，重新渲染页面。 
 <strong>注意：</strong>由于 `this.props` 和 `this.state` 都用于描述组件的特性，可能会产生混淆。一个简单的区分方法是，`this.props` 表示那些一旦定义，就不再改变的特性，而 `this.state` 是会随着用户互动而产生变化的特性。
 
 #### 4.2  获取真实的DOM节点在React Native中，组件并不是真实的 DOM 节点，而是存在于内存之中的一种数据结构，叫做虚拟 DOM （virtual DOM）。 
@@ -40,7 +44,7 @@ render是一个组件中必须有的方法，本质上是一个函数，并返�
 
 ### 六、ES5和ES6的差异化
 
- es5，es6 都是对 ecmascript规范的补充，es5已经大规模使用了，es6目前可能在个别平台存在浏览器兼容性问题。
+es5，es6 都是对 ecmascript规范的补充，es5已经大规模使用了，es6目前可能在个别平台存在浏览器兼容性问题。
  
 #### 区别1：创建组件组件是一个自定义的js对象，在es5中使用React.createClass()；在es6中必须继承React.component，然后进行创建。
 ES5的写法：
@@ -51,7 +55,7 @@ ES6的写法：
 
 ![](/images/posts/RNLifeTime/7.png)
 
-#### 区别2：组件的属性props     在ES6中，其为属性：defaultProps(可以标识static定义在class内，也可以定义在class外)，而在ES5中，其为方法：getDefaultProps: function(){return {name:value}};ES5:
+#### 区别2：组件的属性props在ES6中，其为属性：defaultProps(可以标识static定义在class内，也可以定义在class外)，而在ES5中，其为方法：getDefaultProps: function(){return {name:value}};ES5:
 
 ![](/images/posts/RNLifeTime/8.png)
 
