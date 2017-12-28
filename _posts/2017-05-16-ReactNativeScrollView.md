@@ -159,3 +159,49 @@ iosautomaticallyAdjustContentInsets</strong>: bool
 
 <strong>注意：ScrollView是继承自View，所以View中所有的属性同样适用于ScrollView。</strong>
 
+### 三、ScrollView常用的方法
+开发中，常需要在滚动的时候做事情，那怎么监听ScrollView滚动
+
+ * 监听滚动开始
+                         	
+> onMomentumScrollBegin={this._onMomentumScrollBegin.bind(this)}
+   
+ * 监听滚动结束
+> onMomentumScrollEnd={this._onMomentumScrollEnd.bind(this)}
+
+* 监听开始拖拽
+> onScrollBeginDrag={this._onScrollBeginDrag.bind(this)}
+
+* 监听结束拖拽
+> onScrollEndDrag={this._onScrollEndDrag.bind(this)}
+
+* 监听滚动动画完成
+> onScrollAnimationEnd={this._onScrollAnimationEnd.bind(this)}
+
+* 监听滚动的时候
+> onScroll={this._onScroll.bind(this)}
+* 设置滚动频率,一滚动就监听,需要和onScroll配套使用
+> scrollEventThrottle={1}
+
+
+### 四、获取ScrollView偏移量
+* 滚动的时候,会传入一个合成事件作为监听滚动方法的参数，每个方法都会有这个合成事件
+* 通过合成事件能获取原生事件nativeEvent,原生事件nativeEvent会有我们想要的信息.
+* 什么是合成事件：在React中，事件的处理由其内部自己实现的事件系统完成，触发的事件都叫做 合成事件（SyntheticEvent）
+
+```bash
+_onScroll(e) {
+       // console.log('滚动的时候调用');
+        // 不能通过scrollView获取,因为在RN中,滚动的时候,不会给scrollView组件的contentOffset属性赋值,只能通过nativeEvent事件获取
+       //  var scrollView = this.refs.scrollView;
+       //
+       //  console.log(scrollView.props.contentOffset);
+
+        var nativeEvent = e.nativeEvent;
+
+        console.log(nativeEvent.contentOffset);
+    }
+
+```
+
+
