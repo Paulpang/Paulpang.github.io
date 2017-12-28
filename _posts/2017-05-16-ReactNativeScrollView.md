@@ -157,7 +157,5 @@ iosautomaticallyAdjustContentInsets</strong>: bool
 <strong>onScrollEndDrag</strong>:  fuction
 当结束手动拖拽的时候调用。
 
-
-
-#### 注意：ScrollView是继承自View，所以View中所有的属性同样适用于ScrollView。
+<strong>注意：ScrollView是继承自View，所以View中所有的属性同样适用于ScrollView。</strong>
 
