@@ -33,15 +33,13 @@ export default class Person {
 }
 
 ```
-<strong>注意 : 在外界调用这个类的是方法的时候,外界需要创建对象.然后拿能拿到属性,例如:
+<strong>注意 : 在外界调用这个类的是方法的时候,外界需要创建对象.然后拿能拿到属性,例如:</strong>
 
 ```bash
 var person = new Person();
 person.name = "Paulpang"
 
 ```
-</strong>
-
 ### 3、如何给自定义类添加类属性/方法
 
 ```bash
@@ -57,11 +55,10 @@ export default class Person {
 }
 
 ```
-
-<strong>注意 : 在外界调用这个类的是方法的时候,直接用类名调用就可以拿到该属性,例如:
+<strong>注意 : 在外界调用这个类的是方法的时候,直接用类名调用就可以拿到该属性,例如:</strong>
 
 ```bash
 Person.name = "Paulpang";
 
 ```
-</strong>
+
