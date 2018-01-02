@@ -38,7 +38,6 @@ export default class Person {
 ```bash
 var person = new Person();
 person.name = "Paulpang"
-
 ```
 ### 3、如何给自定义类添加类属性/方法
 
@@ -59,6 +58,5 @@ export default class Person {
 
 ```bash
 Person.name = "Paulpang";
-
 ```
 
