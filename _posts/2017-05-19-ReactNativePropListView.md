@@ -29,14 +29,18 @@ sectionHeaderHasChanged(prevSectionData, nextSectionData);
 * ListView.DataSource:获取ListViewDataSource构造方法
 * ListViewDataSource构造方法:决定ListView怎么去处理数据，需要传入一个对象，这个对象有四个可选属性，都是方法
 
- 	* getRowData(dataBlob, sectionID, rowID); 怎么获取行数据
-	* getSectionHeaderData(dataBlob, sectionID); 怎么获取每一组头部数据
-	* rowHasChanged(prevRowData, nextRowData); 决定什么情况行数据才发生改变，当行数据发生改变，就会绘制下一行cell
-	* sectionHeaderHasChanged(prevSectionData, nextSectionData);决定什么情况头部数据才发生改变，当行数据发生改变，就会绘制下一行cell
-	
-<strong>注意：初始化ListViewDataSource的时候，如果不需要修改提取数据的方式，只需要实现rowHasChanged，告诉什么时候刷新下一行数据.
+```bash
+getRowData(dataBlob, sectionID, rowID); 怎么获取行数据
 
-注意：默认ListViewDataSource有提取数据方式，可以使用默认的提取方式.</strong>
+getSectionHeaderData(dataBlob, sectionID); 怎么获取每一组头部数据
+
+rowHasChanged(prevRowData, nextRowData); 决定什么情况行数据才发生改变，当行数据发生改变，就会绘制下一行cell
+
+sectionHeaderHasChanged(prevSectionData, nextSectionData);决定什么情况头部数据才发生改变，当行数据发生改变，就会绘制下一行cell
+```
+<strong>注意：初始化ListViewDataSource的时候，如果不需要修改提取数据的方式，只需要实现rowHasChanged，告诉什么时候刷新下一行数据.</strong>
+
+<strong>注意：默认ListViewDataSource有提取数据方式，可以使用默认的提取方式.</strong>
 
 ```bash
 constructor(props) {
