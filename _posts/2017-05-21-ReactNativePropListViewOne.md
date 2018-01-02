@@ -37,6 +37,7 @@ getSectionHeaderData(dataBlob, sectionID); 怎么获取每一组头部数据
 rowHasChanged(prevRowData, nextRowData); 决定什么情况行数据才发生改变，当行数据发生改变，就会绘制下一行cell
 
 sectionHeaderHasChanged(prevSectionData, nextSectionData);决定什么情况头部数据才发生改变，当行数据发生改变，就会绘制下一行cell
+
 ```
 <strong>注意：初始化ListViewDataSource的时候，如果不需要修改提取数据的方式，只需要实现rowHasChanged，告诉什么时候刷新下一行数据.</strong>
 
