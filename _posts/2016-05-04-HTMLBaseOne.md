@@ -2,7 +2,7 @@
 layout: post
 title: HTML基础(一)
 date: 2016-05-04
-tag: HTML+ReactNative
+tag: HTML
 ---
 ## 一、HTML标签介绍:
 
