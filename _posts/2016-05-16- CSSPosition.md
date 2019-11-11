@@ -29,11 +29,11 @@ tag: CSS
 #### fixed：固定定位
 * 元素脱离normal flow（脱离标准流、脱标）
 * 可以通过left、right、top、bottom进行定位
-* 定位参照对象是视口（viewport）
+* 定位参照对象是**视口（viewport）**
 * 当画布滚动时，固定不动
 
 
-### 脱标元素的特点
+### 脱标元素的特点(fixed/absolute)
 * 可以随意设置宽高
 * 宽高默认由内容决定
 * 不再受标准流的约束
@@ -46,13 +46,12 @@ tag: CSS
 #### absolute：绝对定位
 
 * 元素脱离normal flow（脱离标准流、脱标）
-
 * 可以通过left、right、top、bottom进行定位
-	* 定位参照对象是最邻近的定位祖先元素
-	* 如果找不到这样的祖先元素，参照对象是视口
+	* 定位参照对象是**最邻近的定位祖先元素**
+	* 如果找不到这样的祖先元素，参照对象是**视口**
 
 * 定位元素（positioned element）
-	* position值不为static的元素
+	* position值**不为static的元素**
 	* 也就是position值为relative、absolute、fixed的元素
 
 #### absolute：子绝父相
@@ -81,12 +80,10 @@ tag: CSS
 
 ### position总结
 
-* 利用background-image和img都能够实现显示图片的需求，在开发中该如何选择？
-
 |  | 脱离标准流 | 定位元素 | 绝对定位元素 | 定位参照对象 |
 | :---        |     :---:      |    ---:   |     :---:      |     :---:      |
 | static – 静态定位 | ×     | ×    | × | × |
-| relative – 相对定位     | √    | ×      |   |   元素自己原来的位置|
+| relative – 相对定位 | x    |   √  |  x |   元素自己原来的位置|
 | absolute – 绝对定位 | √    | √      | √  | 最邻近的定位祖先元素（如果找不到这样的祖先元素，参照对象是视口） |
 | fixed – 固定定位     | √     | √     | √     | 视口    |
 

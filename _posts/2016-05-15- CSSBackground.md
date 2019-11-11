@@ -25,6 +25,7 @@ tag: CSS
 
 ## CSS属性 - background-size
 * background-size用于设置背景图片的大小
+
 ## CSS属性 - background-position
 * background-position用于设置背景图片在水平、垂直方向上的具体位置
 	* 水平方向还可以设值：left、center、right

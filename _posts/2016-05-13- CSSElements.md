@@ -88,7 +88,7 @@ tag: CSS
 #### visibility: hidden;
 * 虽然元素看不见了，但元素的框依旧还留着，还会占着原来的位置
 
-####display: none;
+#### display: none;
 * 不仅元素看不见了，而且元素的框也会被移除，不会占着任何位置
 
 
