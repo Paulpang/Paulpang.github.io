@@ -2,7 +2,7 @@
 layout: post
 title: ReactNative常用组件之Text
 date: 2017-05-11
-tag: HTML+ReactNative
+tag: ReactNative
 ---
 
 

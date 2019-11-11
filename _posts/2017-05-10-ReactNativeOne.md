@@ -2,7 +2,7 @@
 layout: post
 title: React Native版本管理
 date: 2017-05-10
-tag: HTML+ReactNative
+tag: ReactNative
 ---
 ## 一、管理React Native库的版本
 

@@ -2,7 +2,7 @@
 layout: post
 title: ReactNative之FlexBox布局
 date: 2017-05-11
-tag: HTML+ReactNative
+tag: ReactNative
 ---
 
 

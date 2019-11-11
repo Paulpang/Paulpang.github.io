@@ -2,7 +2,7 @@
 layout: post
 title: ReactNative自定义组件之PropTypes
 date: 2017-05-18
-tag: HTML+ReactNative
+tag: ReactNative
 ---
 
 在实际开发中,我们经常需要自定义组件,而且需要在自定义组件是设置属性和方法.那么如何自定义组件? 如何将属性和方法暴露出去,供外界调用呢? 下面我们研究一下这些问题.

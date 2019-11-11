@@ -2,7 +2,7 @@
 layout: post
 title: ReactNative常用组件之ListView(三)分组样式
 date: 2017-05-22
-tag: HTML+ReactNative
+tag: ReactNative
 ---
 
 ### ListView分组原理

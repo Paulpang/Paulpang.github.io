@@ -2,7 +2,7 @@
 layout: post
 title: ReactNative常用组件之Image
 date: 2017-05-12
-tag: HTML+ReactNative
+tag: ReactNative
 ---
 
 在开发中还有一个非常重要的组件Image，通过这个组件可以展示各种各样的图片，而且在React Native中该组件可以通过多种方式加载图片资源。

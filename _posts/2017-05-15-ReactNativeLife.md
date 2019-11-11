@@ -2,7 +2,7 @@
 layout: post
 title: ReactNative的生命周期
 date: 2017-05-15
-tag: HTML+ReactNative
+tag: ReactNative
 ---
 
 React Native组件的生命周期大致上可以划分为<Strong>实例化阶段</Strong>、<Strong>存在阶段</Strong>和<Strong>销毁阶段</Strong>，如图所示:

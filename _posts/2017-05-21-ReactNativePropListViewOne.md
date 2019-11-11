@@ -2,7 +2,7 @@
 layout: post
 title: ReactNative常用组件之ListView(一)原理
 date: 2017-05-21
-tag: HTML+ReactNative
+tag: ReactNative
 ---
 
 ### ListView原理

@@ -2,7 +2,7 @@
 layout: post
 title: ReactNative常用组件之ScrollView
 date: 2017-05-16
-tag: HTML+ReactNative
+tag: ReactNative
 ---
 
 ### 一、前言

@@ -2,7 +2,7 @@
 layout: post
 title: ReactNative常用组件之Touchable
 date: 2017-05-14
-tag: HTML+ReactNative
+tag: ReactNative
 ---
 
 

@@ -2,7 +2,7 @@
 layout: post
 title: ReactNative自定义类
 date: 2017-05-19
-tag: HTML+ReactNative
+tag: ReactNative
 ---
 在实际开发中,我们经常需要自定义类,那么如何自定义类?如何给类的对象添加属性/方法? 如何给类添加类属性/类方法呢?
 
