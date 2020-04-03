@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 【解决Xcode】IB Designables: Failed to update auto layout status的方案
+title: IB Designables- Failed to update auto layout status的方案
 date: 2020-04-02
 tag: iOS
 ---
