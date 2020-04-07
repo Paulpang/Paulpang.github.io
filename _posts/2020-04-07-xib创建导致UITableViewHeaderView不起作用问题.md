@@ -16,7 +16,7 @@ tag: iOS
 
 如果外界要动态的改变约束,这时候自动布局就不起作用,为了解决这个问题,在拖控件的时候,我们需要将控件的自动布局不选择Automatic,如图所示
 
-![](/images/posts/xib/image2.jpg)
+![](/images/posts/xib/image2.png)
 
 为此,我们有时候在遇到利用Xib设置tableView的headerView的时候,导致高度headerView的高度不对,之前是通过设置
 
