@@ -1,0 +1,168 @@
+I"�"<h4 id="一-将服务器文件下载到本地">一. 将服务器文件下载到本地</h4>
+
+<p>1&gt; 切换工作目录</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd </span>工作目录的文件夹位置
+</code></pre></div></div>
+<p>2&gt; checkout服务器上的代码仓库</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>svn checkout 服务器地址 <span class="nt">--</span> <span class="nv">username</span><span class="o">=</span>用户名 <span class="nt">--password</span><span class="o">=</span>密码   // 只需要做一次
+
+例如: svn checkout http://192.168.1.103/svn/weibo <span class="nt">--username</span><span class="o">=</span>manager <span class="nt">--password</span><span class="o">=</span>manager
+</code></pre></div></div>
+<p>提示：checkout(co)之后，命令行会记录用户名和密码，后续操作不用再另行指定   <br />
+　　</p>
+<h4 id="二-在项目路径下添加文件夹">二. 在项目路径下添加文件夹</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>svn add 文件夹名称   // 添加文件夹
+</code></pre></div></div>
+
+<h4 id="三-初始化项目的时候忽略一些文件">三. 初始化项目的时候忽略一些文件</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> xcshareddata : 记录了远程仓库的地址  / 这个文件要删除
+
+ xcuserdata : 包含了文件夹的打开结构/当前用户停留在哪个文件中/用户的断点 <span class="nt">---</span><span class="o">&gt;</span> 这个文件直接删除掉
+
+ 删除完成后,该点代码提交后,在看xcuserdata 变为 ? 状态  ,这时候需要将这个文件 ignore ,在提交就ok了
+
+</code></pre></div></div>
+<h4 id="四-更新本地代码">四. 更新本地代码</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>svn update
+</code></pre></div></div>
+
+<h4 id="五-查看本地代码库状态">五. 查看本地代码库状态</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>svn status
+</code></pre></div></div>
+<p><strong>注意: 文件状态说明</strong></p>
+
+<ul>
+  <li>’ ‘ 没有修改</li>
+  <li>‘A’ 被添加到本地代码仓库</li>
+  <li>‘C’ 冲突</li>
+  <li>‘D’ 代表该文件已经在本地进行了删除,还没有将删除的操作共享给服务器</li>
+  <li>‘I’ 被忽略</li>
+  <li>‘M’ 被修改</li>
+  <li>‘R’ 被替换</li>
+  <li>‘X’ 外部定义创建的版本目录</li>
+  <li>’?’ 文件没有被添加到本地版本库内/ 不识别的文件,或者文件被删除过,或者该文件是新添加的文件,还没有被本地代码仓库进行管理</li>
+  <li>’!’ 文件丢失或者不完整（不是通过svn命令删除的文件）</li>
+  <li>’~’ 受控文件被其他文件阻隔</li>
+</ul>
+
+<p>提示: 错误提示：”is not a working copy”，必须在svn的工作目录下才能正确使用svn的命令</p>
+
+<h4 id="六-将文件提交到服务器的版本库中">六. 将文件提交到服务器的版本库中</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>svn commit <span class="nt">-m</span> <span class="s2">"注释"</span>
+</code></pre></div></div>
+<p>注意: 添加文件的两个步骤(Xcode会自动保存第一步,故第一步可以省略)</p>
+
+<ol>
+  <li>将新建的文件添加到本地代码库
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>svn add main.c
+</code></pre></div>    </div>
+  </li>
+  <li>将刚刚添加的文件提交到服务器
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>svn ci <span class="nt">-m</span> <span class="s2">"备注信息"</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h4 id="七-查看svn日志">七. 查看SVN日志</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 查看svn日志</span>
+<span class="nv">$ </span>svn log
+
+<span class="c"># 查看某一个文件的日志</span>
+<span class="nv">$ </span>svn log filename
+
+<span class="c"># 查看某一个文件某个版本的日志</span>
+<span class="nv">$ </span>svn log filename@1
+</code></pre></div></div>
+
+<h4 id="八-删除文件">八. 删除文件</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 删除文件 </span>
+<span class="nv">$ </span>svn remove/delete
+<span class="s1">'D'</span> 代表该文件已经在本地进行了删除,还没有将删除的操作共享给服务器
+
+<span class="c"># 提交删除</span>
+<span class="nv">$ </span>svn commit <span class="nt">-m</span> <span class="s2">"注释"</span>
+
+</code></pre></div></div>
+<p>注意：不要使用文件管理器直接删除文件</p>
+
+<h4 id="九-查看svn日志">九. 查看SVN日志</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 查看svn日志</span>
+<span class="nv">$ </span>svn log
+
+<span class="c"># 查看某一个文件的日志</span>
+<span class="nv">$ </span>svn log filename
+
+<span class="c"># 查看某一个文件某个版本的日志</span>
+<span class="nv">$ </span>svn log filename@1
+</code></pre></div></div>
+<h4 id="十-版本回退">十. 版本回退</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 查看更新的版本日志
+<span class="nv">$ </span>svn log
+
+2. 回退版本<span class="o">(</span>本地回到之前版本,服务器版本还没回退<span class="o">)</span>
+<span class="nv">$ </span>svn update <span class="nt">-r</span> 版本号    svn update <span class="nt">-r</span> 9
+
+3. 回到当前版本 例如当前为11版本
+<span class="nv">$ </span>svn update
+
+4. 将当前的11版本合并到6版本上
+<span class="nv">$ </span>svn merge <span class="nt">-r</span> 11:6 合并的文件
+
+5. 将本地合并过的代码提交到服务器
+<span class="nv">$ </span>svn commit <span class="nt">-m</span> <span class="s2">"回退到第6版本"</span>
+</code></pre></div></div>
+
+<h4 id="十一-冲突解决">十一. 冲突解决</h4>
+<p>场景: 当提交代码的时候,提示 out of date时,这是需要先用svn update更新代码,这时候会出现代码冲突, 会提示一下解决办法让选择,常用的有一下三个:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>p<span class="o">)</span> postpone :  选择这个时: 文件会多出来三个文件 persion.h.mine / persion.h.h_r10 /  
+persion.h.h_r11
+
+<span class="o">(</span>mc<span class="o">)</span> mine-conflict : 当发生冲突的时候,使用我的代码,覆盖服务器的代码
+
+<span class="o">(</span>tc<span class="o">)</span> theirs-conflict : 当发生冲突的时候,使用服务器的代码,覆盖本地代码
+
+</code></pre></div></div>
+<p>注意: 在开发中,常用的是选择 <code class="language-plaintext highlighter-rouge">(p) postpone</code></p>
+
+<ul>
+  <li>选择这个时: 文件会多出来三个文件: persion.h.mine, persion.h.h_r10 , persion.h.h_r11</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 	<span class="k">*</span> xxx.mine代表是我的文件
+ 	<span class="k">*</span> xxx.h_r10 代表服务器上上一个版本的文件
+ 	<span class="k">*</span> xxx.h_r11 代表服务器上一个版本的文件
+
+ 	1. 在persion.h文件中会出现 下面文字
+ 	<span class="o">&lt;&lt;&lt;&lt;&lt;&lt;</span> .mine
+ 		表示该位置是我的代码
+ 	<span class="o">===========</span>
+ 		表示该位置是服务器的代码
+ 	<span class="o">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> .r11
+
+ 	2. 冲突解决后, 需要解决冲突 :
+ 		<span class="nv">$ </span>svn resolved 解决冲突的文件名    例如: svn resolved persion.h
+
+ 	3. 解决之后,需要将解决后的代码提交到服务器: 
+		<span class="nv">$ </span>svn commit <span class="nt">-m</span> <span class="s2">"注释"</span>
+</code></pre></div></div>
+
+<h4 id="十二-svn目录结构">十二. SVN目录结构</h4>
+
+<ul>
+  <li>Trunk		主干,一般项目开发都在主干进行开发</li>
+  <li>Tags 		存放已经上线的重大版本号</li>
+  <li>Branches 	当发生重大Bug或者有新的需求的时候,创建一个分支,在分支上开发,开发完成后,在合并到主干</li>
+</ul>
+
+:ET

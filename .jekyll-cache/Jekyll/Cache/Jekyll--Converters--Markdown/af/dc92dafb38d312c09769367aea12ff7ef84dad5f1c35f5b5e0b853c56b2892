@@ -1,0 +1,39 @@
+I"j<h4 id="1-改变工作目录">1: 改变工作目录</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd </span>文件位置
+</code></pre></div></div>
+
+<h4 id="2输出当前工作目录的绝对路径">2：输出当前工作目录的绝对路径</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">pwd</span>
+</code></pre></div></div>
+
+<h4 id="3查看文件">3：查看文件</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">ls        </span>显示文件
+<span class="nv">$ </span><span class="nb">ls</span> <span class="nt">-a</span>     显示所有文件
+<span class="nv">$ </span><span class="nb">ls</span> <span class="nt">-l</span>     列表显示文件
+<span class="nv">$ </span><span class="nb">ls</span> <span class="nt">-la</span>    列表显示所有文件
+</code></pre></div></div>
+<h4 id="4用于创建新文件">4：用于创建新文件</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">touch </span>test.txt
+<span class="nv">$ </span>open test.txt
+</code></pre></div></div>
+<p>注意：touch不修改test.txt内容，只更改它的访问、修改时间，如果test.txt不存在，它会被创建</p>
+
+<h4 id="5连续查看文件内容">5：连续查看文件内容</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cat</span>
+</code></pre></div></div>
+<h4 id="6分页查看文件内容">6：分页查看文件内容</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>more
+</code></pre></div></div>
+
+<p>提示：</p>
+
+<ul>
+  <li>命令和参数之间需要添加空格</li>
+  <li>如果要使用当前目录中的文件名，输入到一半时，按TAB键能够补全</li>
+</ul>
+:ET

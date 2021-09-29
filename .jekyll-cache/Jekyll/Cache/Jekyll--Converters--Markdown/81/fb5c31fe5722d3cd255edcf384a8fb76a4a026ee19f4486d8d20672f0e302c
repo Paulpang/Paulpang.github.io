@@ -1,0 +1,84 @@
+I"F<h2 id="一管理react-native库的版本">一、管理React Native库的版本</h2>
+
+<p>在开发中，会经常的去控制React Native的版本库，得以适配各种条件下的开发，那该如何查看、控制ReactNative的版本呢？</p>
+
+<h3 id="1-查看本地的react-native的版本">1 查看本地的React Native的版本</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>react-native <span class="nt">--version</span>
+</code></pre></div></div>
+
+<h3 id="2-更新本地的react-native的版本">2 更新本地的React Native的版本</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> npm update <span class="nt">-g</span> react-native-cli
+</code></pre></div></div>
+<h3 id="3-查询react-native的npm包最新版本">3 查询react-native的npm包最新版本</h3>
+
+<p>NPM的全称是Node Package Manager ，是一个NodeJS包管理和分发工具，已经成为了非官方的发布Node模块（包）的标准。</p>
+
+<h4 id="npm包地址-">npm包地址 ：</h4>
+<p><code class="language-plaintext highlighter-rouge">https://www.npmjs.com/package/react-native
+   </code></p>
+
+<h4 id="命令行查询">命令行查询</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm info react-native
+</code></pre></div></div>
+
+<h3 id="4-升级或者降级npm包的版本">4 升级或者降级npm包的版本</h3>
+
+<p>新的npm包会包含更新在运行react-native init命令生成的一些动态文件，例如init创建项目的时候会生成iOS和Android的子项目，我们可以通过以下的命令进行获取最新的代码</p>
+
+<h4 id="命令行查询-1">命令行查询</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>react-native upgrade
+</code></pre></div></div>
+
+<h2 id="二webstom设置react-native代码提示">二、WebStom设置React Native代码提示</h2>
+
+<h3 id="1--从github上下载xml插件">1  从gitHub上下载xml插件</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/virtoolswebplayer/ReactNative-LiveTemplate  
+</code></pre></div></div>
+
+<h3 id="2--安装">2  安装</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>将ReactNative.xml复制到 ~/Library/Preferences/WebStorm10/templates ，然后重启 WebStrom。
+</code></pre></div></div>
+
+<h2 id="三创建rn项目">三、创建RN项目</h2>
+
+<p>init命令默认会创建最新的版本，而目前最新的0.45及以上版本需要下载boost等几个第三方库编译。这些库在国内即便翻墙也很难下载成功，导致很多人无法运行iOS项目！！！中文网在论坛中提供了这些库的国内下载链接。如果你嫌麻烦，又没有对新版本的需求，那么可以暂时创建0.44.3的版本</p>
+
+<blockquote>
+  <p>提示：你可以使用–version参数（注意是两个杠）创建指定版本的项目。例如react-native init MyApp –version 0.44.3。注意版本号必须精确到两个小数点。</p>
+</blockquote>
+
+<h4 id="代码命令">代码命令</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>react-native init 项目名称
+<span class="nb">cd </span>改项目名称
+react-native run-ios
+</code></pre></div></div>
+
+<blockquote>
+  <p>提示：如果run-ios无法正常运行，请使用Xcode运行来查看具体错误（run-ios的报错没有任何具体信息）。</p>
+</blockquote>
+
+<h2 id="四运行项目">四、运行项目</h2>
+
+<p>运行在iOS平台上</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd </span>RN项目名称
+<span class="nv">$ </span>react-native run-ios
+		or
+Open ios/ImageRN.xcodeproj <span class="k">in </span>Xcode
+Hit the Run button
+</code></pre></div></div>
+<p>运行在Android平台上</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd </span>RN项目名称
+Have an Android emulator running <span class="o">(</span>quickest way to get started<span class="o">)</span>, or a device connected
+  
+react-native run-android
+</code></pre></div></div>
+:ET

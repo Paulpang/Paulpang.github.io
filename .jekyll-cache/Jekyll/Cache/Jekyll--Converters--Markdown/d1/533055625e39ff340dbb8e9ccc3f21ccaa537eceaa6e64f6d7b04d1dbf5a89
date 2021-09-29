@@ -1,0 +1,90 @@
+I"C<p>上一篇我们已经介绍了<a href="https://paulpang.github.io/2016/04/Cocoapods_Install/">cocoapods的安装</a>,接下来我们来说一下使用框架的人该如何使用cocoapods.</p>
+
+<h3 id="一-使用框架的人如何使用cocoapods">一. 使用框架的人如何使用CocoaPods</h3>
+
+<h4 id="1-检索第三方框架">1. 检索第三方框架</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pod search 框架关键字
+</code></pre></div></div>
+<p>注意:pod search内部是从本地缓存的”第三方框架描述信息” 生成的检索文件中检索到 相关框架的信息.如果遇到<code class="language-plaintext highlighter-rouge">bash[!]Unalbe to find a pod with name,author,summary,or descriptionmatching "AFNetworing"</code>这种错误时,需要删除cocoapods索引文件:<code class="language-plaintext highlighter-rouge">rm ~/Library/Caches/CocoaPods/search_index.json</code></p>
+
+<h4 id="2-安装第三方框架">2. 安装第三方框架</h4>
+
+<h5 id="21-创建podfile文件">2.1 创建Podfile文件</h5>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pod init
+</code></pre></div></div>
+<p>Podfile文件的作用是使用ruby语法编写的 “框架依赖描述文件”; 就是告诉cocoapods需要下载集成哪些框架,常见配置语法请参见简书<a href="http://www.jianshu.com/p/8af475c4f717">Podfile语法</a></p>
+
+<h5 id="22-安装框架">2.2 安装框架</h5>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pod <span class="nb">install</span>
+</code></pre></div></div>
+<p>pod install内部主要做了一下事情:如果cocoapods是1.0.1版本及以后版本,直接就是根据 Podfile 文件找到框架信息, 然后下载集成; 如果是之前版本,首先先更新本地框架信息源信息(由于比较耗时,做好后面添加–no-repo-update),然后在根据 Podfile 文件找到框架信息, 然后下载集成.</p>
+
+<p>在安装的时候若出现<code class="language-plaintext highlighter-rouge">bash The dependency 'ANNetworking' is not used in any concrete target</code>错误,原因是<font color="gray" size="2">由于Podfile文件的描述中没有描述Xcode工程中的targets,如果在老版本没有指明, CocoaPods会创建一个名称为default的隐式target，会和我们工程中的第一个target相对应;在1.0.1版本之后, 要求必须指明才可以.</font></p>
+
+<p>解决方案: 需要指定一栏的目标target,在Podfile文件中添加
+&lt;font color=red face=“黑体” size=2&gt; target “项目名称”&lt;/font&gt;; 如果让多个target使用同一个Pod依赖库,可用使用&lt;font color=red face=”黑体”, size=2&gt;link_with “FirstTarget”,”SecondTarget”&lt;/font&gt;,具体使用技巧可用查看<strong><a href="https://guides.cocoapods.org">cocoaPods官网</a></strong></p>
+
+<p>在输入pod install后,会生成一个叫Podfile.lock的文件,这个文件的作用是记录着上一次下载的框架的最新版本</p>
+
+<h4 id="3-pod-install-和-pod-update的区别">3. pod install 和 pod update的区别</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pod <span class="nb">install</span>:
+	如果Podfile.lock文件存在, 直接从此文件中读取框架信息下载安装<span class="p">;</span>
+	如果不存在, 依然会读取Podfile文件内的框架信息,下载好之后, 再根据下载好的框架信息, 生成Podfile.lock文件
+	
+pod update
+	不管Podfile.lock是否存在, 都会读取Podfile文件的的框架信息去下载,下载好之后, 再根据下载好的框架信息, 生成Podfile.lock文件
+	
+主要区别在于, Podfile文件内的框架信息, 版本描述没有指定具体版本	
+</code></pre></div></div>
+<p><strong>实际项目开发过程中, 该如何选择install 和 update 命令??</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>如果是多人开发,根据自己以往的经验:
+
+一般情况下, 每个人从共享库把项目下载下来之后, 都会执行pod <span class="nb">install </span>命令安装!! 而不是选择 pod update ,目的: 是为了保证大家使用的第三方框架版本一致!!
+
+如果以后大家需要统一升级第三方框架, 那么每个人在执行 pod update
+</code></pre></div></div>
+
+<h3 id="二-cocoapods相关操作">二. CocoaPods相关操作</h3>
+
+<h4 id="1-查看第三方框架仓库源">1. 查看第三方框架仓库源</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pod repo
+</code></pre></div></div>
+<h4 id="2-移除仓库源">2. 移除仓库源</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pod repo remove master
+</code></pre></div></div>
+<h4 id="3-添加仓库源">3. 添加仓库源</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pod repo add master http://git.oschina.net/akuandev/Specs.git
+</code></pre></div></div>
+<h4 id="4-初始化下载服务器中所有第三方框架信息-缓存到电脑本地">4. 初始化(下载服务器中所有第三方框架信息, 缓存到电脑本地)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pod setup
+</code></pre></div></div>
+
+<h3 id="三-cocoapods几个重要的路径介绍">三. CocoaPods几个重要的路径介绍</h3>
+
+<h4 id="1-索引缓存路径">1. 索引缓存路径</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ~/Library/Caches/CocoaPods/
+</code></pre></div></div>
+<p>如果发现框架信息本地已经缓存, 但是就是无法搜索框架, 可以删除这个索引文件, 重新生成</p>
+
+<h4 id="2-pod命令安装路径">2. pod命令安装路径</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/local/bin
+</code></pre></div></div>
+<h4 id="3-pod-框架索引信息缓存路径">3. pod 框架索引信息缓存路径</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/Users/apple/.cocoapods/repos/master
+</code></pre></div></div>
+
+<p>以上就是cocoapods的简单使用和原理介绍.如有疑问,请给我留言.</p>
+
+:ET

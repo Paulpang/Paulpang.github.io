@@ -1,0 +1,155 @@
+I"!(<p>上一篇我们已经介绍了<a href="https://paulpang.github.io/2016/04/Cocoapods_Install/">cocoapods的安装</a>以及<a href="https://paulpang.github.io/2016/04/CocoaPods_Use/">使用框架的人如何使用CocoaPods</a>,接下来我们来说一下对于<strong>开发框架的人</strong>该如何将开发的框架上传到cocoapods供别人使用.</p>
+
+<h3 id="开发框架的人如何将框架发布到cocoapods上">开发框架的人如何将框架发布到CocoaPods上</h3>
+
+<h5 id="0-在本地创建一个文件夹用来你开发框架的文件">0. 在本地创建一个文件夹,用来你开发框架的文件</h5>
+
+<h5 id="1-首先在github上面创建一个库">1. 首先在Github上面创建一个库</h5>
+
+<p>注意: 如果这个库里面创建的有readme,gitignore等文件,这时候需要现将远程文件pull到本地库所在的文件夹里面</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git pull origin master
+</code></pre></div></div>
+<p>如果不这样做,你直接将本地的框架上传到github上面会报错,报错内容如下</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>To git@github.com:<span class="k">**</span>/Demo.git 
+<span class="o">!</span> <span class="o">[</span>rejected] master -&gt; master <span class="o">(</span>non-fast-forward<span class="o">)</span> 
+error: failed to push some refs to ‘git@github.com:<span class="k">**</span>/Demo.git’ 
+hint: Updates were rejected because the tip of your current branch is behind 
+hint: its remote counterpart. Merge the remote changes <span class="o">(</span>e.g. ‘git pull’<span class="o">)</span> 
+hint: before pushing again. 
+hint: See the ‘Note about fast-forwards’ <span class="k">in</span> ‘git push –help’ <span class="k">for </span>details.
+</code></pre></div></div>
+
+<h5 id="2--将你开发的框架代码classes文件夹放到本地创建的文件夹中">2.  将你开发的框架代码Classes文件夹放到本地创建的文件夹中</h5>
+
+<h4 id="3-上传项目到github-并且打好标签">3. 上传项目到github, 并且打好标签</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push origin master
+git tag <span class="s1">'1.0.0'</span> 
+git push <span class="nt">--tags</span> 
+</code></pre></div></div>
+<h4 id="3-配置并上传框架的--podspec-文件-并使用trunk的方式上传">3. 配置并上传框架的  PodSpec 文件, 并使用trunk的方式上传</h4>
+
+<h5 id="31-创建podspec文件">3.1 创建Podspec文件</h5>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pod spec create 文件名称
+</code></pre></div></div>
+<p>PodSpec文件主要是描述自己的框架信息,如:作者,版本,下载地址等等.pod install 就是根据这个文件里面的源文件路径进行安装的.<strong>注意: 一般这个文件的名称和工程名称保持一致</strong></p>
+
+<h5 id="32-验证文件内容格式">3.2 验证文件内容格式</h5>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pod spec lint podspec文件
+</code></pre></div></div>
+<h5 id="33-注册trunk">3.3. 注册trunk</h5>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pod trunk register xxx@qq.com <span class="s1">'Paulpang'</span>  <span class="nt">--verbose</span>
+
+<span class="nt">--verbose</span>参数是为了便于输出注册过程中的调试信息
+
+打印的信息如下:
+opening connection to trunk.cocoapods.org:443...
+opened
+starting SSL <span class="k">for </span>trunk.cocoapods.org:443...
+SSL established
+&lt;- <span class="s2">"POST /api/v1/sessions HTTP/1.1</span><span class="se">\r\n</span><span class="s2">Content-Type: application/json; charset=utf-8</span><span class="se">\r\n</span><span class="s2">Accept: application/json; charset=utf-8</span><span class="se">\r\n</span><span class="s2">User-Agent: CocoaPods/1.2.0</span><span class="se">\r\n</span><span class="s2">Accept-Encoding: gzip;q=1.0,deflate;q=0.6,identity;q=0.3</span><span class="se">\r\n</span><span class="s2">Host: trunk.cocoapods.org</span><span class="se">\r\n</span><span class="s2">Content-Length: 68</span><span class="se">\r\n\r\n</span><span class="s2">"</span>
+&lt;- <span class="s2">"{</span><span class="se">\"</span><span class="s2">email</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">pxj1314@hotmail.com</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Paulpang</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">description</span><span class="se">\"</span><span class="s2">:null}"</span>
+-&gt; <span class="s2">"HTTP/1.1 201 Created</span><span class="se">\r\n</span><span class="s2">"</span>
+-&gt; <span class="s2">"Date: Mon, 06 Mar 2017 03:32:59 GMT</span><span class="se">\r\n</span><span class="s2">"</span>
+-&gt; <span class="s2">"Connection: keep-alive</span><span class="se">\r\n</span><span class="s2">"</span>
+-&gt; <span class="s2">"Strict-Transport-Security: max-age=31536000</span><span class="se">\r\n</span><span class="s2">"</span>
+-&gt; <span class="s2">"Content-Type: application/json</span><span class="se">\r\n</span><span class="s2">"</span>
+-&gt; <span class="s2">"Content-Length: 193</span><span class="se">\r\n</span><span class="s2">"</span>
+-&gt; <span class="s2">"X-Content-Type-Options: nosniff</span><span class="se">\r\n</span><span class="s2">"</span>
+-&gt; <span class="s2">"Server: thin 1.6.2 codename Doc Brown</span><span class="se">\r\n</span><span class="s2">"</span>
+-&gt; <span class="s2">"Via: 1.1 vegur</span><span class="se">\r\n</span><span class="s2">"</span>
+-&gt; <span class="s2">"</span><span class="se">\r\n</span><span class="s2">"</span>
+reading 193 bytes...
+-&gt; <span class="s2">"{</span><span class="se">\"</span><span class="s2">created_at</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">2017-03-06 03:32:59 UTC</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">valid_until</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">2017-07-12 03:32:59 UTC</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">verified</span><span class="se">\"</span><span class="s2">:false,</span><span class="se">\"</span><span class="s2">created_from_ip</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">1.180.235.247</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">description</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">token</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">40594b9963f55053ad8f25e9bd771a1e</span><span class="se">\"</span><span class="s2">}"</span>
+<span class="nb">read </span>193 bytes
+Conn keep-alive
+<span class="o">[!]</span> Please verify the session by clicking the <span class="nb">link </span><span class="k">in </span>the verification email that has been sent to pxj1314@hotmail.com
+
+</code></pre></div></div>
+
+<h5 id="34-验证您的邮箱一般cocoapods发的邮件在垃圾箱里面打开邮箱里面的链接进行验证">3.4 验证您的邮箱,一般cocoapods发的邮件在垃圾箱里面,打开邮箱里面的链接进行验证</h5>
+<p>如果出现<font color="red" size="2">ACE,YOU'RE SET UP.</font>说明已经注册成功,然后在终端输入 pod trunk push 项目名 进行提交</p>
+
+<h5 id="35-通过trunk推送podspec文件进行提交">3.5 通过trunk推送podspec文件进行提交</h5>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pod trunk push 项目名.podspec
+</code></pre></div></div>
+<p>注意: 这种方式其实就是上传这个描述文件到cocoapods在github上的仓库中<a href="https://github.com/CocoaPods/Specs">https://github.com/CocoaPods/Specs</a>;你也可以按照正常的操作, 先fork , 然后提交 pull request</p>
+
+<h5 id="36-等待审核">3.6 等待审核</h5>
+
+<h4 id="4-更新本地pod-第三方框架信息数据源">4. 更新本地pod 第三方框架信息数据源</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pod setup
+</code></pre></div></div>
+<p>注意: 可以省略这一步骤, 因为上述提交, 直接更新了本地索引库</p>
+
+<h4 id="5-测试">5. 测试</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>使用pod search 命令搜索自己的框架, 如果可以搜索到, 那么代表审核通过了
+</code></pre></div></div>
+
+<h4 id="6-创建一个pods库的模板库">6. 创建一个pods库的模板库</h4>
+
+<p>cd 到框架的上一级目录,是Example和框架处于同一级</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pod lib create 库的名称
+</code></pre></div></div>
+<p>提示信息:</p>
+
+<blockquote>
+  <ol>
+    <li>What is your name?</li>
+  </ol>
+
+  <p>输入对应的信息: Paulpang</p>
+
+  <ol>
+    <li>
+      <p>What is your email?</p>
+
+      <p>pxj1314@hotmail.com</p>
+    </li>
+    <li>
+      <p>What language do you want to use? [Swift/Objc]</p>
+    </li>
+  </ol>
+
+  <p>Objc</p>
+</blockquote>
+
+<blockquote>
+  <ol>
+    <li>Would you like to include a demo application with your librara ? [Yes/No] // 是否需要一个测试的Demo</li>
+  </ol>
+
+  <p>Yes</p>
+
+  <ol>
+    <li>
+      <p>Which testing frameworks will you use? [Specta/Kiwi/None]</p>
+
+      <p>None</p>
+    </li>
+    <li>
+      <p>Would you like to do view based texting? [Yes/No]</p>
+    </li>
+  </ol>
+
+  <p>No</p>
+
+  <ol>
+    <li>
+      <p>What is your class prefix?</p>
+
+      <p>XJ</p>
+    </li>
+  </ol>
+</blockquote>
+
+:ET

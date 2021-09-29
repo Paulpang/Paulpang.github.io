@@ -1,0 +1,100 @@
+I"�<h3 id="一什么是text组件">一、什么是Text组件？</h3>
+<p>一个用于显示文本的React组件，和Android中的TextView组件或者OC中的Label组件相类似，专门用来显示基本的文本信息；除了基本的显示布局之外，可以进行嵌套显示，设置样式，以及可以做事件(例如:点击)处理</p>
+
+<h3 id="二text组件常用的属性方法">二、Text组件常用的属性方法</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Attributes.style <span class="o">=</span> <span class="o">{</span>
+    color string
+    containerBackgroundColor string
+    fontFamily string
+    fontSize number
+    fontStyle enum<span class="o">(</span><span class="s1">'normal'</span>, <span class="s1">'italic'</span><span class="o">)</span>
+    fontWeight enum<span class="o">(</span><span class="s2">"normal"</span>, <span class="s1">'bold'</span>, <span class="s1">'100'</span>, <span class="s1">'200'</span>, <span class="s1">'300'</span>, <span class="s1">'400'</span>, <span class="s1">'500'</span>, <span class="s1">'600'</span>, <span class="s1">'700'</span>, <span class="s1">'800'</span>, <span class="s1">'900'</span><span class="o">)</span>
+    lineHeight number
+    textAlign enum<span class="o">(</span><span class="s2">"auto"</span>, <span class="s1">'left'</span>, <span class="s1">'right'</span>, <span class="s1">'center'</span><span class="o">)</span>
+    writingDirection enum<span class="o">(</span><span class="s2">"auto"</span>, <span class="s1">'ltr'</span>, <span class="s1">'rtl'</span><span class="o">)</span>
+    numberOfLines number
+    textAlign <span class="o">(</span><span class="s2">"auto"</span>, <span class="s1">'left'</span>, <span class="s1">'right'</span>, <span class="s1">'center'</span>, <span class="s1">'justify'</span><span class="o">)</span>
+    fontWeight <span class="o">(</span><span class="s2">"normal"</span>, <span class="s1">'bold'</span>, <span class="s1">'100'</span>, <span class="s1">'200'</span>, <span class="s1">'300'</span>, <span class="s1">'400'</span>, <span class="s1">'500'</span>, <span class="s1">'600'</span>, <span class="s1">'700'</span>, <span class="s1">'800'</span>, <span class="s1">'900'</span><span class="o">)</span>
+    onPress  fcuntion
+ <span class="o">}</span>
+ 
+</code></pre></div></div>
+
+<h5 id="注释如下">注释如下：</h5>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">color</code> 字体颜色</p>
+</blockquote>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">numberOfLines</code> (number) 进行设置Text显示文本的行数，如果显示的内容超过了行数，默认其他多余的信息就不会显示了</p>
+</blockquote>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">onPress</code> (fcuntion)  该方法当文本发生点击的时候调用该方法</p>
+</blockquote>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">fontFamily</code>  字体名称</p>
+</blockquote>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">fontSize</code>  字体大小</p>
+</blockquote>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">fontStyle</code>   字体风格(normal,italic)</p>
+</blockquote>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">fontWeight </code> 字体粗细权重(“normal”, ‘bold’, ‘100’, ‘200’, ‘300’, ‘400’, ‘500’, ‘600’, ‘700’, ‘800’, ‘900’)</p>
+</blockquote>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">textShadowOffset</code>  设置阴影效果{width: number, height: number}</p>
+</blockquote>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">textShadowRadius</code>  阴影效果圆角</p>
+</blockquote>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">textShadowColor</code>  阴影效果的颜色</p>
+</blockquote>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">letterSpacing</code>  字符间距</p>
+</blockquote>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">lineHeight</code>  行高</p>
+</blockquote>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">textAlign</code>   文本对其方式(“auto”, ‘left’, ‘right’, ‘center’, ‘justify’)</p>
+</blockquote>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">textDecorationLine</code>  横线位置 (“none”, ‘underline’, ‘line-through’, ‘underline line-through’)</p>
+</blockquote>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">textDecorationStyle</code> 线的风格(“solid”, ‘double’, ‘dotted’, ‘dashed’)</p>
+</blockquote>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">textDecorationColor</code> 线的颜色</p>
+</blockquote>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">writingDirection</code> 文本方向(“auto”, ‘ltr’, ‘rtl’)</p>
+</blockquote>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">transparent</code> 去除Text的背景颜色,变为透明色</p>
+</blockquote>
+
+<h2 id="三text组件中样式的继承">三、Text组件中样式的继承</h2>
+<p>在React-native中是没有样式继承这种说法的， 但是对于Text元素里边的Text元素，其实是能够继承的，文字控制类的属性也是多重继承的，和css中是一样的.</p>
+:ET

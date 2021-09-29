@@ -1,0 +1,32 @@
+I"�<p>最近工作不是太忙,在开发中,一直对UITabBarController和UINavigationController里面的内部结构不是太清楚,心里面一直模棱两可.经过今天一天的研究和在网上查找资料,现在明白了其中的内部结构,记录下来以便日后查找.</p>
+
+<h3 id="uinavigationcontroller">UINavigationController</h3>
+
+<p>UINavigationController上面的导航条是UINavgationBar,在UINavgationBar上面的是 UINavgationItem, 在UINavgationItem上面有title, titleView, leftBarButtonItem 和 rightBarButtonItem, 其中leftBarButtonItem和rightBarButtonItem 都属于 UIBarButtonItem的属性.
+具体结构如下:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>UINavigationController-----&gt; UINavgationBar----&gt; UINavgationItem
+
+UINavgationItem 包含:
+	1. title
+	2. titleView
+	3. UIBarButtonItem
+		<span class="k">*</span> leftBarButtonItem
+		<span class="k">*</span> rightBarButtonItem
+
+
+</code></pre></div></div>
+<h3 id="uitabbarcontroller">UITabBarController</h3>
+
+<p>UITabBarController底部是UITabBar,在UITabBar上面是UITabBarItem, 在UITabBarItem内部分别有image, selectedImage,title属性. 
+具体结构如下:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>UITabBarController----&gt; UITabBar----&gt; UITabBarItem
+
+UITabBarItem 包含:
+	1. image
+	2. selectedImage
+	3. title
+
+</code></pre></div></div>
+:ET

@@ -1,0 +1,150 @@
+I"H<h2 id="css属性---background-image">CSS属性 - background-image</h2>
+
+<ul>
+  <li>background-image用于设置元素的背景图片
+    <ul>
+      <li>会盖在background-color的上面</li>
+      <li>在图片的透明区域，可以看到背景色</li>
+    </ul>
+  </li>
+  <li>如果设置了多张图片
+    <ul>
+      <li>设置的第一张图片将显示在最上面，其他图片按顺序层叠在下面</li>
+    </ul>
+  </li>
+  <li>注意：如果设置了背景图片后，元素没有具体的宽高，背景图片是不会显示出来的</li>
+</ul>
+
+<h2 id="css属性---background-repeat">CSS属性 - background-repeat</h2>
+
+<ul>
+  <li>background-repeat用于设置背景图片是否要平铺</li>
+  <li>常见的设值有
+    <ul>
+      <li>repeat：平铺</li>
+      <li>no-repeat：不平铺</li>
+      <li>repeat-x：只在水平方向平铺</li>
+      <li>repeat-y：只在垂直平方向平铺</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="css属性---background-size">CSS属性 - background-size</h2>
+<ul>
+  <li>background-size用于设置背景图片的大小</li>
+</ul>
+
+<h2 id="css属性---background-position">CSS属性 - background-position</h2>
+<ul>
+  <li>background-position用于设置背景图片在水平、垂直方向上的具体位置
+    <ul>
+      <li>水平方向还可以设值：left、center、right</li>
+      <li>垂直方向还可以设值：top、center、bottom</li>
+      <li>如果只设置了1个方向，另一个方向默认是center</li>
+      <li>比如background-position: 80px; 等价于 background-position: 80px  center;</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="css-sprite精灵图">CSS Sprite(精灵图)</h2>
+
+<h3 id="什么是css-sprite">什么是CSS Sprite</h3>
+<ul>
+  <li>是一种CSS图像合成技术，将各种小图片合并到一张图片上，然后利用CSS的背景定位来显示对应的图片部分</li>
+  <li>有人翻译为：CSS雪碧、CSS精灵</li>
+</ul>
+
+<h3 id="使用css-sprite的好处">使用CSS Sprite的好处</h3>
+<ul>
+  <li>减少网页的http请求数量，加快网页响应速度，减轻服务器压力</li>
+  <li>减小图片总大小</li>
+  <li>解决了图片命名的困扰，只需要针对一张集合的图片命名</li>
+  <li>更换风格方便，只需要在少数张图片上修改图片的颜色或样式，整个网页的风格就可以改变</li>
+</ul>
+
+<h3 id="sprite图片制作雪碧图精灵图">Sprite图片制作（雪碧图、精灵图）</h3>
+<ul>
+  <li>方法1：Photoshop</li>
+  <li>方法2：<a href="https://www.toptal.com/developers/css/sprite-generator">生成精灵图网站</a></li>
+</ul>
+
+<h3 id="精灵图设置方法">精灵图设置方法</h3>
+<ul>
+  <li>background-position: 水平方向,垂直方向</li>
+</ul>
+
+<h2 id="background-image和img的选择">background-image和img的选择</h2>
+
+<ul>
+  <li>利用background-image和img都能够实现显示图片的需求，在开发中该如何选择？</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left"> </th>
+      <th style="text-align: center">img</th>
+      <th style="text-align: right">background-image</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">性质</td>
+      <td style="text-align: center">HTML元素</td>
+      <td style="text-align: right">CSS样式</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">图片是否占用空间</td>
+      <td style="text-align: center">√</td>
+      <td style="text-align: right">×</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">浏览器右键直接查看地址</td>
+      <td style="text-align: center">√</td>
+      <td style="text-align: right">×</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">支持CSS Sprite</td>
+      <td style="text-align: center">×</td>
+      <td style="text-align: right">√</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">更有可能被搜索引擎收录</td>
+      <td style="text-align: center">√ （结合alt属性）</td>
+      <td style="text-align: right">×</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">加载顺序</td>
+      <td style="text-align: center">优先加载</td>
+      <td style="text-align: right">等加载完HTML元素后再加载</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>总结
+    <ul>
+      <li>img，作为网页内容的重要组成部分，比如广告图片、LOGO图片、文章配图、产品图片</li>
+      <li>background-image，可有可无。有，能让网页更加美观。无，也不影响用户获取完整的网页内容信息</li>
+    </ul>
+  </li>
+  <li>宗旨
+    <ul>
+      <li>在没有任何CSS样式的情况下，用户也能浏览到网页中完整的内容信息（PS：网络出现问题或服务器出现问题时，有可能会导致CSS文件加载失败）</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="css属性---cursor">CSS属性 - cursor</h2>
+
+<ul>
+  <li>cursor可以设置鼠标指针（光标）在元素上面时的显示样式</li>
+  <li>cursor常见的设值有</li>
+  <li>auto：浏览器根据上下文决定指针的显示样式，比如根据文本和非文本切换指针样式</li>
+  <li>default：由操作系统决定，一般就是一个小箭头</li>
+  <li>pointer：一只小手，鼠标指针挪动到链接上面默认就是这个样式</li>
+  <li>text：一条竖线，鼠标指针挪动到文本输入框上面默认就是这个样式</li>
+  <li>none：没有任何指针显示在元素上面</li>
+</ul>
+
+:ET

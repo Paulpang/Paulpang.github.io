@@ -1,0 +1,56 @@
+I"�<p>在开发中,我们经常要对字符串NSString进行处理.下面记录一下NSString的相关处理,以便日后查阅.</p>
+
+<h3 id="nsstring的截取">NSString的截取</h3>
+
+<blockquote>
+  <p>NSString*string =@”sdfsfsfsAdfsdf”;</p>
+
+  <p>string = [string substringToIndex:7];//截取下标7之后的字符串</p>
+</blockquote>
+
+<blockquote>
+  <p>NSLog(@”截取的值为：%@”,string);</p>
+</blockquote>
+
+<blockquote>
+  <p>[string substringFromIndex:2];//截取下标2之前的字符串</p>
+</blockquote>
+
+<blockquote>
+  <p>NSLog(@”截取的值为：%@”,string);</p>
+</blockquote>
+
+<h3 id="nsstring的匹配">NSString的匹配</h3>
+
+<blockquote>
+  <p>NSString*string =@”sdfsfsfsAdfsdf”;</p>
+
+  <p>NSRangerange = [stringrangeOfString:@”f”];//匹配得到的下标</p>
+</blockquote>
+
+<blockquote>
+  <p>NSLog(@”rang:%@”,NSStringFromRange(range));</p>
+</blockquote>
+
+<blockquote>
+  <p>string = [string substringWithRange:range];//截取范围类的字符串</p>
+</blockquote>
+
+<blockquote>
+  <p>NSLog(@”截取的值为：%@”,string);</p>
+</blockquote>
+
+<h3 id="nsstring的分隔">NSString的分隔</h3>
+
+<blockquote>
+  <p>NSString*string =@“sdfsfsfsAdfsdf”;</p>
+</blockquote>
+
+<blockquote>
+  <p>NSArray *array = [string componentsSeparatedByString:@”A”]; //从字符A中分隔成2个元素的数组</p>
+
+  <p>NSLog(@”array:%@”,array); //结果是adfsfsfs和dfsdf</p>
+
+</blockquote>
+
+:ET

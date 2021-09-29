@@ -1,0 +1,125 @@
+I"�<p>DDLog的安装步骤如下:</p>
+
+<h4 id="1下载框架">1.下载框架</h4>
+
+<p>让控制台可以输出颜色插件</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://github.com/robbiehanson/XcodeColors
+</code></pre></div></div>
+<p>带色彩日志框架</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://github.com/CocoaLumberjack/CocoaLumberjack
+</code></pre></div></div>
+
+<h4 id="2安装xcodecolors输出颜色插件----command--q-再次打开工程选择test测试是否安装成功">2.安装XcodeColors(输出颜色插件)  – &gt; command + Q –&gt;再次打开工程选择Test测试是否安装成功</h4>
+
+<h4 id="3导入色彩日志框架">3.导入色彩日志框架</h4>
+
+<h3 id="1定义日志级别">1.定义日志级别</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#ifdef DEBUG</span>
+static const int ddLogLevel <span class="o">=</span> LOG_LEVEL_VERBOSE<span class="p">;</span>
+<span class="c">#else</span>
+static const int ddLogLevel <span class="o">=</span> LOG_LEVEL_OFF<span class="p">;</span>
+<span class="c">#endif</span>
+</code></pre></div></div>
+
+<h3 id="2-在didfinishlaunchingwithoptions方法中初始化带色彩日志">2. 在didFinishLaunchingWithOptions方法中初始化带色彩日志</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>DDLog addLogger:[DDTTYLogger sharedInstance]]<span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="3开启色彩日志">3.开启色彩日志</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[[</span>DDTTYLogger sharedInstance] setColorsEnabled:YES]<span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="4使用带色彩日志">4.使用带色彩日志</h3>
+
+<h3 id="5修复xcode6不显示色彩日志问题">5.修复Xcode6不显示色彩日志问题</h3>
+
+<blockquote>
+  <p>In Xcode bring up the Scheme Editor (Product -&gt; Edit Scheme…)</p>
+
+  <p>Select “Run” (on the left), and then the “Arguments” tab</p>
+
+  <p>Add a new Environment Variable named “XcodeColors”, with a value of “YES”</p>
+</blockquote>
+
+<h3 id="1日志类型">1.日志类型</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DDLog：基础类，必须引入的。
+DDASLLogger：支持将调试语句写入到苹果的日志中。一般正对Mac开发。可选。
+DDTTYLogger：支持将调试语句写入xCode控制台。我们即使要用它。可选。
+DDFileLogger：支持将调试语句写入到文件系统。可选。
+
+</code></pre></div></div>
+
+<h3 id="2ddlog日志种类">2.DDLog日志种类。</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DDLogError：定义输出错误文本
+DDLogWarn：定义输出警告文本
+DDLogInfo：定义输出信息文本
+DDLogDebug：定义输出调试文本
+DDLogVerbose：定义输出详细文本
+</code></pre></div></div>
+
+<h3 id="3日志级别">3.日志级别</h3>
+
+<blockquote>
+  <p>LOG_LEVEL_ERROR，那么你只会看到DDlogError语句。</p>
+
+  <p>LOG_LEVEL_WARN，那么你只会看到DDLogError和DDLogWarn语句。</p>
+
+  <p>LOG_LEVEL_INFO,那么你会看到error、Warn和Info语句。</p>
+
+  <p>LOG_LEVEL_VERBOSE,那么你会看到所有DDLog语句。</p>
+
+  <p>LOG_LEVEL_OFF,你将不会看到任何DDLog语句。</p>
+</blockquote>
+
+<h3 id="4自定义颜色">4.自定义颜色</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[[</span>DDTTYLogger sharedInstance] setForegroundColor:[UIColor greenColor] backgroundColor:[UIColor purpleColor] forFlag:DDLogFlagInfo]<span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="快速定位打印方法">快速定位打印方法</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#define DDInfoLog DDLogWarn(@"%d %s", __LINE__ ,__func__)</span>
+</code></pre></div></div>
+
+<h3 id="步骤">步骤:</h3>
+<h4 id="1在pch中导入">1.在pch中导入</h4>
+<p>该框架可以用于输出彩色日志, 但是要想显示还必须让Xcode具备显示带颜色Log的功能, 安装一个插件</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#import "DDLog.h"</span>
+<span class="c">#import "DDTTYLogger.h"</span>
+<span class="c">#import "DDASLLogger.h"</span>
+<span class="c">#import "DDFileLogger.h"</span>
+
+<span class="c">#ifdef DEBUG</span>
+static const int ddLogLevel <span class="o">=</span> LOG_LEVEL_VERBOSE<span class="p">;</span>
+<span class="c">#else</span>
+static const int ddLogLevel <span class="o">=</span> LOG_LEVEL_WARN<span class="p">;</span>
+<span class="c">#endif</span>
+
+</code></pre></div></div>
+<h4 id="2-在applanch里面输入">2. 在AppLanch里面输入</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    // 1.初始化自定义Log
+    // Standard lumberjack initialization
+    <span class="o">[</span>DDLog addLogger:[DDTTYLogger sharedInstance]]<span class="p">;</span>
+    // And we also <span class="nb">enable </span>colors
+    <span class="o">[[</span>DDTTYLogger sharedInstance] setColorsEnabled:YES]<span class="p">;</span>
+   
+    // 2.测试自定义Log
+    DDLogError<span class="o">(</span>@<span class="s2">"%s"</span>, __func__<span class="o">)</span><span class="p">;</span>
+    DDLogWarn<span class="o">(</span>@<span class="s2">"%s"</span>, __func__<span class="o">)</span><span class="p">;</span>
+   
+    // 3.自定义颜色
+    <span class="o">[[</span>DDTTYLogger sharedInstance] setForegroundColor:[UIColor whiteColor] backgroundColor:[UIColor grayColor] forFlag:DDLogFlagInfo]<span class="p">;</span>
+   
+    DDLogInfo<span class="o">(</span>@<span class="s2">"%s"</span>, __func__<span class="o">)</span><span class="p">;</span>
+    DDLogVerbose<span class="o">(</span>@<span class="s2">"%s"</span>, __func__<span class="o">)</span><span class="p">;</span>
+</code></pre></div></div>
+:ET

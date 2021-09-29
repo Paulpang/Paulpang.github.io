@@ -1,0 +1,101 @@
+I"�<h3 id="css样式的书写格式">CSS样式的书写格式</h3>
+
+<ul>
+  <li>
+    <p>CSS提供了各种各样,丰富多彩的CSS样式,书写格式如下</p>
+
+    <blockquote>
+      <p>color : red 
+ 冒号:左边是样式名,右侧是样式值</p>
+    </blockquote>
+  </li>
+</ul>
+
+<h4 id="css提供了三种样式方法">CSS提供了三种样式方法</h4>
+
+<ul>
+  <li>
+    <p>内联样式(inline style)</p>
+
+    <blockquote>
+      <p>将样式直接写在元素的style属性上</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>文档样式表(document style sheet)</p>
+
+    <blockquote>
+      <p>将样式写在head元素的<strong>style</strong>元素中, <strong>style元素</strong>的type属性默认为text/css</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>外部样式表(external style sheet)</p>
+
+    <ul>
+      <li>将样式写在单独的CSS文件中,然后在当前网页的head元素中用<strong>link元素</strong>引用</li>
+    </ul>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  &lt;link rel="stylesheet" href="css/page2.css"&gt;
+  &lt;link rel="stylesheet"&gt;元素的type属性值默认是text/css
+</code></pre></div>    </div>
+    <ul>
+      <li>在CSS文件中使用<strong>@charset</strong>指定文件编码,一般都是UTF-8</li>
+      <li>可以在style元素或者CSS文件中使用<strong>@import</strong>导入其他的CSS文件</li>
+      <li>不建议使用<strong>@import</strong>导入css文件,它的效率比<strong>link元素</strong>低</li>
+    </ul>
+  </li>
+  <li>
+    <p>三种样式的区别</p>
+    <ul>
+      <li>文档样式表,外部样式表比内联样式多了个”表”字</li>
+      <li>内联样式只针对某个特定的元素</li>
+      <li>文档样式表,外部样式表可以在针对一堆元素</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="css注释">CSS注释</h4>
+
+<p>CSS的注释和HTML的注释是不一样的,CSS的注释为 :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/* 注释内容*/ (不能嵌套)
+</code></pre></div></div>
+
+<p>HTML的注释为 :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> &lt;!-- HTML注释内容 --&gt;
+</code></pre></div></div>
+<p>注意 : 不要在CSS中编写HTML注释</p>
+
+<h4 id="设置网页图标">设置网页图标</h4>
+
+<ul>
+  <li>link元素除了可以用来引入CSS文件,还可以设置网页的图标(href的值是图标链接)</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;link rel="icon" type="image/x-iocn" href="图标url地址"&gt;
+</code></pre></div></div>
+<ul>
+  <li>link元素的rel属性不能省略，用来指定文档与链接资源的关系</li>
+  <li>一般rel若确定，相应的type也会默认确定，所以可以省略type</li>
+  <li>网页图标支持的图片格式是ico、png，常用大小是16x16、24x24、32x32（单位：像素）</li>
+</ul>
+
+<h4 id="css官方文档">CSS官方文档</h4>
+
+<ul>
+  <li>
+    <p>官方文档地址</p>
+
+    <p><a href="https://www.w3.org/standards/techs/css">https://www.w3.org/standards/techs/css</a>
+  <a href="https://www.w3.org/TR/CSS22/">https://www.w3.org/TR/CSS22/</a>
+  <a href="https://www.w3.org/TR/CSS22/propidx.html">https://www.w3.org/TR/CSS22/propidx.html</a></p>
+  </li>
+  <li>
+    <p>CSS代码合法检测</p>
+
+    <p><a href="http://jigsaw.w3.org/css-validator/">http://jigsaw.w3.org/css-validator/</a></p>
+  </li>
+</ul>
+
+:ET

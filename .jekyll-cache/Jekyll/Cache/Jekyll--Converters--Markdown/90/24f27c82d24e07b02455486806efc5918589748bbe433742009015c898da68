@@ -1,0 +1,192 @@
+I"�<p>在实际开发中,我们经常需要自定义组件,而且需要在自定义组件是设置属性和方法.那么如何自定义组件? 如何将属性和方法暴露出去,供外界调用呢? 下面我们研究一下这些问题.</p>
+
+<h3 id="一如何自定义组件">一、如何自定义组件？</h3>
+
+<ul>
+  <li>首先创建一个.js文件 例如
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>BannerView.js
+</code></pre></div>    </div>
+  </li>
+  <li>导入常用组件</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+// 1.导入组件<span class="o">(</span>面向组件<span class="o">)</span>,React<span class="o">(</span>JSX<span class="o">)</span>
+// React:默认组件,不需要添加<span class="o">{}</span>
+// Compoent:非默认组件,需要添加<span class="o">{}</span>
+import React, <span class="o">{</span>Component,PropTypes<span class="o">}</span> from <span class="s1">'react'</span>
+
+// 2.导入常用组件,注册组件,样式组件,View组件,Text组件
+import
+<span class="o">{</span>
+    AppRegistry,
+    StyleSheet,
+    Text,
+    View,
+    TouchableOpacity,
+    Button,
+    TextInput,
+    Image,
+    Dimensions
+<span class="o">}</span>
+    from <span class="s1">'react-native'</span>
+</code></pre></div></div>
+<ul>
+  <li>自定义组件</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 自定义组件
+<span class="nb">export </span>default class 自定义组件的名称 extends Component<span class="o">{</span>
+
+这里写code, 所有的自己属性/方法.以及子控件都在这里处理
+	render<span class="o">()</span> <span class="o">{</span>
+
+		<span class="k">return</span> <span class="o">(</span>
+			&lt;View&gt;&lt;/View&gt;
+		<span class="o">)</span><span class="p">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+<h3 id="二如何将属性和方法暴露出去">二、如何将属性和方法暴露出去?</h3>
+<p>利用<code class="language-plaintext highlighter-rouge">PropTypes</code>来解决这个问题,在<code class="language-plaintext highlighter-rouge">PropTypes</code>类里面定义属性和方法 ,可以是外界在使用这个自定义组件的时候,能够<code class="language-plaintext highlighter-rouge">自动有属性功能</code>的提示.</p>
+
+<h4 id="proptypes的作用">PropTypes的作用</h4>
+<ul>
+  <li>暴露属性,让外界有提示功能</li>
+  <li>检查属性类型</li>
+  <li>PropTypes里面定义的属性,只能声明属性,不会实现属性,因此在使用属性的时候,必须需要外界给赋值才能使用.</li>
+  <li>
+    <p>如果在自定义控件的render方法中需要用到propTypes里面的属性,这时候需要在render方法中使用</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  &lt;Text&gt;<span class="o">{</span>this.props.属性名称<span class="o">}</span>&lt;/Text&gt;
+  不能使用
+  &lt;Text&gt;<span class="o">{</span>this.属性名称<span class="o">}</span>&lt;/Text&gt;
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h5 id="注意">注意</h5>
+<ul>
+  <li><strong>PropTypes必须要用static声明，否则无效果。</strong></li>
+  <li><strong>propTypes:定义(声明)属性, 但不会真正生成属性</strong></li>
+  <li><strong>static：用来定义类方法或者类属性，定义类的方法和属性，生成的对象就自动有这样的属性了。</strong></li>
+  <li><strong>PropTypes 只能用于React框架的自定义组件，默认JS是没有的，因为它是React框架中的。</strong></li>
+</ul>
+
+<h3 id="三proptypes的属性类型">三、PropTypes的属性类型</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 数组类型</span>
+PropTypes.array
+
+<span class="c"># 布尔类型</span>
+PropTypes.bool
+
+<span class="c"># 函数类型</span>
+PropTypes.func
+
+<span class="c"># 数值类型</span>
+PropTypes.number
+
+<span class="c"># 对象类型</span>
+PropTypes.object
+
+<span class="c"># 字符串类型</span>
+PropTypes.string
+
+<span class="c"># 规定prop为必传字段</span>
+PropTypes.func.isRequired
+
+<span class="c"># prop可为任意类型</span>
+PropTypes.any.isRequired
+
+</code></pre></div></div>
+
+<p><strong>注意 :</strong> 如果PropTypes里面的属性或者方法是外界必须实现的,这时候需要这个属性或方法后面加上 isRequired来修饰 例如:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> // 定义属性
+    static propTypes <span class="o">=</span> <span class="o">{</span>
+        name:PropTypes.string.isRequired, // 必须实现的属性
+        age:PropTypes.number // 定义方法<span class="o">(</span>外界可实现和不实现<span class="o">)</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="四proptypes的使用步骤">四、PropTypes的使用步骤</h3>
+
+<ol>
+  <li>PropTypes:属性检测，使用的时候需要先导入，在React框架中</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import React, <span class="o">{</span> Component,PropTypes <span class="o">}</span> from <span class="s1">'react'</span><span class="p">;</span>
+</code></pre></div></div>
+<ol>
+  <li>在类方法中定义属性/方法</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 自定义组件
+<span class="nb">export </span>default class XMGCompoent extends Component<span class="o">{</span>
+
+    static propTypes <span class="o">=</span> <span class="o">{</span>
+       name:PropTypes.string.isRequired, // 定义属性
+       click:PropTypes.func    // 定义方法
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+<p>3.如果需要自定义属性并设置初始化值需要用 <code class="language-plaintext highlighter-rouge">defaultProps</code>来设置</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 自定义属性，设置初始值
+// 生成属性,初始化值,给props初始化值
+static defaultProps <span class="o">=</span> <span class="o">{</span>
+    name:<span class="s1">'xmg'</span>,
+    age:20
+<span class="o">}</span>
+
+</code></pre></div></div>
+<p><strong>注意 : <code class="language-plaintext highlighter-rouge">defaultProps</code> : 底层就会把类属性defaultProps里面的值赋值给props.</strong></p>
+
+<h3 id="五案例代码">五、案例代码</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/<span class="k">**</span>
+ <span class="k">*</span> Created by Paul on 2017/5/18.
+ <span class="k">*</span>/
+
+import React, <span class="o">{</span> Component,PropTypes <span class="o">}</span> from <span class="s1">'react'</span><span class="p">;</span>
+import <span class="o">{</span>
+    AppRegistry,
+    StyleSheet,
+    Text,
+    View,
+
+<span class="o">}</span> from <span class="s1">'react-native'</span><span class="p">;</span>
+
+<span class="nb">export </span>default class BannerView extends Component <span class="o">{</span>
+
+    // 定义属性
+    static propTypes <span class="o">=</span> <span class="o">{</span>
+        name: PropTypes.string.isRequired,
+        age:PropTypes.number
+    <span class="o">}</span>
+
+    // 初始值
+    static defaultProps <span class="o">=</span> <span class="o">{</span>
+        name:<span class="s1">'Paul'</span>,
+        age:28
+    <span class="o">}</span>
+
+    render<span class="o">()</span> <span class="o">{</span>
+        // 打印出来, 
+        console.log<span class="o">(</span>this.props.name<span class="o">)</span>
+        <span class="k">return</span> <span class="o">(</span>
+            &lt;View&gt;
+
+            &lt;/View&gt;
+        <span class="o">)</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+
+
+</code></pre></div></div>
+
+:ET

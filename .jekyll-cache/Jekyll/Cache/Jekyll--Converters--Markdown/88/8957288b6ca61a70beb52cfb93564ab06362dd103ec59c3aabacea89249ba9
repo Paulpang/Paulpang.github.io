@@ -1,0 +1,7 @@
+I"6<h3 id="normal-flow">Normal flow</h3>
+<ul>
+  <li>默认情况下，元素都是按照normal flow（标准流、常规流、正常流、文档流【document flow】）进行定位</li>
+  <li>从上到下、从左到右按顺序摆放好</li>
+  <li>默认情况下，互相之间不存在层叠现象</li>
+</ul>
+:ET

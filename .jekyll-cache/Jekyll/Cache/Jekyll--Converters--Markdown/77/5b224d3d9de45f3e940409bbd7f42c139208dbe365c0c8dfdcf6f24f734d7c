@@ -1,0 +1,258 @@
+I"�"<h2 id="列表">列表</h2>
+
+<h4 id="有序列表olli">有序列表：ol、li</h4>
+
+<ul>
+  <li>ol （ordered list）有序列表，直接子元素只能是li</li>
+  <li>li （list item）列表中的每一项</li>
+</ul>
+
+<p>格式:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	&lt;ol&gt;
+		&lt;li&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;/li&gt;
+	&lt;/ol&gt;
+
+</code></pre></div></div>
+<h4 id="无序列表-ulli">无序列表 ul、li</h4>
+
+<ul>
+  <li>ul （unordered list）无序列表，直接子元素只能是li</li>
+  <li>li （list item）列表中的每一项</li>
+</ul>
+
+<p>格式:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	&lt;ul&gt;
+		&lt;li&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;/li&gt;
+	&lt;/ul&gt;
+
+</code></pre></div></div>
+
+<h4 id="定义列表-dldtdd">定义列表 dl、dt、dd</h4>
+
+<ul>
+  <li>dl（definition list） 定义列表，直接子元素只能是dt、dd</li>
+  <li>dt（definition term） 列表中每一项的项目名</li>
+  <li>dd（definition description）列表中每一项的具体描述，是对 dt 的描述、解释、补充</li>
+  <li>一个dt后面一般紧跟着1个或者多个dd</li>
+  <li>dt、dd常见的组合
+    <ul>
+      <li>事物的名称、事物的描述</li>
+      <li>问题、答案</li>
+      <li>类别名、归属于这类的各种事物</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="列表相关的css属性">列表相关的CSS属性</h3>
+
+<ul>
+  <li>列表相关的常见CSS属性有4个：list-style-type、list-style-image、list-style-position、list-style</li>
+  <li>适用于display设置为list-item的元素，比如li元素</li>
+  <li>它们都可以继承，所以设置给ol、ul元素，默认也会应用到li元素</li>
+  <li>list-style-type：设置li元素前面标记的样式</li>
+  <li>disc（实心圆）、circle（空心圆）、square（实心方块）</li>
+  <li>
+    <p>decimal（阿拉伯数字）、lower-roman（小写罗马数字）、upper-roman（大写罗马数字）
+lower-alpha（小写英文字母）、upper-alpha（大写英文字母）
+none（什么也没有）</p>
+  </li>
+  <li><strong>list-style-image：</strong>设置某张图片为li元素前面的标记，会覆盖list-style-type的设置</li>
+  <li><strong>list-style-position：</strong>设置li元素前面标记的位置，可以取outside、inside2个值</li>
+  <li><strong>list-style：</strong>是list-style-type、list-style-image、</li>
+  <li><strong>list-style-position</strong>的缩写属性</li>
+  <li><strong>list-style:</strong> outside url(“images/dot.png”);</li>
+  <li>一般最常用的还是设置为<strong>none</strong>，去掉li元素前面的默认标记 list-style: none;</li>
+</ul>
+
+<h2 id="表格">表格</h2>
+
+<h4 id="table-表格">table (表格)</h4>
+
+<p><strong>常用属性</strong></p>
+
+<ul>
+  <li>border 边框的宽度</li>
+  <li>cellpadding 单元格内部的间距</li>
+  <li>cellspacing 单元格之间的间距</li>
+  <li>width 表格的宽度</li>
+  <li>align 表格的水平对齐方式 left、center、right</li>
+</ul>
+
+<h4 id="tr-表格中的行">tr (表格中的行)</h4>
+<p><strong>常用属性</strong></p>
+
+<ul>
+  <li>valign 单元格的垂直对齐方式</li>
+  <li>top、middle、bottom、baseline</li>
+  <li>align 单元格的水平对齐方式 left、center、right</li>
+</ul>
+
+<h4 id="td-行中的单元格">td (行中的单元格)</h4>
+
+<ul>
+  <li>valign 单元格的垂直对齐方式</li>
+  <li>top、middle、bottom、baseline</li>
+  <li>align 单元格的水平对齐方式 left、center、right</li>
+  <li>width 单元格的宽度</li>
+  <li>height 单元格的高度</li>
+  <li>rowspan 单元格可横跨的行数</li>
+  <li>colspan 单元格可横跨的列数</li>
+</ul>
+
+<h4 id="表格的css属性">表格的CSS属性</h4>
+
+<ul>
+  <li>table的border-spacing用于设置单元格之间的水平、垂直间距</li>
+</ul>
+
+<h4 id="表格细线">表格细线</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>table {
+	border-collapse: collapse;
+}
+
+td {
+	border: 1px solod #000;
+}
+
+</code></pre></div></div>
+
+<h2 id="表单">表单</h2>
+
+<h3 id="form-表单">form 表单</h3>
+<p>一般情况下，其他表单相关元素都是它的后代元素</p>
+
+<p>form常用属性</p>
+<ul>
+  <li>
+    <p>action 用于提交表单数据的请求URL</p>
+  </li>
+  <li>
+    <p>method 请求方法（get和post），默认是get</p>
+  </li>
+  <li>target 在什么地方打开URL（参考a元素的target）</li>
+  <li>enctype 规定了在向服务器发送表单数据之前如何对数据进行编码</li>
+  <li>取值有3种
+    <ul>
+      <li>application/x-www-form-urlencoded：默认的编码方式</li>
+      <li>multipart/form-data：文件上传时必须为这个值，并且method必须是post</li>
+      <li>text/plain：普通文本传输</li>
+    </ul>
+  </li>
+  <li>accept-charset：规定表单提交时使用的字符编码</li>
+</ul>
+
+<h3 id="input">input</h3>
+<p>单行文本输入框、单选框、复选框、按钮等元素</p>
+
+<h4 id="input常用属性">input常用属性</h4>
+<ul>
+  <li>type：input的类型</li>
+  <li>text：文本输入框（明文输入）</li>
+  <li>password：文本输入框（密文输入）</li>
+  <li>radio：单选框</li>
+  <li>checkbox：复选框</li>
+  <li>button：按钮</li>
+  <li>reset：重置</li>
+  <li>submit：提交表单数据给服务器</li>
+  <li>file：文件上传</li>
+  <li>hidden：隐藏域</li>
+  <li>maxlength：允许输入的最大字数</li>
+  <li>
+    <p>placeholder：占位文字</p>
+  </li>
+  <li>readonly：只读</li>
+  <li>disabled：禁用</li>
+  <li>checked：默认被选中 只有当type为radio或checkbox时可用</li>
+  <li>autofocus：当页面加载时，自动聚焦</li>
+  <li>name：名字 在提交数据给服务器时，可用于区分数据类型</li>
+  <li>value：取值</li>
+  <li>form：设置所属的form元素（填写form元素的id） 一旦使用了此属性，input元素即使不写在form元素内部，它的数据也能够提交给服务器</li>
+</ul>
+
+<p><strong>布尔属性</strong></p>
+
+<ul>
+  <li>常见的布尔属性有disabled、checked、readonly、multiple、autofocus、selected</li>
+  <li>如果要给布尔属性设值，值就是属性名本身</li>
+  <li>布尔属性可以没有属性值，写上属性名就代表使用这个属性</li>
+</ul>
+
+<p><strong>input按钮</strong></p>
+
+<ul>
+  <li>普通按钮（type=button）：使用value属性设置按钮文字</li>
+  <li>重置按钮（type=reset）：重置它所属form的所有表单元素（包括input、textarea、select）</li>
+  <li>提交按钮（type=submit）：提交它所属form的表单数据给服务器（包括input、textarea、select）</li>
+  <li>默认情况下，敲回车键（Enter）会自动提交表单数据给服务器</li>
+</ul>
+
+<p>###textarea
+多行文本框</p>
+
+<p>缩放的CSS设置</p>
+
+<ul>
+  <li>禁止缩放：resize: none;</li>
+  <li>水平缩放：resize: horizontal;</li>
+  <li>垂直缩放：resize: vertical;</li>
+  <li>水平垂直缩放：resize: both;</li>
+</ul>
+
+<h3 id="selectoption">select、option</h3>
+<p>下拉选择框 
+option是select的子元素，一个option代表一个选项</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;select name="edu"&gt;
+	&lt;option&gt;&lt;/option&gt;
+	&lt;option&gt;&lt;/option&gt;
+	&lt;option&gt;&lt;/option&gt;
+&lt;/select&gt;
+</code></pre></div></div>
+
+<ul>
+  <li>select常用属性
+    <ul>
+      <li>multiple：可以多选</li>
+      <li>size：显示多少项</li>
+    </ul>
+  </li>
+  <li>option常用属性</li>
+  <li>selected：默认被选中</li>
+</ul>
+
+<h3 id="button">button</h3>
+<p>使用button元素也能实现按钮，功能效果跟input一样</p>
+
+<ul>
+  <li>普通按钮（type=button）：使用value属性设置按钮文字</li>
+  <li>重置按钮（type=reset）：重置它所属form的所有表单元素（包括input、textarea、select）</li>
+  <li>提交按钮（type=submit）：提交它所属form的表单数据给服务器（包括input、textarea、select）</li>
+  <li>默认情况下，敲回车键（Enter）会自动提交表单数据给服务器</li>
+</ul>
+
+<h3 id="label">label</h3>
+
+<ul>
+  <li>label元素一般跟input配合使用，用来表示input的标题</li>
+  <li>labe可以跟某个input绑定，点击label就可以激活对应的input,必须用id绑定</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;label for="username"&gt;用户名&lt;/label&gt;
+&lt;input id="username" type="text" name="username"&gt;&lt;/input&gt;
+
+</code></pre></div></div>
+
+<h3 id="fieldset">fieldset</h3>
+<p>表单元素组</p>
+
+<h3 id="legend">legend</h3>
+<p>fieldset的标题</p>
+
+:ET

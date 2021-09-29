@@ -1,0 +1,12 @@
+I"�<h3 id="解决xcodeib-designables-failed-to-update-auto-layout-status">【解决Xcode】IB Designables: Failed to update auto layout status</h3>
+
+<ul>
+  <li>删除driverData文件夹（偏好设置 –&gt; location进入）</li>
+  <li>重启xcode</li>
+  <li>clean project</li>
+</ul>
+
+<blockquote>
+  <p>.storyboard: error: IB Designables: Failed to render and update auto layout status for xx (IAU-i9-t8S): dlopen(xx.framewo</p>
+</blockquote>
+:ET

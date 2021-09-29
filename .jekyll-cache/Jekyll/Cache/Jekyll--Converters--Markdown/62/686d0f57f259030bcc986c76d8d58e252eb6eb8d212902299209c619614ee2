@@ -1,0 +1,142 @@
+I"�$<h3 id="listview原理">ListView原理</h3>
+
+<ul>
+  <li>ListView内部是通过ListViewDataSource这个对象，显示数据，因此使用ListView必须先创建ListViewDataSource对象。</li>
+  <li>ListViewDataSource构造方法(创建对象):可选择性传入4个参数,描述怎么提取数据，怎么刷新cell</li>
+  <li>这些参数：都是函数，当产生对应的事件的时候，会自动执行这些函数.</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>构造函数可以接受下列四种参数（都是可选）：
+
+getRowData<span class="o">(</span>dataBlob, sectionID, rowID<span class="o">)</span><span class="p">;</span>
+getSectionHeaderData<span class="o">(</span>dataBlob, sectionID<span class="o">)</span><span class="p">;</span>
+rowHasChanged<span class="o">(</span>prevRowData, nextRowData<span class="o">)</span><span class="p">;</span>
+sectionHeaderHasChanged<span class="o">(</span>prevSectionData, nextSectionData<span class="o">)</span><span class="p">;</span>
+</code></pre></div></div>
+<ul>
+  <li>ListViewDataSource为ListView组件提供高性能的数据处理和访问。我们需要调用clone方法从原始输入数据中抽取数据来创建ListViewDataSource对象。</li>
+  <li>要更新datasource中的数据，请（每次都重新）调用cloneWithRows方法（如果用到了section，则对应cloneWithRowsAndSections方法）clone方法会自动提取新数据并进行逐行对比（使用rowHasChanged方法中的策略），这样ListView就知道哪些行需要重新渲染了</li>
+</ul>
+
+<h3 id="listview基本使用步骤">ListView基本使用步骤</h3>
+
+<h4 id="1创建数据源但还没有给它传递数据">1.创建数据源，但还没有给它传递数据</h4>
+<ul>
+  <li>使用state保存数据源，因为数据源的数据改变的时候，需要刷新界面。</li>
+  <li>ListView.DataSource:获取ListViewDataSource构造方法</li>
+  <li>ListViewDataSource构造方法:决定ListView怎么去处理数据，需要传入一个对象，这个对象有四个可选属性，都是方法</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>getRowData<span class="o">(</span>dataBlob, sectionID, rowID<span class="o">)</span><span class="p">;</span> 怎么获取行数据
+
+getSectionHeaderData<span class="o">(</span>dataBlob, sectionID<span class="o">)</span><span class="p">;</span> 怎么获取每一组头部数据
+
+rowHasChanged<span class="o">(</span>prevRowData, nextRowData<span class="o">)</span><span class="p">;</span> 决定什么情况行数据才发生改变，当行数据发生改变，就会绘制下一行cell
+
+sectionHeaderHasChanged<span class="o">(</span>prevSectionData, nextSectionData<span class="o">)</span><span class="p">;</span>决定什么情况头部数据才发生改变，当行数据发生改变，就会绘制下一行cell
+
+</code></pre></div></div>
+<p><strong>注意：初始化ListViewDataSource的时候，如果不需要修改提取数据的方式，只需要实现rowHasChanged，告诉什么时候刷新下一行数据.</strong></p>
+
+<p><strong>注意：默认ListViewDataSource有提取数据方式，可以使用默认的提取方式.</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>constructor<span class="o">(</span>props<span class="o">)</span> <span class="o">{</span>
+  super<span class="o">(</span>props<span class="o">)</span><span class="p">;</span>
+  var ds <span class="o">=</span> new ListView.DataSource<span class="o">({</span>rowHasChanged: <span class="o">(</span>r1, r2<span class="o">)</span> <span class="o">=&gt;</span> r1 <span class="o">!==</span> r2<span class="o">})</span><span class="p">;</span>
+ <span class="o">}</span>
+</code></pre></div></div>
+<h4 id="2给数据源设置数据">2.给数据源设置数据</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>constructor<span class="o">(</span>props<span class="o">)</span> <span class="o">{</span>
+  super<span class="o">(</span>props<span class="o">)</span><span class="p">;</span>
+  var ds <span class="o">=</span> new ListView.DataSource<span class="o">({</span>rowHasChanged: <span class="o">(</span>r1, r2<span class="o">)</span> <span class="o">=&gt;</span> r1 <span class="o">!==</span> r2<span class="o">})</span><span class="p">;</span>
+  
+  this.state <span class="o">=</span> <span class="o">{</span>
+     // 给数据源设置数据,创建新的数据,不过保存了之前的行改变方法属性
+    dataSource: ds.cloneWithRows<span class="o">([</span><span class="s1">'row 1'</span>, <span class="s1">'row 2'</span><span class="o">])</span>,
+  <span class="o">}</span><span class="p">;</span>
+ <span class="o">}</span>
+</code></pre></div></div>
+<h4 id="3实现数据源方法确定cell">3.实现数据源方法，确定cell</h4>
+<ul>
+  <li>这个方法会自动传入四个参数(rowData,sectionID,rowID,highlightRow)</li>
+  <li>rowData:当前行数据</li>
+  <li>sectionID:当前行所在组ID</li>
+  <li>rowID：哪一行的角标</li>
+  <li>highlightRow:高亮函数</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>render<span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">(</span>
+
+            &lt;View <span class="nv">style</span><span class="o">=&gt;</span>
+                &lt;ListView <span class="nv">dataSource</span><span class="o">={</span>this.state.ds<span class="o">}</span>
+                          <span class="nv">renderRow</span><span class="o">={</span>this._renderRow.bind<span class="o">(</span>this<span class="o">)}</span>
+                /&gt;
+            &lt;/View&gt;
+        <span class="o">)</span>
+
+    <span class="o">}</span>
+
+    // 实现数据源方法,每行cell外观
+    _renderRow<span class="o">(</span>rowData, sectionID, rowID, highlightRow<span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">(</span>
+            &lt;View&gt;
+                &lt;Text&gt;<span class="o">{</span>rowData<span class="o">}</span>&lt;/Text&gt;
+            &lt;/View&gt;
+        <span class="o">)</span><span class="p">;</span>
+    <span class="o">}</span>
+
+</code></pre></div></div>
+<h3 id="listview分割线">ListView分割线</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> // 哪一组,哪一行,相邻行是否高亮
+    _renderSeparator<span class="o">(</span>sectionID, rowID, adjacentRowHighlighted<span class="o">)</span>  <span class="o">{</span>
+        console.log<span class="o">(</span>sectionID,rowID,adjacentRowHighlighted<span class="o">)</span><span class="p">;</span>
+        <span class="k">return</span> <span class="o">(</span>
+            &lt;View <span class="nv">style</span><span class="o">=&gt;</span>&lt;/View&gt;
+        <span class="o">)</span>
+    <span class="o">}</span>
+    
+</code></pre></div></div>
+<p><strong>注意: 给cell设置分割线最好不要用上面的方法,因为在计算cell高度的时候需要加上分割线的高度,建议使用在View中设置View的borderWith属性以及borderBottomColor属性,这样在计算cell高度的时候就不需要加上分割线的高度了</strong></p>
+
+<h3 id="listview头部视图">ListView头部视图</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> _renderHeader<span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">(</span>
+            &lt;View&gt;
+                &lt;Text&gt;头部视图&lt;/Text&gt;
+            &lt;/View&gt;
+        <span class="o">)</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+<h3 id="listview尾部视图">ListView尾部视图</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> _renderFooter<span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">(</span>
+            &lt;View&gt;
+                &lt;Text&gt;尾部视图&lt;/Text&gt;
+            &lt;/View&gt;
+        <span class="o">)</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="listview点击cell高亮">ListView点击cell高亮</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  _renderRow<span class="o">(</span>rowData, sectionID, rowID, highlightRow<span class="o">)</span> <span class="o">{</span>
+
+		<span class="k">return</span> <span class="o">(</span>
+           &lt;TouchableOpacity <span class="nv">onPress</span><span class="o">={()=&gt;{</span>
+               AlertIOS.alert<span class="o">(</span>rowID<span class="o">)</span><span class="p">;</span>
+               highlightRow<span class="o">(</span>sectionID,rowID<span class="o">)</span>
+           <span class="o">}}&gt;</span>
+               &lt;View&gt;
+                   &lt;Text&gt;<span class="o">{</span>rowData<span class="o">}</span>&lt;/Text&gt;
+               &lt;/View&gt;
+           &lt;/TouchableOpacity&gt;
+
+      <span class="o">)</span><span class="p">;</span>
+  <span class="o">}</span>
+</code></pre></div></div>
+:ET

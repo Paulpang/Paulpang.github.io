@@ -1,0 +1,11 @@
+I"K<h3 id="定位方案position-schemes">定位方案（Position Schemes）</h3>
+<ul>
+  <li>在CSS中，有3种常用的方法对元素进行定位、布局
+    <ul>
+      <li>normal flow：标准流、常规流、文档流</li>
+      <li>absolute positioning：绝对定位</li>
+      <li>float：浮动</li>
+    </ul>
+  </li>
+</ul>
+:ET

@@ -1,0 +1,68 @@
+I"><h3 id="什么是-markdown">什么是 Markdown</h3>
+
+<p>　　Markdown 是一种方便记忆、书写的纯文本标记语言，用户可以使用这些标记符号以最小的输入代价生成极富表现力的文档：如您正在阅读的这篇文章。它使用简单的符号标记不同的标题，分割不同的段落，<strong>粗体</strong> 或者 <em>斜体</em> 某些文字.</p>
+
+<p>　　很多产品的文档也是用markdown编写的，并且以“README.MD”的文件名保存在软件的目录下面。             <br />
+　　</p>
+
+<h3 id="一些基本语法">一些基本语法</h3>
+
+<p>标题          <br />
+H1 :# Header 1          <br />
+H2 :## Header 2         <br />
+H3 :### Header 3         <br />
+H4 :#### Header 4         <br />
+H5 :##### Header 5          <br />
+H6 :###### Header 6    <br />
+链接 :<a href="URL">Title</a>      <br />
+加粗 :<strong>Bold</strong>      <br />
+斜体字 :<em>Italics</em>       <br />
+<em>删除线 :<del>text</del>        <br />
+段落 : 段落之间空一行         <br />
+换行符 : 一行结束时输入两个空格         <br />
+列表 :</em> 添加星号成为一个新的列表项。        <br />
+引用 :&gt; 引用内容             <br />
+内嵌代码 : <code class="language-plaintext highlighter-rouge">alert('Hello World');</code>      <br />
+画水平线 (HR) :——–</p>
+
+<p>css 的大部分语法同样可以在 markdown 上使用，但不同的渲染器渲染出来的 markdown 内容样式也不一样，下面这些链接里面有 markdown 基本语法，你也可以在下面几个平台上尝试着写一些。</p>
+
+<h3 id="一些好用的-markdown-编辑器">一些好用的 Markdown 编辑器</h3>
+
+<p><br /></p>
+
+<p><a href="http://mahua.jser.me/?utm_source=mindstore.io">MaHua</a> 在线 Markdown 编辑器 ,无须测试。</p>
+
+<p><br /></p>
+
+<p><img src="/images/posts/markdown/image1.png" alt="" /></p>
+
+<p><br /></p>
+
+<p><a href="http://mdp.tylingsoft.com/">Markdown Plus</a> 一款 Markdown 编辑器，可以支持添加任务列表、emoji、流程图等。</p>
+
+<p><br /></p>
+
+<p><img src="/images/posts/markdown/image2.png" alt="" /></p>
+
+<p><br /></p>
+
+<p><a href="https://www.zybuluo.com/cmd/?utm_source=mindstore.io">Cmd Markdown</a> 作业部落在线 Markdown 编辑器推出桌面版客户端啦，全平台支援。</p>
+
+<p><img src="/images/posts/markdown/image3.png" alt="" /></p>
+
+<p><a href="https://github.com/MacDownApp/macdown">Macdown</a> Github 上开源的 Mac 平台上的 Markdown 编辑器</p>
+
+<p><a href="https://www.gitbook.com/editor?utm_source=mindstore.io">GitBook Editor</a> 一款团队在线编辑文档工具。可以轻松书写笔记，支持团队协同编辑。同时支持 Markdown 语法，还保持了印象笔记的风格并可在线预览。</p>
+
+<p><a href="http://www.glamdevelopment.com/outlinely?utm_source=mindstore.io">Outlinely</a> 界面简洁大方的大纲类 Mac 软件，使用起来很简单，而且支持输出 Markdown 格式。</p>
+
+<p><a href="http://classeur.io/?utm_source=mindstore.io">Classeur</a> 实用简洁的 Markdown 写作工具，快速上手。</p>
+
+<p><a href="https://github.com/geekcompany/DeerResume?utm_source=mindstore.io">DeerResume</a> 程序员专用 MarkDown 简历制作在线工具。</p>
+
+<p><br /></p>
+
+<p>原文来自：<a href="http://baixin.io/2016/11/markdownTool/">Markdown工具集</a></p>
+
+:ET

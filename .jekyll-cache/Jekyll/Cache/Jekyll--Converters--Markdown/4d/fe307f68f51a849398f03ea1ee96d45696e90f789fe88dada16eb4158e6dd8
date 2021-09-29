@@ -1,0 +1,376 @@
+I"/<h2 id="创建字符串">创建字符串</h2>
+
+<p>你可以通过使用字符串字面量或 String 类的实例来创建一个字符串：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import Cocoa
+
+// 使用字符串字面量
+var stringA = "Hello, World!"
+print( stringA )
+
+// String 实例化
+var stringB = String("Hello, World!")
+print( stringB )
+</code></pre></div></div>
+
+<p>以上程序执行输出结果为：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello, World!
+Hello, World!
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="空字符串">空字符串</h2>
+
+<p>你可以使用空的字符串字面量赋值给变量或初始化一个String类的实例来初始值一个空的字符串。 我们可以使用字符串属性 isEmpty 来判断字符串是否为空：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import Cocoa
+
+// 使用字符串字面量创建空字符串
+var stringA = ""
+
+if stringA.isEmpty {
+   print( "stringA 是空的" )
+} else {
+   print( "stringA 不是空的" )
+}
+
+// 实例化 String 类来创建空字符串
+let stringB = String()
+
+if stringB.isEmpty {
+   print( "stringB 是空的" )
+} else {
+   print( "stringB 不是空的" )
+}
+</code></pre></div></div>
+
+<p>以上程序执行输出结果为：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stringA 是空的
+stringB 是空的
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="字符串常量">字符串常量</h2>
+
+<p>你可以将一个字符串赋值给一个变量或常量，变量是可修改的，常量是不可修改的。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import Cocoa
+
+// stringA 可被修改
+var stringA = "hello："
+stringA += "http://www.baidu.com"
+print( stringA )
+
+// stringB 不能修改
+let stringB = String("hello：")
+stringB += "http://www.baidu.com"
+print( stringB )
+</code></pre></div></div>
+
+<p>以上程序执行输出结果会报错，以为 stringB 为常量是不能被修改的：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>error: left side of mutating operator isn't mutable: 'stringB' is a 'let' constant
+stringB += "http://www.baidu.com"
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="字符串中插入值">字符串中插入值</h2>
+
+<p>字符串插值是一种构建新字符串的方式，可以在其中包含常量、变量、字面量和表达式。 您插入的字符串字面量的每一项都在以反斜线为前缀的圆括号中：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import Cocoa
+
+var varA   = 20
+let constA = 100
+var varC:Float = 20.0
+
+var stringA = "\(varA) 乘于 \(constA) 等于 \(varC * 100)"
+print( stringA )
+</code></pre></div></div>
+
+<p>以上程序执行输出结果为：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>20 乘于 100 等于 2000.0
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="字符串连接">字符串连接</h2>
+
+<p>字符串可以通过 <strong>+</strong> 号来连接，实例如下：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import Cocoa
+
+let constA = "您好："
+let constB = "www.badu.com"
+
+var stringA = constA + constB
+
+print( stringA )
+</code></pre></div></div>
+
+<p>以上程序执行输出结果为：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>您好：www.badu.com
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="字符串长度">字符串长度</h2>
+
+<p>字符串长度使用 <strong>String.count</strong> 属性来计算，实例如下：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import UIKit
+
+var varA   = "www.badu.com"
+
+print( "\(varA), 长度为 \(varA.count)" )
+</code></pre></div></div>
+
+<p>以上程序执行输出结果为：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>www.baudu.com, 长度为 13
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="字符串比较">字符串比较</h2>
+
+<p>你可以使用 <strong>==</strong> 来比较两个字符串是否相等：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import Cocoa
+
+var varA   = "Hello, Swift!"
+var varB   = "Hello, World!"
+
+if varA == varB {
+   print( "\(varA) 与 \(varB) 是相等的" )
+} else {
+   print( "\(varA) 与 \(varB) 是不相等的" )
+}
+</code></pre></div></div>
+
+<p>以上程序执行输出结果为：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello, Swift! 与 Hello, World! 是不相等的
+</code></pre></div></div>
+
+<h2 id="字符串分割">字符串分割</h2>
+
+<ul>
+  <li><strong>可以将字符串分割成数组</strong></li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let str = "Hello World Swift!" // 创建字符串
+
+let result = str.components(separatedBy: " ")
+
+print(result)
+// ["Hello", "World", "Swift!"]
+</code></pre></div></div>
+
+<ul>
+  <li>**获取字符 **</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let str = "Hello World Swift!" // 创建字符串
+let result = str[str.startIndex] // 第一个字符(Character)
+print(result)
+// H
+
+let str = "Hello World Swift!" // 创建字符串
+let result = str[str.index(str.startIndex, offsetBy: 4)]
+print(result)
+// o
+
+let str = "Hello World Swift!" // 创建字符串
+let result = str.prefix(4) // 从前面截取字符串
+print(result)
+// Hell
+
+let str = "Hello World Swift!" // 创建字符串
+let result = str.suffix(4) // 从后面截取字符串
+print(result)
+// ift!
+
+// 前面截取区间
+let str = "Hello World Swift!" // 创建字符串
+let sub1 = str.index(str.startIndex, offsetBy: 3)
+let sub2 = str.index(str.startIndex, offsetBy: 6)
+let result = str[sub1...sub2]
+print(result)
+// lo W
+
+// 取sub0之后的所有字符串
+let str = "Hello World Swift!" // 创建字符串
+let sub0 = str.index(str.startIndex, offsetBy: 3)
+let sub1 = str.suffix(from: sub0)
+print(sub1)
+// lo World Swift!
+</code></pre></div></div>
+
+<ul>
+  <li><strong>字符串替换</strong></li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let str = "Hello World Swift!" // 创建字符串
+
+guard let rang = Range(NSRange(location: 0, length: 3), in: str) else { return }
+
+let sub1 = str.replacingCharacters(in: rang, with: "LZYY")
+
+print(sub1)
+
+// LZYYlo World Swift!
+</code></pre></div></div>
+
+<ul>
+  <li><strong>字符串去空格</strong></li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let str = "  我 是谁  "
+let sub1 = str.trimmingCharacters(in: CharacterSet.whitespaces)
+print(sub1)
+// 我 是谁
+</code></pre></div></div>
+
+<ul>
+  <li><strong>删除指定的前后字符</strong></li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//原始字符串
+let str1 = "&lt;&lt;骆驼&lt;&gt;祥子&gt;&gt;"
+
+let characterSet = CharacterSet(charactersIn: "&lt;&gt;")
+
+let sub1 = str1.trimmingCharacters(in: characterSet)
+
+print(sub1)
+// 骆驼&lt;&gt;祥子
+</code></pre></div></div>
+
+<ul>
+  <li><strong>判断字符串的前缀和后缀</strong></li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 前缀
+let str = "Hello World Swift!" // 创建字符串
+let sub1 = str.hasPrefix("Hell")
+print(sub1)
+// true
+
+// 后缀
+let str = "Hello World Swift!" // 创建字符串
+let sub1 = str.hasSuffix("ft!")
+print(sub1)
+// true
+</code></pre></div></div>
+
+<ul>
+  <li><strong>包含</strong></li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 是否包含某字符串
+var str:String = "av,1,2,3,4,5,6,7,8,adfvf,bdsf,cdsf,ddf,e"
+let str1 = str.contains("adf")
+print(str1)
+// true
+</code></pre></div></div>
+
+<ul>
+  <li><strong>字符串大小写转换</strong></li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 转为大写
+var str:String = "av,1,2,3,4,5,6,7,8,a,b,c,d,e"
+let str1 = str.uppercased()
+print(str1)
+// AV,1,2,3,4,5,6,7,8,A,B,C,D,E
+
+
+// 转为小写
+var str:String = "AV,1,2,3,4,5,6,7,8,A,B,C,D,E"
+let str1 = str.lowercased()
+print(str1)
+// av,1,2,3,4,5,6,7,8,a,b,c,d,e
+
+//每个单词首字母大写
+var str:String = "av,1,2,3,4,5,6,7,8,adfvf,bdsf,cdsf,ddf,e"
+let str1 = str.capitalized
+print(str1)
+// Av,1,2,3,4,5,6,7,8,Adfvf,Bdsf,Cdsf,Ddf,E
+
+</code></pre></div></div>
+
+<h2 id="字符串函数及运算符">字符串函数及运算符</h2>
+
+<p>Swift 支持以下几种字符串函数及运算符：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">序号</th>
+      <th style="text-align: left">函数/运算符 &amp; 描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">1</td>
+      <td style="text-align: left"><strong>isEmpty</strong>判断字符串是否为空，返回布尔值, <strong>注意:</strong> 如果字符串中为空格,这时候isEmpty也可以认为是空,但是在获取字符串长度的时候,其长度为1,而不是0</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left"><strong>hasPrefix(prefix: String)</strong>检查字符串是否拥有特定前缀</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left"><strong>hasSuffix(suffix: String)</strong>检查字符串是否拥有特定后缀。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left"><strong>Int(String)</strong>转换字符串数字为整型。 实例: <code class="language-plaintext highlighter-rouge">let myString: String = "256" let myInt: Int? = Int(myString)</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">5</td>
+      <td style="text-align: left"><strong>String.count</strong>计算字符串的长度</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">6</td>
+      <td style="text-align: left"><strong>utf8</strong>您可以通过遍历 String 的 utf8 属性来访问它的 UTF-8 编码</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">7</td>
+      <td style="text-align: left"><strong>utf16</strong>您可以通过遍历 String 的 utf8 属性来访问它的 UTF-16 编码</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">8</td>
+      <td style="text-align: left"><strong>unicodeScalars</strong>您可以通过遍历String值的unicodeScalars属性来访问它的 Unicode 标量编码.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">9</td>
+      <td style="text-align: left"><strong>+</strong>连接两个字符串，并返回一个新的字符串</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">10</td>
+      <td style="text-align: left"><strong>+=</strong>连接操作符两边的字符串并将新字符串赋值给左边的操作符变量</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">11</td>
+      <td style="text-align: left"><strong>==</strong>判断两个字符串是否相等</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">12</td>
+      <td style="text-align: left"><strong>&lt;</strong>比较两个字符串，对两个字符串的字母逐一比较。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">13</td>
+      <td style="text-align: left"><strong>!=</strong>比较两个字符串是否不相等。</td>
+    </tr>
+  </tbody>
+</table>
+:ET

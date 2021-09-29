@@ -1,0 +1,90 @@
+I"K<h3 id="listview分组原理">ListView分组原理</h3>
+
+<p>ListView默认支持3种数据格式,只要按照这3种格式处理数据，就会自动获取数据,从而达到分组样式
+默认的提取函数可以处理下列形式的数据:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span> sectionID_1: <span class="o">{</span> rowID_1: rowData1, ... <span class="o">}</span>, ... <span class="o">}</span>
+
+或者：
+
+<span class="o">{</span> sectionID_1: <span class="o">[</span> rowData1, rowData2, ... <span class="o">]</span>, ... <span class="o">}</span>
+
+或者：
+
+<span class="o">[</span> <span class="o">[</span> rowData1, rowData2, ... <span class="o">]</span>, ... <span class="o">]</span>
+
+</code></pre></div></div>
+<p><strong>注意 : 建议将数据处理成第二种样式.</strong></p>
+
+<h3 id="实现listview分组样式步骤">实现ListView分组样式步骤</h3>
+
+<h4 id="1创建数据源描述什么时候需要加载下一个cell和下一个section">1.创建数据源,描述什么时候需要加载下一个cell和下一个section</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 1.创建数据源
+        var dataSource <span class="o">=</span> new ListView.DataSource<span class="o">({</span>
+            rowHasChanged:<span class="o">(</span>r1,r2<span class="o">)=&gt;</span>r1 <span class="o">!==</span> r2,
+            sectionHeaderHasChanged:<span class="o">(</span>s1,s2<span class="o">)=&gt;</span>s1 <span class="o">!==</span> s2
+        <span class="o">})</span><span class="p">;</span>
+</code></pre></div></div>
+<h4 id="2处理数据让数据跟默认提前的格式一样">2.处理数据，让数据跟默认提前的格式一样</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var sectionData <span class="o">=</span> <span class="o">{}</span><span class="p">;</span>
+        <span class="k">for</span> <span class="o">(</span>var i <span class="o">=</span> 0<span class="p">;</span>i &lt; provinceList.length<span class="p">;</span>i++<span class="o">){</span>
+            var province <span class="o">=</span> provinceList[i]<span class="p">;</span>
+            var cityList <span class="o">=</span> province[<span class="s1">'sub'</span><span class="o">]</span><span class="p">;</span>
+
+            var cityArr <span class="o">=</span> <span class="o">[]</span><span class="p">;</span>
+            <span class="k">for</span><span class="o">(</span>var cityIndex <span class="o">=</span> 0<span class="p">;</span>cityIndex &lt; cityList.length<span class="p">;</span>cityIndex++<span class="o">)</span> <span class="o">{</span>
+                var city <span class="o">=</span> cityList[cityIndex]<span class="p">;</span>
+                cityArr.push<span class="o">(</span>city[<span class="s1">'name'</span><span class="o">])</span><span class="p">;</span>
+            <span class="o">}</span>
+            sectionData[province[<span class="s1">'name'</span><span class="o">]]</span> <span class="o">=</span> cityArr<span class="p">;</span>
+        <span class="o">}</span>
+</code></pre></div></div>
+<h4 id="3设置数据">3.设置数据</h4>
+<ul>
+  <li>分组使用：cloneWithRowsAndSections</li>
+  <li>不分组使用：cloneWithRows</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>this.state <span class="o">=</span> <span class="o">{</span>
+            ds : dataSource.cloneWithRowsAndSections<span class="o">(</span>sectionData<span class="o">)</span>
+        <span class="o">}</span>
+</code></pre></div></div>
+<h4 id="4渲染listview">4.渲染listView</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> render<span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">(</span>
+
+            &lt;View <span class="nv">style</span><span class="o">=&gt;</span>
+                &lt;ListView <span class="nv">dataSource</span><span class="o">={</span>this.state.ds<span class="o">}</span>
+                          <span class="nv">renderRow</span><span class="o">={</span>this._renderRow.bind<span class="o">(</span>this<span class="o">)}</span>
+                          <span class="nv">renderSectionHeader</span><span class="o">={</span>this._renderSectionHeader.bind<span class="o">(</span>this<span class="o">)}</span>
+                          <span class="nv">renderSeparator</span><span class="o">={</span>this._renderSeparator.bind<span class="o">(</span>this<span class="o">)}</span>
+                /&gt;
+            &lt;/View&gt;
+        <span class="o">)</span>
+
+    <span class="o">}</span>
+    _renderSeparator<span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">(</span>
+            &lt;View <span class="nv">style</span><span class="o">=</span>/&gt;
+        <span class="o">)</span>
+    <span class="o">}</span>
+
+    _renderSectionHeader<span class="o">(</span>sectionData, sectionID<span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">(</span>
+            &lt;View <span class="nv">style</span><span class="o">=&gt;</span>
+                &lt;Text <span class="nv">style</span><span class="o">={</span>styles.sectionStyle<span class="o">}&gt;{</span>sectionID<span class="o">}</span>&lt;/Text&gt;
+            &lt;/View&gt;
+        <span class="o">)</span>
+    <span class="o">}</span>
+
+    // 实现数据源方法,每行cell外观
+    _renderRow<span class="o">(</span>rowData, sectionID, rowID, highlightRow<span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">(</span>
+            &lt;View <span class="nv">style</span><span class="o">=&gt;</span>
+                &lt;Text <span class="nv">style</span><span class="o">={</span>styles.rowStyle<span class="o">}&gt;{</span>rowData<span class="o">}</span>&lt;/Text&gt;
+            &lt;/View&gt;
+        <span class="o">)</span><span class="p">;</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+:ET

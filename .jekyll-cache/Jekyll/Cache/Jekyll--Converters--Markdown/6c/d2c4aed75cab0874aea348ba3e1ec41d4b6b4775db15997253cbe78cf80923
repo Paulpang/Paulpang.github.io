@@ -1,0 +1,30 @@
+I"�<h3 id="1-view组件中常见的属性">1 View组件中常见的属性</h3>
+
+<p>React Native组件View，其作用等同于iOS中的UIView, Android中的android.view，或是网页中的div标签，它是所有组件的父组件。</p>
+
+<ul>
+  <li><strong>Flexbox</strong> 弹性布局</li>
+  <li><strong>Transforms</strong>  动画属性</li>
+  <li><strong>backfaceVisibility</strong> enum(‘visible’, ‘hidden’)    定义界面翻转的时候是否可见</li>
+  <li><strong>backgroundColor</strong> color</li>
+  <li><strong>borderBottomColor</strong> color</li>
+  <li><strong>borderBottomLeftRadius</strong> number</li>
+  <li><strong>borderBottomRightRadius</strong> number</li>
+  <li><strong>borderBottomWidth</strong> number</li>
+  <li><strong>borderColor</strong> color</li>
+  <li><strong>borderLeftColor</strong> color</li>
+  <li><strong>borderLeftWidth</strong> number</li>
+  <li><strong>borderRadius</strong> number</li>
+  <li><strong>borderRightColor</strong> color</li>
+  <li><strong>borderRightWidth</strong> number</li>
+  <li><strong>borderStyle</strong> enum(‘solid’, ‘dotted’, ‘dashed’)</li>
+  <li><strong>borderTopColor</strong> color</li>
+  <li><strong>borderTopLeftRadius</strong> number</li>
+  <li><strong>borderTopRightRadius</strong> number</li>
+  <li><strong>borderTopWidth</strong> number</li>
+  <li><strong>borderWidth</strong> number</li>
+  <li><strong>opacity</strong> number 设置透明度，取值从0-1；</li>
+  <li><strong>overflow</strong> enum(‘visible’, ‘hidden’)  设置内容超出容器部分是显示还是隐藏；</li>
+  <li><strong>elevation</strong> number 高度   设置Z轴，可产生立体效果。</li>
+</ul>
+:ET

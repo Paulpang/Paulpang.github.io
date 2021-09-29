@@ -1,0 +1,263 @@
+I"1<p><strong> 关于Git的简单介绍: </strong></p>
+
+<p>Git主要分为工作区和版本控制区,其中工作区是指与.git文件夹同级的其他文件夹或者子文件夹; 版本控制区又分为暂缓区和分支,默认的分支master就是主分支.</p>
+
+<p>在使用git进行管理版本的时候,要遵循的操作原则为: <strong> 所有新添加/删除/修改的文件 必须先添加到暂缓区,然后才能提交到HEAD指向的当前分支中</strong></p>
+
+<p>切换分支是通过控制HEAD指针指向不同的分支,就可以切换</p>
+
+<p>###下面是具体的操作命令:</p>
+<h4 id="初始化本地仓库">初始化本地仓库:</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git init
+git init <span class="nt">--bare</span> 创建空白代码库<span class="o">(</span>专门用于团队开发<span class="o">)</span>
+</code></pre></div></div>
+
+<h4 id="进入到文件夹">进入到文件夹</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>文件夹名字
+
+</code></pre></div></div>
+<h1 id="远程操作">远程操作</h1>
+
+<h4 id="将远程代码库克隆到本地">将远程代码库克隆到本地</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone 代码仓库地址
+
+</code></pre></div></div>
+<h4 id="将本地修改内容推送到远程代码仓库">将本地修改内容推送到远程代码仓库</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push
+
+</code></pre></div></div>
+<h4 id="将远程代码库的变化更新到本地">将远程代码库的变化更新到本地</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git pull
+
+</code></pre></div></div>
+<h1 id="配置用户信息">配置用户信息</h1>
+
+<h4 id="备注个人信息">备注个人信息</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config user.name 用户名
+git config user.email 用户的邮箱
+<span class="k">*</span> 以上两个命令会将用户信息保存在当前代码仓库中
+
+</code></pre></div></div>
+
+<h4 id="如果要一次性配置完成可以使用一下命令">如果要一次性配置完成可以使用一下命令</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> user.name liufan
+git config <span class="nt">--global</span> user.email liufan321@gmail.com
+
+<span class="k">*</span> 以上两个命令会将用户信息保存在用户目录下的 .gitconfig 文件中
+</code></pre></div></div>
+
+<h4 id="查看当前所有配置">查看当前所有配置</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">-l</span>
+
+</code></pre></div></div>
+
+<h1 id="给项目添加gitignore文件">给项目添加gitignore文件</h1>
+
+<h4 id="将一下命令一次性粘贴到命令行中">将一下命令一次性粘贴到命令行中</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="nt">-e</span> <span class="s2">"# Xcode
+#
+build/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+# CocoaPods
+#
+# We recommend against adding the Pods directory to your .gitignore. However
+# you should judge for yourself, the pros and cons are mentioned at:
+# http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control
+#
+# Pods/"</span> <span class="o">&gt;</span> .gitignore
+
+</code></pre></div></div>
+
+<h4 id="将gitignore添加到代码库">将.gitignore添加到代码库</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add .gitignore
+
+git commint <span class="nt">-m</span> <span class="s2">"注释"</span>
+
+git push origin master
+
+</code></pre></div></div>
+
+<h1 id="提交操作">提交操作</h1>
+<h4 id="查看文件状态">查看文件状态:</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git status 如果为红色文字,说明该文件在工作区,如果为绿色字体,说明在暂缓区
+</code></pre></div></div>
+
+<h4 id="将文件从工作区添加到暂缓区">将文件从工作区添加到暂缓区:</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add.
+</code></pre></div></div>
+<h4 id="将文件从暂缓区添加到本地代码仓库">将文件从暂缓区添加到本地代码仓库:</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit <span class="nt">-m</span> <span class="s2">"注释"</span>
+</code></pre></div></div>
+
+<h4 id="查看远程仓库和本地代码仓库是否关联">查看远程仓库和本地代码仓库是否关联:</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote  如果没有,显示为空,否者显示的有远程仓库的链接
+</code></pre></div></div>
+
+<h4 id="添加远程仓库关联">添加远程仓库关联:</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote add origin 远程代码的url
+</code></pre></div></div>
+
+<h4 id="检查本地仓库是否和远程仓库关联">检查本地仓库是否和远程仓库关联:</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote 如果出现 origin 说明已经关联,否则未关联
+</code></pre></div></div>
+
+<h4 id="将本地代码上传到远程仓库">将本地代码上传到远程仓库:</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push origin master 注意: 第一次使用会验证你的远程仓库的用户名和密码, 然后就上传到远程仓库
+</code></pre></div></div>
+
+<h1 id="查看日志">查看日志</h1>
+<h4 id="查看所有版本库日志">查看所有版本库日志</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git log
+</code></pre></div></div>
+<h4 id="查看指定文件的版本库日志">查看指定文件的版本库日志</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git log 文件名
+
+</code></pre></div></div>
+<h4 id="配置带颜色的log别名">配置带颜色的log别名</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> alias.lg <span class="s2">"log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset' --abbrev-commit"</span>
+
+提示：在git中，版本号是一个由SHA1生成的哈希值
+</code></pre></div></div>
+
+<h1 id="标签发布一个版本后需要打tag">标签–发布一个版本后,需要打tag</h1>
+
+<h4 id="查看当前是否打标签">查看当前是否打标签:</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git tag 如果没有打标签,显示空,否则显示本地的标签号
+
+</code></pre></div></div>
+<h4 id="给本地版本打标签">给本地版本打标签:</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git tag <span class="nt">-a</span> <span class="s1">'1.0.0'</span> <span class="nt">-m</span> <span class="s1">'注释'</span>  
+
+</code></pre></div></div>
+
+<h4 id="将本地打的标签上传到远程仓库中">将本地打的标签上传到远程仓库中:</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push origin v1.0.0
+
+git push <span class="nt">--tags</span>  将所有标签都推到远程仓库
+</code></pre></div></div>
+<h4 id="删除本地标签">删除本地标签:</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git tag <span class="nt">-d</span> 标签名称
+</code></pre></div></div>
+<h4 id="删除远程标签">删除远程标签:</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push origin :标签名称
+</code></pre></div></div>
+
+<p>注意: 如果在push到远程仓库的时候出现 403错误 这时候需要重新设置用户名和密码:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote set-url origin  https://远程地址的用户名称@github.com/paulpang520/test.git
+
+例如:	git remote set-url origin  https://paulpang520@github.com/paulpang520/test.git
+
+</code></pre></div></div>
+
+<h1 id="版本回撤">版本回撤</h1>
+
+<h4 id="回到当前版本放弃所有没有提交的修改">回到当前版本，放弃所有没有提交的修改</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git reset <span class="nt">--hard</span> HEAD
+</code></pre></div></div>
+<h4 id="回到上一个版本">回到上一个版本</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git reset <span class="nt">--hard</span> HEAD^
+</code></pre></div></div>
+<h4 id="回到之前第n个修订版本">回到之前第n个修订版本</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git reset <span class="nt">--hard</span> HEAD~<span class="o">(</span>n<span class="o">)</span>
+</code></pre></div></div>
+
+<h4 id="回到指定版本号的版本">回到指定版本号的版本</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git reset e695b67
+</code></pre></div></div>
+
+<h4 id="查看说有分支记录">查看说有分支记录</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git reflog
+</code></pre></div></div>
+
+<h1 id="分支">分支</h1>
+
+<h4 id="创建新分支并立即切换到新分支">创建新分支并立即切换到新分支</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> 分支名称
+
+例如 : git checkout <span class="nt">-b</span> bugfix1.0
+
+这个命令相当于一下两句代码
+git branch 分支名
+git checkout 分支名
+
+</code></pre></div></div>
+
+<h4 id="查看本地分支">查看本地分支</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch
+</code></pre></div></div>
+
+<h4 id="查看远程分支">查看远程分支</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch <span class="nt">-r</span>
+</code></pre></div></div>
+<h4 id="删除远程分支">删除远程分支</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch <span class="nt">-r</span> <span class="nt">-d</span> 分支名
+
+或者
+
+git branch <span class="nt">-d</span> 分支名
+</code></pre></div></div>
+
+<h4 id="合并分支">合并分支</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git merge 分支名
+</code></pre></div></div>
+
+<h4 id="创建远程分支">创建远程分支</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push origin 分支名
+
+本质上市将本地的分支push到远程
+</code></pre></div></div>
+
+<h1 id="vim-常用命令">vim 常用命令</h1>
+
+<p>进入vim编辑器退出方式</p>
+
+<h4 id="不保存并退出">不保存并退出</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 选择esc
+2. <span class="nb">shift</span> + :  目的是显示冒号
+3. q + <span class="o">!</span>
+
+</code></pre></div></div>
+
+<h4 id="保存并退出">保存并退出</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 选择esc
+2. <span class="nb">shift</span> + :  目的是显示冒号
+3. q + w
+
+</code></pre></div></div>
+:ET

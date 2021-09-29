@@ -1,0 +1,53 @@
+I"�
+<p>在实际开发中,我们经常需要自定义类,那么如何自定义类?如何给类的对象添加属性/方法? 如何给类添加类属性/类方法呢?</p>
+
+<h3 id="1如何自定义类">1、如何自定义类</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 自定义类
+<span class="nb">export </span>default class Person <span class="o">{</span>
+
+	实现代码
+<span class="o">}</span>
+
+</code></pre></div></div>
+<h3 id="2如何给自定义类添加对象属性方法">2、如何给自定义类添加对象属性/方法</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 自定义类
+<span class="nb">export </span>default class Person <span class="o">{</span>
+
+	// 在自定义类中,如果需要给这个类的对象定义属性,需要用<span class="o">=</span>
+	name <span class="o">=</span> <span class="s1">'Paul'</span>
+	<span class="nv">age</span><span class="o">=</span>10<span class="p">;</span>
+	
+	// 对象方法
+    eat<span class="o">(){</span>
+        console.log<span class="o">(</span><span class="s1">'对象吃饭了吗?'</span><span class="o">)</span><span class="p">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+<p><strong>注意 : 在外界调用这个类的是方法的时候,外界需要创建对象.然后拿能拿到属性,例如:</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var person <span class="o">=</span> new Person<span class="o">()</span><span class="p">;</span>
+person.name <span class="o">=</span> <span class="s2">"Paulpang"</span>
+</code></pre></div></div>
+<h3 id="3如何给自定义类添加类属性方法">3、如何给自定义类添加类属性/方法</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 自定义类
+<span class="nb">export </span>default class Person <span class="o">{</span>
+
+	// 类属性
+    static money <span class="o">=</span> 10<span class="p">;</span>
+    // 类方法
+    static eat<span class="o">(){</span>
+        console.log<span class="o">(</span><span class="s1">'类方法-吃'</span><span class="o">)</span><span class="p">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+<p><strong>注意 : 在外界调用这个类的是方法的时候,直接用类名调用就可以拿到该属性,例如:</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Person.name <span class="o">=</span> <span class="s2">"Paulpang"</span><span class="p">;</span>
+</code></pre></div></div>
+
+:ET

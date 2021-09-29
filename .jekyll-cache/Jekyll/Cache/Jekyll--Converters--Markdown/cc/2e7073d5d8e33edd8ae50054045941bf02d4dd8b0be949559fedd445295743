@@ -1,0 +1,79 @@
+I"�<p>Ruby 是一种面向对象、命令式、函数式、动态的通用编程语言。 在20世纪90年代中期由日本人松本行弘（Matz）设计并开发。 遵守BSD许可证和Ruby License。 它的灵感与特性来自于Perl、Smalltalk、Eiffel、Ada以及Lisp语言。</p>
+
+<p>Ruby 可运行于多种平台，如 Windows、MAC OS 和 UNIX 的各种版本。</p>
+
+<p>Ruby用于最明显，且和Apple系列的程序员最直接关联的就是Mac的开发环境，直接关联于Cocoapods工具。但是，cocoapods工具与Ruby的版本有一定的关联性，难免不涉及到升级。</p>
+
+<p>那么，如何升级最方便快捷呢？</p>
+
+<p>这就是rvm大展身手的时候啦。rvm是什么？rvm是ruby版本管理器。为什么要安装rvm呢？因为rvm可以让你拥有多个版本的Ruby，并且可以在多个版本之间自由切换。</p>
+
+<h4 id="第一步-安装homebrew">第一步: 安装Homebrew</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/bin/ruby <span class="nt">-e</span> <span class="s2">"</span><span class="si">$(</span>curl <span class="nt">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/master/install<span class="si">)</span><span class="s2">"</span>
+
+搜索：brew search MySQL
+查询：brew info mysql 主要看具体的信息，比如目前的版本，依赖，安装后注意事项等
+
+brew update          <span class="c"># 更新 Homebrew 的信息</span>
+brew outdated        <span class="c"># 看一下哪些软件可以升级</span>
+brew upgrade &lt;xxx&gt;   <span class="c"># 如果不是所有的都要升级，那就这样升级指定的</span>
+
+brew upgrade<span class="p">;</span> brew cleanup    <span class="c"># 如果都要升级，直接升级完然后清理干净</span>
+
+</code></pre></div></div>
+
+<h4 id="第二步安装rvm">第二步：安装rvm</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>curl <span class="nt">-L</span> get.rvm.io | bash <span class="nt">-s</span> stable
+<span class="nv">$ </span><span class="nb">source</span> ~/.profile
+</code></pre></div></div>
+<p>等待终端加载完毕，后输入：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>rvm <span class="nt">-v</span>
+</code></pre></div></div>
+<p>如果能显示版本号,则安装成功。</p>
+
+<h4 id="第三步安装ruby">第三步：安装ruby</h4>
+
+<p>列出ruby可安装的版本信息</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>rvm list known
+</code></pre></div></div>
+<p>安装一个ruby版本</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>rvm <span class="nb">install </span>2.3
+</code></pre></div></div>
+<p>如果想设置为默认版本，可以用这条命令来完成</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>rvm use 2.1.4 <span class="nt">--default</span>
+</code></pre></div></div>
+<p>查看已安装的ruby</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>rvm list
+</code></pre></div></div>
+<p>卸载一个已安装ruby版本</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>rvm remove 2.3
+</code></pre></div></div>
+<h4 id="第四步更换源">第四步：更换源</h4>
+
+<p>查看已有的源</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>gem <span class="nb">source</span> <span class="nt">-l</span>
+</code></pre></div></div>
+<p>显示如下：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CURRENT SOURCES
+http://rubygems.org/
+</code></pre></div></div>
+<p>然后我们需要修改更换源（由于国内被墙），所以要把源切换至淘宝镜像服务器，在终端执行以下命令</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>gem update <span class="nt">--system</span>
+<span class="nv">$ </span>gem uninstall rubygems-update
+<span class="nv">$ </span>gem sources <span class="nt">-r</span> http://rubygems.org/
+<span class="nv">$ </span>gem sources <span class="nt">-a</span> https://ruby.taobao.org
+</code></pre></div></div>
+
+<p>原文来自<a href="http://charsdavy.github.io/2016/09/03/mac-ruby-update/">Mac 如何升级 Ruby 版本</a></p>
+:ET

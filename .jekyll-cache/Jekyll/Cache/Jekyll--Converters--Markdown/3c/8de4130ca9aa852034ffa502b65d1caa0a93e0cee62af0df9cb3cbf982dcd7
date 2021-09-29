@@ -1,0 +1,112 @@
+I"�<p>在iOS开发中,我们经常会遇到界面之间的传值问题,其中主要分为 <strong>顺向传值</strong> 和 <strong>逆向传值</strong> 两种方式.</p>
+
+<h4 id="顺向传值">顺向传值</h4>
+<p>顺传: 就是在界面从A控制器跳转到B控制器的时候,顺便将A界面的值传递给B控制器. 这种方式一般用<strong>属性传值</strong>的方式进行传递,具体操作办法为:</p>
+
+<ul>
+  <li>
+    <p>首先SecondViewController视图中需要有一个属性用来 存储传递过来的值：</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> @property<span class="o">(</span>nonatomic,retain<span class="o">)</span> NSString <span class="k">*</span>firstValue <span class="p">;</span>//属性传值
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>然后OneViewController视图需要引用SecondViewController视图的头文件，在视图中的按钮点击事件中，通过SecondViewController的对象将需要传递的值存在firstValue中:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>void<span class="o">)</span>buttonAction:<span class="o">(</span>UIButton <span class="k">*</span><span class="o">)</span>button <span class="o">{</span>
+
+ SecondViewController <span class="k">*</span>second <span class="o">=</span> <span class="o">[[</span>SecondViewController alloc]init]<span class="p">;</span>//用下一个视图的属性接受想要传过去的值,属性传值
+ second.firstValue <span class="o">=</span> _txtFiled.text<span class="p">;</span>
+
+ <span class="o">[</span>self.navigationControllerpushViewController:second animated:YES]<span class="p">;</span>
+
+ <span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>页面跳转之后，就能在SecondViewController视图中，通过存值的属性，取用刚才传递过来的值：</p>
+
+<blockquote>
+  <p>显示传过来的值[_txtFiledsetText:_firstValue];//firstValue保存传过来的值</p>
+</blockquote>
+
+<h4 id="逆向传值">逆向传值</h4>
+
+<p>逆传 是指 将界面是从A 跳转到B控制器,但是在从重B控制器返回A控制器的时候,需要将B界面的值传递给A界面. 这时候一般用<strong>通知</strong> 或者 <strong>代理</strong> 或者<strong>block</strong> 方式进行传递.</p>
+
+<h5 id="通知传值">通知传值</h5>
+
+<ol>
+  <li>
+    <p>首先在B界面发出通知</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">[[</span>NSNotificationCenterdefaultCenter] postNotificationName:@”myNotificationName” object:broadcasterObject]<span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>在A界面接收通知</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">[[</span>NSNotificationCenterdefaultCenter] addObserver:listenerObject selector:@selector<span class="o">(</span>receivingMethodOnListener:<span class="o">)</span>     name:@”myNotificationName” object:nil]<span class="p">;</span> 
+</code></pre></div>    </div>
+    <p>同时在A界面需要注销通知</p>
+  </li>
+</ol>
+
+<p>对于<strong>通知传值</strong>的分析:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```bash 优点: 通知的发送者和接受者都不需要知道对方。可以指定接收通知的具体方法。通知名可以是任何字符串。 缺点: 较键值观察需要多点代码。在删掉前必须移除监听者。不能传大量数值，只能让谁去做什么事。
+```
+</code></pre></div></div>
+
+<h5 id="代理协议传值">代理协议传值</h5>
+
+<ol>
+  <li>
+    <p>在B界面注册协议</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  @protocol ClassBDelegate&lt;NSObject&gt; 
+         - <span class="o">(</span>void<span class="o">)</span>methodOne<span class="p">;</span> 
+  @optional 
+         - <span class="o">(</span>void<span class="o">)</span>methodTwo:<span class="o">(</span>NSString <span class="k">*</span><span class="o">)</span>value<span class="p">;</span> 
+  @end
+
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>在B界面的.h中定义一个代理属性</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   @interface ClassB 
+   @property <span class="o">(</span>nonatomic, weak<span class="o">)</span> <span class="nb">id</span>&lt;ClassBDelegate&gt; delegate<span class="p">;</span> 
+   @end 
+
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>当我们在ClassB的实现文件（ClassB.m）中遇到想让别的类（如 ClassA）处理的问题时，就可以这样</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="o">[</span>self.delegate methodOne]<span class="p">;</span> 
+   <span class="o">[</span>self.delegate methodTwo:@<span class="s2">"需要传递的值"</span><span class="o">]</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>在A界面遵守代理协议</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   @interface ClassA&lt;ClassBDelegate&gt; 
+
+   @end
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>在A界面中实现代理方法</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   - <span class="o">(</span>void<span class="o">)</span>methodOne<span class="o">{</span>
+       // 具体实现内容 
+   <span class="o">}</span> 
+  - <span class="o">(</span>void<span class="o">)</span>methodTwo:<span class="o">(</span>NSString <span class="k">*</span><span class="o">)</span>value<span class="o">{</span>  
+     // 具体实现内容   
+  <span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+:ET

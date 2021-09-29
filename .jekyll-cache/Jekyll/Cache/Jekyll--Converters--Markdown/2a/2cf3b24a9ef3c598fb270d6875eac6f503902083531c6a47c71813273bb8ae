@@ -1,0 +1,249 @@
+I"�"<p>HTML中的每一个元素都可以看做是一个盒子，可以具备这4个属性</p>
+
+<h3 id="内容content">内容（content）</h3>
+<ul>
+  <li>盒子里面装的东西</li>
+</ul>
+
+<h3 id="内边距padding">内边距（padding）</h3>
+<ul>
+  <li>怕盒子里装的东西损坏而添加的泡沫或者其它抗震的辅料</li>
+</ul>
+
+<h3 id="边框border">边框（border）</h3>
+<ul>
+  <li>就是盒子的边框，比如木盒子四周的木板</li>
+</ul>
+
+<h3 id="外边距margin">外边距（margin）</h3>
+<ul>
+  <li>为了方便取出，盒子之间保留一定的空隙</li>
+</ul>
+
+<h4 id="注意-">注意 :</h4>
+<ul>
+  <li>
+    <p>一个元素的实际占用宽度 = border-left + padding-left + width + padding-right + border-right</p>
+  </li>
+  <li>
+    <p>一个元素的实际占用高度 = border-top + padding-top + height + padding-bottom + border-bottom</p>
+  </li>
+  <li>
+    <p>一个元素的空间宽度 = margin-left + border-left + padding-left + width + padding-right + border-right + margin-right</p>
+  </li>
+  <li>
+    <p>一个元素的空间高度 = margin-top + border-top + padding-top + height + padding-bottom + border-bottom + margin-bottom </p>
+  </li>
+</ul>
+
+<h3 id="宽度高度相关属性">宽度、高度相关属性</h3>
+
+<h4 id="width宽度">width：宽度</h4>
+<ul>
+  <li>min-width：最小宽度，无论内容多少，宽度都大于或等于min-width</li>
+  <li>max-width：最大宽度，无论内容多少，宽度都小于或等于max-width</li>
+</ul>
+
+<h4 id="height高度">height：高度</h4>
+<ul>
+  <li>min-height：最小高度，无论内容多少，高度都大于或等于min-height</li>
+  <li>max-height：最大高度，无论内容多少，高度都小于或等于max-height</li>
+</ul>
+
+<h4 id="padding的取值规律">padding的取值规律</h4>
+
+<ul>
+  <li>
+    <p>按照顺时针方向设值：top、right、bottom、left</p>
+  </li>
+  <li>
+    <p>如果缺少left, 那么left就使用right的值</p>
+  </li>
+  <li>
+    <p>如果缺少bottom, 那么bottom就使用top的</p>
+  </li>
+</ul>
+
+<h3 id="上下margin传递">上下margin传递</h3>
+
+<h4 id="margin-top传递">margin-top传递</h4>
+<ul>
+  <li>如果块级元素的顶部线和块级父元素的顶部线重叠，那么这个块级元素的margin-top值会传递给父元素</li>
+</ul>
+
+<h4 id="margin-bottom传递">margin-bottom传递</h4>
+<ul>
+  <li>如果块级元素的底部线和块级父元素的底部线重叠，并且父元素的高度是auto，那么这个块级元素的margin-bottom值会传递给父元素</li>
+  <li>水平方向上的margin是永远不会发生传递现象</li>
+</ul>
+
+<h4 id="如何防止出现传递问题">如何防止出现传递问题？</h4>
+<ul>
+  <li>给父元素设置padding-top\padding-bottom</li>
+  <li>给父元素设置border</li>
+  <li>给父元素或者子元素设置display: inline-block</li>
+  <li>以后理解得更深入，还会学到其他解决方法</li>
+</ul>
+
+<h3 id="建议">建议</h3>
+<ul>
+  <li>margin一般是用来设置兄弟元素之间的间距</li>
+  <li>padding一般是用来设置父子元素之间的间距</li>
+</ul>
+
+<h3 id="上下margin折叠">上下margin折叠</h3>
+
+<h4 id="垂直方向上相邻的2个marginmargin-topmargin-bottom有可能会合并为1个margin这种现象叫做collapse折叠">垂直方向上相邻的2个margin（margin-top、margin-bottom）有可能会合并为1个margin，这种现象叫做collapse（折叠）</h4>
+<h4 id="水平方向上的marginmargin-leftmargin-right永远不会collapse">水平方向上的margin（margin-left、margin-right）永远不会collapse</h4>
+
+<h4 id="折叠后最终值的计算规则">折叠后最终值的计算规则</h4>
+<ul>
+  <li>如果都是正数，最终值是：绝对值最大的那个正数值</li>
+  <li>如果都是负数，最终值是：绝对值最大的那个负数值</li>
+  <li>如果正数、负数都有，最终值是：最大正数和最小负数相加</li>
+</ul>
+
+<h4 id="如何防止margin-collapse">如何防止margin collapse？</h4>
+<ul>
+  <li>只设置其中一个元素的margin</li>
+  <li>条件允许的话，使用padding取代margin</li>
+  <li>以后理解得更深入，还会学到其他解决方法</li>
+</ul>
+
+<h2 id="border边框相关的属性">border（边框相关的属性)</h2>
+
+<h3 id="边框宽度">边框宽度</h3>
+<ul>
+  <li>border-top-width、border-right-width、border-bottom-width、border-left-width</li>
+  <li>border-width是上面4个属性的简写属性</li>
+</ul>
+
+<h3 id="边框颜色">边框颜色</h3>
+<ul>
+  <li>border-top-color、border-right-color、border-bottom-color、border-left-color</li>
+  <li>border-color是上面4个属性的简写属性</li>
+</ul>
+
+<h3 id="边框样式">边框样式</h3>
+<ul>
+  <li>border-top-style、border-right-style、border-bottom-style、border-left-style</li>
+  <li>border-style是上面4个属性的简写属性
+    <ul>
+      <li>none：没有边框，边框颜色、边框宽度会被忽略</li>
+      <li>hidden：与“none”类似，多用在表格上，用于解决边框冲突</li>
+      <li>dotted：边框是一系列的点</li>
+      <li>dashed：边框是一条虚线</li>
+      <li>solid：边框是一条实线</li>
+      <li>double：边框有两条实线。两条线宽和其中的空白的宽度之和等于border-width的值</li>
+      <li>groove：边框看上去好象是雕刻在画布之内</li>
+      <li>ridge：和grove相反，边框看上去好象是从画布中凸出来</li>
+      <li>inset：该边框使整个框看上去好象是嵌在画布中</li>
+      <li>outset：和inset相反，该边框使整个框看上去好象是从画布中凸出来</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="行内级非替换元素的注意点">行内级非替换元素的注意点</h4>
+
+<ul>
+  <li>以下属性对行内级非替换元素不起作用</li>
+  <li>
+    <p>width、height、margin-top、margin-bottom</p>
+  </li>
+  <li>以下属性对行内级非替换元素的效果比较特殊</li>
+  <li>padding-top、padding-bottom、border-top、border-bottom</li>
+</ul>
+
+<h2 id="css属性---border-xx-radius">CSS属性 - border-xx-radius</h2>
+
+<h4 id="border-xx-radius定义的是四分之一椭圆的半径">border-xx-radius定义的是四分之一椭圆的半径</h4>
+<ul>
+  <li>第1个值是水平半径</li>
+  <li>第2个值是垂直半径（如果不设置，就跟随水平半径的值）</li>
+</ul>
+
+<h2 id="css属性---outline">CSS属性 - outline</h2>
+<ul>
+  <li>outline表示元素的外轮廓
+    <ul>
+      <li>不占用空间</li>
+      <li>默认显示在border的外面</li>
+      <li>每个部位都是完整连接的，不会像border那样有可能会断开（比如行内级非替换元素的换行）</li>
+    </ul>
+  </li>
+  <li>outline相关属性有
+    <ul>
+      <li>outline-width</li>
+      <li>outline-style：取值跟border的样式一样，比如solid、dotted等</li>
+      <li>outline-color</li>
+      <li>outline：outline-width、outline-style、outline-color的简写属性，跟border用法类似</li>
+      <li>outline-offset：设置outline和border之间的间距</li>
+    </ul>
+  </li>
+  <li>应用实例</li>
+  <li>去除a元素、input元素的focus轮廓效果</li>
+</ul>
+
+<h2 id="css属性---box-shadow">CSS属性 - box-shadow</h2>
+
+<ul>
+  <li>box-shadow属性可以设置一个或者多个阴影
+每个阴影用<shadow>表示</shadow></li>
+  <li>多个阴影之间用逗号,隔开，从前到后叠加</li>
+  <li>
+    <shadow>的常见格式如下
+</shadow>
+    <ul>
+      <li>
+        <p>第1个<length>：水平方向的偏移，正数往右偏移</length></p>
+      </li>
+      <li>
+        <p>第2个<length>：垂直方向的偏移，正数往下偏移</length></p>
+      </li>
+      <li>
+        <p>第3个<length>：模糊半径（blur radius）</length></p>
+      </li>
+      <li>
+        <p>第4个<length>：延伸距离</length></p>
+      </li>
+      <li>
+        <color>：阴影的颜色，如果没有设置，就跟随color属性的颜色
+
+</color>
+      </li>
+      <li>inset：外框阴影变成内框阴影</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="css属性---box-sizing">CSS属性 - box-sizing</h2>
+
+<ul>
+  <li>box-sizing用来设置盒子模型中宽高的行为
+content-box
+    <ul>
+      <li>padding、border都布置在width、height外边</li>
+    </ul>
+  </li>
+  <li>border-box
+    <ul>
+      <li>padding、border都布置在width、height里边</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="元素的水平居中显示">元素的水平居中显示</h2>
+
+<p>在一些需求中，需要元素在父元素中水平居中显示（父元素一般都是块级元素、inline-block）</p>
+
+<h3 id="行内级元素inline-block元素">行内级元素、inline-block元素</h3>
+<ul>
+  <li>水平居中：在父元素中设置text-align: center</li>
+</ul>
+
+<h3 id="块级元素">块级元素</h3>
+<ul>
+  <li>水平居中：给自己设置margin-left: auto、margin-right: auto</li>
+</ul>
+
+:ET

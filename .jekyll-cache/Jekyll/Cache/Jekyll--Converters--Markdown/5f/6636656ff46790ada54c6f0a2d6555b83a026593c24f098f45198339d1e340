@@ -1,0 +1,31 @@
+I"<p>最近在查看AppStore上面的App的时候,发现很多公司的版本号使用的不是太规范,下面来介绍一下BundleVersion的规范使用.</p>
+
+<h4 id="版本号的格式">版本号的格式：</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>v&lt;主版本号&gt;.&lt;副版本号&gt;.&lt;发布号&gt;
+</code></pre></div></div>
+<p>版本号的初始值：v1.0.0</p>
+<h4 id="管理规则">管理规则:</h4>
+
+<h5 id="主版本号major-version">主版本号（Major version）</h5>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.  产品的主体构件进行重大修改，主版本号加1；
+2. 产品的主体构件之间的接口协议重大修改，主版本号加1。
+</code></pre></div></div>
+
+<h5 id="副版本号minor-version">副版本号（Minor version）</h5>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 主版本号变更时，副版本号置0；
+2. 数据结构变更<span class="o">(</span>新增或修改注释含义的情况除外<span class="o">)</span>，副版本号加1；
+3. 若副版本号累加至超过20时，采用主版本号进位制，主版本号加1，副版本号重新置0。
+</code></pre></div></div>
+
+<h5 id="发布号release">发布号（Release）</h5>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 主版本号或副版本号变更时，Release号置0；
+2. 若发布的版本无数据结构变更，则Release号加1。
+</code></pre></div></div>
+<p>注意: CFBundleVersion:内部版本号, 团队开发中内部只用的，只有我们自己可以看到.</p>
+
+<p>以上是关于版本号的介绍,希望对大家有所帮助.</p>
+
+:ET

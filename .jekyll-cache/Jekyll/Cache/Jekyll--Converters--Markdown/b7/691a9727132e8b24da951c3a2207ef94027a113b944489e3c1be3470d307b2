@@ -1,0 +1,104 @@
+I"�<p>cocoapods能够帮助我们快速的搜索到第三方框架,然后自动集成到工程里面,并编译成一个libPod.a的静态库给我们项目使用.</p>
+
+<p>在安装cocoapods的时候,首先安装gem,然后通过gem来安装cocoapods.</p>
+
+<h3 id="一-gem的安装">一. gem的安装</h3>
+
+<p>Gem是一个管理Ruby库和程序的标准包，它通过Ruby Gem（如 <a href="http://rubygems.org/">http://rubygems.org/</a> 或者修改镜像<a href="http://ruby.taobao.org/">http://ruby.taobao.org/</a>）源来查找、安装、升级和卸载软件包，非常的便捷。</p>
+
+<h5 id="安装gem的常用命令如下">安装gem的常用命令如下:</h5>
+
+<p><strong>1. 查看gem版本</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nt">--version</span>	
+</code></pre></div></div>
+<p><strong>2. 更新gem</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem update <span class="nt">--system</span>
+</code></pre></div></div>
+<p>注解: sudo 是以超级管理员的身份操作</p>
+
+<p><strong>3. 查看数据源 </strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> gem sources
+
+</code></pre></div></div>
+<p><strong> 4. 删除数据源</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> gem sources <span class="nt">--remove</span> https://rubygems.org/
+</code></pre></div></div>
+
+<p><strong>5. 添加数据源</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> gem sources <span class="nt">-a</span> https://ruby.taobao.org/
+</code></pre></div></div>
+<p><strong>6. 搜索软件包</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> gem search 软件包关键字
+</code></pre></div></div>
+
+<p><strong>7. 安装软件包</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nb">install </span>软件包名称
+</code></pre></div></div>
+
+<p><strong>8. 安装上一个版本软件包</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> gem <span class="nb">install </span>cocoapods <span class="nt">--pre</span>
+</code></pre></div></div>
+<p><strong>9. 卸载安装包</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem uninstall 软件包名称
+</code></pre></div></div>
+
+<p>注意: 以上命令最好使用之前,都添加上sudo,作用是以管理员身份运行该命令.</p>
+
+<p>有时候我们在安装的时候会安装失败,可能由于ruby的版本过低导致的升级失败,如果遇到这种情况,可以安装RVM版本管理器来升级ruby,具体操作如下:</p>
+
+<p><strong>A. 安装RVM</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-L</span> get.rvm.io | bash <span class="nt">-s</span> stable
+</code></pre></div></div>
+<p><strong>B. 验证是否安装成功</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rvm <span class="nt">-v</span>
+</code></pre></div></div>
+<p><strong>C. 查看ruby版本</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ruby <span class="nt">-v</span>
+</code></pre></div></div>
+<p><strong>D. 列出当前所有可用版本</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rvm list known
+</code></pre></div></div>
+<p><strong>E. 安装指定版本ruby</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rvm <span class="nb">install </span>ruby <span class="nt">--head</span>
+</code></pre></div></div>
+<p>如果安装失败, 可能是没有安装homebrew, 先安装即可,具体如何安装homebrew,请查看安装方法: <a href="http://brew.sh/index_zh-cn.html">Homebrew</a></p>
+
+<h3 id="二-使用gem安装cocoapods">二. 使用gem安装cocoapods</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>gem <span class="nb">install </span>cocoapods
+</code></pre></div></div>
+<p>如果安装失败,可能是由于gem版本过低,需要更新gem再次安装.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>gem update <span class="nt">--system</span>
+<span class="nb">sudo </span>gem uninstall cocoapods
+<span class="nb">sudo </span>gem <span class="nb">install </span>cocoapods
+</code></pre></div></div>
+<p>当macOS系统升级到10.11后,Cocoapods报错: <code class="language-plaintext highlighter-rouge">bashERROR: While executing gen ...(Errno
+:EPERM) Operation not permitted - /usr/bin/pod</code>这时候需要以下操作:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>gem update <span class="nt">--system</span>
+<span class="nb">sudo </span>gem uninstall cocoapods
+<span class="nb">sudo </span>gem <span class="nb">install</span> <span class="nt">-n</span> /usr/local/bin cocoapods
+</code></pre></div></div>
+<h3 id="三-验证是否安装成功">三. 验证是否安装成功</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pod <span class="nt">--version</span>
+</code></pre></div></div>
+
+<p>通过以上的操作,恭喜你,你已经成功的安装了cocoapod了,接下来你就可以快乐的玩耍了.</p>
+
+:ET

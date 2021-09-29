@@ -1,0 +1,257 @@
+I""<h2 id="runtime的理解">runtime的理解:</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. runtime是一套比较底层的C语言的API,属于1个C语言库,包含了很多底层的C语言的API
+
+2. 在开发中编写的OC代码,在程序运行过程中,最终都是转换成runtime的C语言进行编译和运行.
+</code></pre></div></div>
+<p>例如:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Persion *p = [[Persion alloc] init];
+</code></pre></div></div>
+
+<p>在运行过程中转换成:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>objc_msgSend(objc_msgSend("Persion","alloc"),"init")
+</code></pre></div></div>
+
+<h2 id="runtime的主要用途">runtime的主要用途:</h2>
+
+<ul>
+  <li>利用NSCodeing进行归档和反归档(利用runtime变量模型的对象的所有属性)</li>
+  <li>字典转模型(利用runtime变量模型的对象的所有属性,根据属性名从字典中取出对应的值,设置到模型的属性上面)</li>
+  <li>KVO(利用runtime动态产生一个类)</li>
+</ul>
+
+<hr />
+<ul>
+  <li>导入头文件</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#import &lt;objc/runtime.h&gt;
+#import &lt;objc/message.h&gt;
+
+</code></pre></div></div>
+<ul>
+  <li>动态的创建一个类</li>
+  <li>动态的为某个类添加(修改)属性\方法</li>
+  <li>遍历一个雷的所有成员变量\属性\方法</li>
+  <li>交换方法</li>
+</ul>
+
+<hr />
+
+<h3 id="1-获取person中所有的方法名称">1. 获取Person中所有的方法名称</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    unsigned int couont = 0;
+    /*
+     第一个参数, 需要获取的类
+     第二个参数, 获取到的个数
+    */
+    
+    Method *methods = class_copyMethodList([Person class], &amp;couont);
+    for (int i = 0; i &lt; couont; i++) {
+        // 1.获取遍历到得方法名称
+        SEL m = method_getName(methods[i]);
+        // 2.将方法名称转换为字符串
+        NSString *methodName = NSStringFromSelector(m);
+        // 3.输出
+        NSLog(@"%@", methodName);
+    }
+
+</code></pre></div></div>
+
+<h3 id="2-获取对象的私有成员变量">2. 获取对象的私有成员变量</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Ivar *var = class_copyIvarList([Person class], &amp;couont);
+   for (int i = 0; i &lt; couont; i++) {
+         // 1.获取遍历到得成员变量名称
+         const char *varName = ivar_getName(var[i]);
+         // 2.将变量名称转换为字符串
+         NSString *name = [NSString stringWithUTF8String:varName];
+         // 3.输出
+         NSLog(@"%@", name);
+     }
+</code></pre></div></div>
+
+<h3 id="3-获取对象的私有属性">3. 获取对象的私有属性</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    objc_property_t *propertes = class_copyPropertyList([Person class], &amp;couont);
+    for (int i = 0; i &lt; couont; i++) {
+        // 1.获取遍历到得属性名称
+        const char * propertyName =  property_getName(propertes[i]);
+        // 2.将属性名称转换为字符串
+        NSString *name = [NSString stringWithUTF8String:propertyName];
+        // 3.输出
+         NSLog(@"%@", name);
+    }
+
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   	 // 将数据保存到本地
+    Person *p = [[Person alloc] init];
+    p.score = 99.8;
+    p.className = @"xxxx";
+    p.picUrls = @[@"123", @"456"];
+    [NSKeyedArchiver archiveRootObject:p toFile:@"/Users/zhaoxiaohu/Desktop/person.data"];
+    
+    // 从本地读取数据
+   Person *p =  [NSKeyedUnarchiver unarchiveObjectWithFile:@"/Users/zhaoxiaohu/Desktop/person.data"];
+    NSLog(@"%@", p);
+
+</code></pre></div></div>
+<h3 id="4交换方法">4.交换方法</h3>
+
+<p>在开发中,有时候我们需要交换两个方法,让我们在调用系统的方法的时候,直接换成我们自己定义的方法,这时候我们用runtime来实现,给系统的某个类添加一个分类,动态的交换两个方法.例如,给NSURL添加一个分类动态的改变URLWithString方法:</p>
+
+<h4 id="在nsurl分类的h文件中">在NSURL分类的.h文件中</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@interface NSURL (url)
+
++(instancetype)xj_urlWithString:(NSString *)urlstr;
+
+@end
+
+
+</code></pre></div></div>
+
+<h4 id="在nsurl分类的m文件中">在NSURL分类的.m文件中</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#import "NSURL+url.h"
+#import &lt;objc/message.h&gt;
+
+@implementation NSURL (url)
+
+// 当某个类被加载的时候,调用这个方法
++ (void)load {
+    
+    // 1. 获取系统自带的方法
+    Method urlWithString = class_getClassMethod([NSURL class], @selector(URLWithString:));
+    // 2. 获取自己要交换的方法
+    Method xj_urlWithString = class_getClassMethod([NSURL class], @selector(xj_urlWithString:));
+    
+    // 3. 交换上面两个方法
+    method_exchangeImplementations(urlWithString, xj_urlWithString);
+
+}
+
+// 交换xj_urlWithString和系统的URLWithString方法
++ (instancetype)xj_urlWithString:(NSString *)urlstr {
+    
+    NSURL *url = [NSURL xj_urlWithString:urlstr];
+    
+    if (url == nil) {
+        NSLog(@"url不能为空");
+    }
+    
+    return url;
+}
+
+
+@end
+
+
+</code></pre></div></div>
+
+<h4 id="在persionh中">在Persion.h中</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+@interface Person : NSObject&lt;NSCoding&gt;
+
+@property (nonatomic, strong) NSArray *picUrls;
+@property (nonatomic, copy) NSString *className;
+@property (nonatomic, assign) float score;
+
+@property (nonatomic, strong) NSNumber *number;
+
+- (void)demo;
+@end
+
+</code></pre></div></div>
+
+<h4 id="在persionm中">在Persion.m中</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#import "Person.h"
+#import &lt;objc/runtime.h&gt;
+
+@implementation Person
+{
+    int _age;
+    double _height;
+    NSString *_name;
+}
+
+- (void)test
+{
+    NSLog(@"%s", __func__);
+}
+
+- (void)demo
+{
+    NSLog(@"%s", __func__);
+
+}
+
+/*
+- (void)encodeWithCoder:(NSCoder *)encoder
+{
+    [encoder encodeObject:self.picUrls forKey:@"picUrls"];
+    [encoder encodeObject:@(self.score) forKey:@"score"];
+    [encoder encodeObject:self.className forKey:@"className"];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder
+{
+    if (self = [super init]) {
+        self.picUrls = [decoder decodeObjectForKey:@"picUrls"];
+        self.score = [[decoder decodeObjectForKey:@"score"] doubleValue];
+        self.className = [decoder decodeObjectForKey:@"className"];
+    }
+    return self;
+}
+ */
+
+- (void)encodeWithCoder:(NSCoder *)encoder
+{
+    unsigned int count = 0;
+    // 1.取出所有的属性
+    objc_property_t *propertes = class_copyPropertyList([self class], &amp;count);
+    // 2.遍历所有的属性
+    for (int i = 0; i &lt; count; i++) {
+        // 获取当前遍历到的属性名称
+       const char *propertyName = property_getName(propertes[i]);
+        NSString *name = [NSString stringWithUTF8String:propertyName];
+        // 利用KVC取出对应属性的值
+        id value = [self valueForKey:name];
+        // 归档到文件中
+        [encoder encodeObject:value forKey:name];
+    }
+}
+
+- (id)initWithCoder:(NSCoder *)decoder
+{
+    if (self = [super init]) {
+        
+        unsigned int count = 0;
+        // 1.取出所有的属性
+        objc_property_t *propertes = class_copyPropertyList([self class], &amp;count);
+        // 2.遍历所有的属性
+        for (int i = 0; i &lt; count; i++) {
+            // 获取当前遍历到的属性名称
+            const char *propertyName = property_getName(propertes[i]);
+            NSString *name = [NSString stringWithUTF8String:propertyName];
+            // 解归档当前遍历到得属性的值
+            id value = [decoder decodeObjectForKey:name];
+//            self.className = [decoder decodeObjectForKey:@"className"];
+            // 利用KVC给属性设值
+            [self setValue:value forKey:name];
+        }
+    }
+    return self;
+}
+
+
+
+</code></pre></div></div>
+
+<h4 id="实例代码下载地址">实例代码下载地址:</h4>
+<p><a href="https://github.com/Paulpang/runtime">https://github.com/Paulpang/runtime</a></p>
+
+:ET

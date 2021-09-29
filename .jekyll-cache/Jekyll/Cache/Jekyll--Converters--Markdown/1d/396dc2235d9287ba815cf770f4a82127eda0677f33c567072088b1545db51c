@@ -1,0 +1,29 @@
+I"<h3 id="一高亮触摸--touchablehighlight">一、高亮触摸  TouchableHighlight</h3>
+
+<p>当手指点击按下的时候，该视图的不透明度会进行降低同时会看到相应的颜色，其实现原理则是在底层新添加了一个View。此外，TouchableHighlight只能进行一层嵌套，不能多层嵌套。</p>
+
+<h4 id="常用属性">常用属性：</h4>
+
+<ul>
+  <li><strong>activeOpacity</strong>  number 
+设置组件在进行触摸的时候，显示的不透明度(取值在0-1之间)</li>
+  <li><strong>onHideUnderlay</strong>  function  方法
+ 当底层被隐藏的时候调用</li>
+  <li><strong>onShowUnderlay</strong>  function 方法
+ 当底层显示的时候调用</li>
+  <li><strong>style</strong><br />
+可以设置控件的风格演示，该风格演示可以参考View组件的style</li>
+  <li><strong>underlayColor</strong> 
+ 当触摸或者点击控件的时候显示出的颜色</li>
+</ul>
+
+<h3 id="二不透明触摸--touchableopacity">二、不透明触摸  TouchableOpacity</h3>
+
+<p>该组件封装了响应触摸事件；当点击按下的时候，该组件的透明度会降低。</p>
+<h4 id="常用属性-1">常用属性：</h4>
+<ul>
+  <li><strong>activeOpacity</strong>  number<br />
+    设置当用户触摸的时候，组件的透明度</li>
+</ul>
+
+:ET

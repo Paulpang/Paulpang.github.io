@@ -1,0 +1,75 @@
+I"I<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+var liveList <span class="o">=</span> require<span class="o">(</span><span class="s1">'./live.json'</span><span class="o">)</span><span class="p">;</span>
+
+var <span class="o">{</span>width,height<span class="o">}</span> <span class="o">=</span> Dimensions.get<span class="o">(</span><span class="s1">'window'</span><span class="o">)</span><span class="p">;</span>
+
+// 类
+<span class="nb">export </span>default class App extends Component&lt;<span class="o">{}&gt;</span> <span class="o">{</span>
+
+
+	// 1.数据处理
+    constructor<span class="o">(</span>props<span class="o">)</span> <span class="o">{</span>
+        super<span class="o">(</span>props<span class="o">)</span>
+        // 1.创建数据源 
+        var ds <span class="o">=</span> new ListView.DataSource<span class="o">({</span>
+            rowHasChanged:<span class="o">(</span>r1,r2<span class="o">)=&gt;</span>r1 <span class="o">!=</span> r2
+        <span class="o">})</span>
+
+
+        // 2.设置数据
+        ds <span class="o">=</span> ds.cloneWithRows<span class="o">(</span>liveList<span class="o">)</span>
+        
+        // 3.更新数据
+        this.state <span class="o">=</span> <span class="o">{</span>
+            ds:ds
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+
+	
+    render<span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">(</span>
+            &lt;ListView <span class="nv">dataSource</span><span class="o">={</span>this.state.ds<span class="o">}</span>
+                      <span class="nv">renderRow</span><span class="o">={</span>this._renderRow.bind<span class="o">(</span>this<span class="o">)}</span>
+                      <span class="nv">style</span><span class="o">=</span>
+
+            /&gt;
+        <span class="o">)</span><span class="p">;</span>
+    <span class="o">}</span>
+
+    //渲染每行的数据
+    _renderRow<span class="o">(</span>rowData<span class="o">)</span> <span class="o">{</span>
+
+        <span class="k">return</span> <span class="o">(</span>
+
+            &lt;TouchableOpacity&gt;
+            &lt;View <span class="nv">style</span><span class="o">=&gt;</span>
+                <span class="o">{</span>/<span class="k">*</span>顶部视图<span class="k">*</span>/<span class="o">}</span>
+                &lt;View <span class="nv">style</span><span class="o">=&gt;</span>
+                    <span class="o">{</span>/<span class="k">*</span>头像<span class="k">*</span>/<span class="o">}</span>
+                    &lt;Image <span class="nb">source</span><span class="o">=</span> <span class="nv">style</span><span class="o">=&gt;</span>&lt;/Image&gt;
+                    <span class="o">{</span>/<span class="k">*</span>名称地址<span class="k">*</span>/<span class="o">}</span>
+                    &lt;View <span class="nv">style</span><span class="o">=&gt;</span>
+                        &lt;Text <span class="o">&gt;{</span>rowData.creator.nick<span class="o">}</span>&lt;/Text&gt;
+                        &lt;Text&gt;<span class="o">{</span>rowData.city<span class="o">}</span>&lt;/Text&gt;
+                    &lt;/View&gt;
+                    <span class="o">{</span>/<span class="k">*</span>粉丝<span class="k">*</span>/<span class="o">}</span>
+                    &lt;Text <span class="nv">style</span><span class="o">=&gt;{</span>rowData.online_users<span class="o">}</span>
+                        &lt;Text <span class="nv">style</span><span class="o">=&gt;{</span><span class="s2">"人在观看"</span><span class="o">}</span>&lt;/Text&gt;
+                    &lt;/Text&gt;
+                &lt;/View&gt;
+
+                <span class="o">{</span>/<span class="k">*</span>底部视图<span class="k">*</span>/<span class="o">}</span>
+                &lt;Image <span class="nb">source</span><span class="o">=</span> <span class="nv">style</span><span class="o">=</span>/&gt;
+
+            &lt;/View&gt;
+            &lt;/TouchableOpacity&gt;
+        <span class="o">)</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+
+
+</code></pre></div></div>
+:ET

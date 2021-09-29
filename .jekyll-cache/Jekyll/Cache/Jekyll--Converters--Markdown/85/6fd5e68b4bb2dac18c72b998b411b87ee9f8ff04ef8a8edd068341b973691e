@@ -1,0 +1,263 @@
+I"D5<h3 id="常见问题">常见问题</h3>
+
+<h5 id="1-如何查看有哪些分支">1. 如何查看有哪些分支？</h5>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch <span class="nt">-a</span>
+</code></pre></div></div>
+
+<h5 id="2如何强制检出切换分支或分支指定文件">2.如何强制检出/切换分支或分支指定文件</h5>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout &lt;branch&gt; <span class="o">[</span>file] <span class="o">[</span><span class="nt">-f</span><span class="o">]</span>
+</code></pre></div></div>
+<p>强制更新，以branch版本的代码为主</p>
+
+<h5 id="3提交代码出现冲突冲突怎么办">3.提交代码出现冲突冲突怎么办？</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+</code></pre></div></div>
+<p>先切换分支，然后拉取分支上最新的代码覆盖到本地</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git pull
+</code></pre></div></div>
+<p>添加或者提交代码，解决冲突之后</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push
+</code></pre></div></div>
+
+<h5 id="4如何新建分支">4.如何新建分支</h5>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout -b &lt;branch_name&gt;
+
+</code></pre></div></div>
+<p>本地建立 branch 並立即切換到新分支</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch -m &lt;new_name&gt;
+
+</code></pre></div></div>
+<p>修改分支名称</p>
+
+<h5 id="5从远程仓库拉取代码到本地仓库并建立跟踪关系">5.从远程仓库拉取代码到本地仓库，并建立跟踪关系</h5>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone http://xxx.git
+</code></pre></div></div>
+<p>或者</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>get clone git@xxx.git
+</code></pre></div></div>
+<p>然后</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout -b &lt;本地新分支名&gt; &lt;对应的远程分支名&gt;
+</code></pre></div></div>
+<h5 id="6远程仓库新建了一个分支如何更新远程分支信息">6.远程仓库新建了一个分支，如何更新远程分支信息</h5>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git fetch &lt;remote base&gt;
+
+</code></pre></div></div>
+
+<h5 id="7如何在远程仓库新建一个分支">7.如何在远程仓库新建一个分支</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch &lt;branch name&gt;
+
+</code></pre></div></div>
+<p>新建一个本地分支，按照正常流程提交完代码后，推送到远程</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push &lt;remote base&gt; &lt;local branch&gt;:&lt;remote branch&gt;
+
+</code></pre></div></div>
+
+<h3 id="实用指令">实用指令</h3>
+
+<h3 id="reset">reset</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git reset <span class="o">[</span>file]
+
+</code></pre></div></div>
+<p>取消暂存</p>
+
+<h3 id="remote">remote</h3>
+
+<p>查看远程仓库名</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote <span class="nt">-v</span>
+</code></pre></div></div>
+<p>查看远程仓库url</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote add &lt;<span class="nb">basename</span><span class="o">&gt;</span> &lt;url&gt;
+</code></pre></div></div>
+
+<p>新增远程仓库</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote show &lt;<span class="nb">basename</span><span class="o">&gt;</span>
+</code></pre></div></div>
+<p>查看远程仓库详细信息</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote rename &lt;old <span class="nb">basename</span><span class="o">&gt;</span> &lt;new <span class="nb">basename</span><span class="o">&gt;</span>
+</code></pre></div></div>
+<p>重命名远程仓库</p>
+
+<h3 id="pull">pull</h3>
+
+<p>相当于fetch和merge</p>
+
+<h3 id="push">push</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push <span class="o">[</span>remote_branch] <span class="o">[</span>local_branch]
+</code></pre></div></div>
+<p>推送本地仓库代码到远程仓库，相当于svn的commit</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push &lt;remote base&gt; <span class="o">[</span>tag name]
+</code></pre></div></div>
+<p>推送本地标签到远程仓库</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push &lt;remote base&gt; &lt;remote branch&gt;:&lt;<span class="nb">local </span>branch&gt;
+</code></pre></div></div>
+<p>将本地分支推送到指定的远程分支</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push &lt;remote base&gt; <span class="nt">--delete</span> &lt;remote branch&gt;
+</code></pre></div></div>
+<p>删除远程分支</p>
+
+<h3 id="tag">tag</h3>
+
+<p>查看标签（用来标记标志性的稳定版本信息）</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git tag <span class="nt">-l</span> <span class="s1">'[expression]'</span>
+</code></pre></div></div>
+<p>查看那符合正则表达式的</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git tag <span class="nt">-a</span> &lt;tag name&gt; <span class="nt">-m</span> &lt;comment&gt;
+</code></pre></div></div>
+<p>添加带注释的标签</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git tag <span class="nt">-a</span> &lt;tag name&gt; &lt;md5&gt;
+</code></pre></div></div>
+<p>对某个版本打标签</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git tag <span class="o">[</span>tag name]
+</code></pre></div></div>
+<p>如果没有标签名，则为查看所有标签。带标签名则为新建标签</p>
+
+<h3 id="merge">merge</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git merge &lt;branch name&gt;
+</code></pre></div></div>
+<p>将其他分支合并到本分支</p>
+
+<h3 id="commit">commit</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit <span class="nt">-a</span> <span class="nt">-m</span> <span class="s1">'xx'</span>
+</code></pre></div></div>
+<p>暂存并提交</p>
+
+<h3 id="branch">branch</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch
+</code></pre></div></div>
+<p>查看本地仓库分支</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch <span class="nt">-v</span>
+</code></pre></div></div>
+<p>查看本地仓库分支最后一次提交情况</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch <span class="nt">-vv</span>
+</code></pre></div></div>
+<p>查看分支跟踪情况</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch &lt;branch name&gt;
+</code></pre></div></div>
+<p>新建分支</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch <span class="nt">-d</span> &lt;branch name&gt;
+</code></pre></div></div>
+<p>删除分支</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch <span class="o">[</span><span class="nt">--merged</span> | <span class="nt">--no-merged</span><span class="o">]</span>
+</code></pre></div></div>
+<p>查看已合并|未合并的本地仓库分支</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch <span class="nt">-u</span> &lt;remote base&gt;/&lt;remote branch&gt;
+</code></pre></div></div>
+<p>修改当前跟踪分支</p>
+
+<h3 id="commit-1">commit</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit <span class="nt">-a</span> <span class="nt">-m</span> <span class="s1">'xx'</span>
+</code></pre></div></div>
+<p>提交并且暂存暂存的方法</p>
+
+<h3 id="checkout">checkout</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">--</span> <span class="o">[</span>file]
+</code></pre></div></div>
+<p>恢复文件</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> <span class="o">[</span>branchname] <span class="o">[</span>tagname]
+</code></pre></div></div>
+<p>在特定的版本上创建一个新的分支并切换到此分支</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> <span class="o">[</span><span class="nb">local </span>branch] <span class="o">[</span>remote base]/[remote branch]
+</code></pre></div></div>
+<p>将远程分支检出到本地分支</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">--track</span> &lt;remote base&gt;/&lt;remote branch&gt;
+</code></pre></div></div>
+<p>让当前分支跟踪远程分支</p>
+
+<p>`
+git checkout –track <remote base="">/<remote branch="">
+`
+`git checkout -b <local branch=""> <remote base="">/<remote branch="">
+`
+让当前分支跟踪到远程分支。两条命令作用基本一致，不同的是第二条命令可以重命名检出的分支。</remote></remote></local></remote></remote></p>
+
+<h3 id="rebase">rebase</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git rebase <span class="o">[</span>basebranch]
+</code></pre></div></div>
+<p>变基是将一系列提交按照原有次序依次应用到另一分支上，而合并是把最终结果合在一起。</p>
+
+<h2 id="小技巧">小技巧</h2>
+
+<h3 id="查看配置">查看配置</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">-1</span>
+</code></pre></div></div>
+
+<h3 id="设置git-push-默认">设置git push 默认</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> push.default current
+</code></pre></div></div>
+
+<h3 id="设置别名">设置别名</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> alias.&lt;name&gt; &lt;commend&gt;
+</code></pre></div></div>
+<p>我的设置：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> alias.st status
+</code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> alias.cm <span class="s2">"commit -m"</span>
+</code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> alias.ph <span class="s2">"push origin
+&lt;local_repository&gt;:&lt;remote_repository&gt;"</span>
+</code></pre></div></div>
+
+<h3 id="保存用户名和密码">保存用户名和密码</h3>
+
+<h4 id="对于https协议可以用下面命令临时缓存">对于http(s)协议，可以用下面命令临时缓存</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> credential.helper cache
+</code></pre></div></div>
+<p>开启linux缓存</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> credential.helper wincred
+</code></pre></div></div>
+<p>开启windows缓存</p>
+<h4 id="对于ssh协议可以用ssh-key具体教程网上很多">对于ssh协议，可以用ssh key，具体教程网上很多</h4>
+
+<h3 id="忽略文件">忽略文件</h3>
+
+<p>默认方法是在当前项目目录下创建一个.gitignore文件，如果需要忽略的文件已经添加到版本库中，请先移除</p>
+
+<p><code class="language-plaintext highlighter-rouge">git rm --cached [file]</code></p>
+
+<p>不删除文件，只移除追踪。</p>
+
+:ET

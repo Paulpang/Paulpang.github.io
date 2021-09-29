@@ -1,0 +1,384 @@
+I"H5<h2 id="一html标签介绍">一、HTML标签介绍:</h2>
+
+<h3 id="1-单标签">1. 单标签:</h3>
+
+<ul>
+  <li>
+    <p>文本注释标签</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  command + /
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>文本换行标签</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  &lt;br&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>横线标签</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  &lt;hr&gt;
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="2-双标签">2. 双标签:</h3>
+
+<ul>
+  <li>
+    <p>段落标签  <code class="language-plaintext highlighter-rouge">&lt;p&gt;&lt;/p&gt;</code></p>
+  </li>
+  <li>
+    <p>标题标签  <code class="language-plaintext highlighter-rouge">&lt;hn&gt; &lt;/hn&gt;  其中 (n = 1,2,3,4,5,6)</code></p>
+  </li>
+  <li>
+    <p>文本标签  <code class="language-plaintext highlighter-rouge">&lt;font&gt;&lt;/font&gt;</code></p>
+  </li>
+  <li>
+    <p>文字加粗显示 <code class="language-plaintext highlighter-rouge">&lt;strong&gt;&lt;/strong&gt;或者&lt;b&gt;&lt;/b&gt;</code></p>
+  </li>
+  <li>
+    <p>文字斜体显示 <code class="language-plaintext highlighter-rouge">&lt;em&gt;&lt;/em&gt;或者&lt;i&gt;&lt;/i&gt;</code></p>
+  </li>
+  <li>
+    <p>文字删除线<code class="language-plaintext highlighter-rouge">&lt;del&gt;&lt;/del&gt;或者&lt;s&gt;&lt;/s&gt;</code></p>
+  </li>
+  <li>
+    <p>文字下横线标签<code class="language-plaintext highlighter-rouge">&lt;ins&gt;&lt;/ins&gt;或者&lt;u&gt;&lt;/u&gt;</code></p>
+  </li>
+</ul>
+
+<h3 id="3-图片标签">3. 图片标签<img /></h3>
+
+<ul>
+  <li>
+    <p>格式</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  &lt;img src="1.jpg" title= "哈哈"&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>属性</p>
+
+    <ul>
+      <li>Src: 设置显示图片（图片名称或者图片路径）</li>
+      <li>Title：用来设置鼠标方到图片上显示的文字</li>
+      <li>Alt：当图盘无法正常显示的时候，对图片的描述</li>
+      <li>Width: 用来设置图片宽度</li>
+      <li>Width: 用来设置图片宽度</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="4-超链接-a">4. 超链接 (a)</h3>
+
+<ul>
+  <li>
+    <p>格式</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> &lt;a href="http://www.baidu.com"&gt;百度&lt;/a&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>属性</p>
+
+    <ul>
+      <li>Title: 当鼠标放到超链接上显示的文字</li>
+      <li>target=”_self”    默认值  网页在当前页面中打开</li>
+      <li>target=”_blank”   网页在新窗口中打开</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="4-锚链接-a">4. 锚链接 (a)</h3>
+
+<ul>
+  <li>
+    <p>任何一个标签设置id属性，并取值</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> &lt;p id="db"&gt;百度&lt;/p&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>给a标签设置href属性  “#id名称”</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  &lt;a href="#db"&gt;返回顶部&lt;/a&gt;
+</code></pre></div>    </div>
+    <p><strong> 注意: 文字和图片都可以设置超链接</strong></p>
+  </li>
+</ul>
+
+<h1 id="二列表">二、列表</h1>
+
+<h3 id="1-无序列表ul">1. 无序列表(ul)</h3>
+
+<ul>
+  <li>
+    <p>格式</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  &lt;ul&gt;
+      &lt;li&gt;&lt;/li&gt;  // 列表项
+      &lt;li&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;/li&gt;
+       ......
+  &lt;/ul&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>属性:</p>
+
+    <ul>
+      <li>type=”square”     小方块显示</li>
+      <li>type=”square”     小方块显示</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="2-有序列表ol">2. 有序列表（ol）</h3>
+
+<ul>
+  <li>
+    <p>格式</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  &lt;ol&gt;
+      &lt;li&gt;&lt;/li&gt;  // 列表项
+      &lt;li&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;/li&gt;
+       ......
+  &lt;/ol&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Type属性:</p>
+
+    <ul>
+      <li>A, a ，  i (小写的罗马数字)  I(大写的罗马数字)</li>
+      <li>start=”3”, li前面的显示从第几个开始</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="3-自定义列表dl">3. 自定义列表（dl）</h3>
+
+<ul>
+  <li>
+    <p>格式</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   &lt;dl&gt;
+      &lt;dt&gt;售后服务&lt;/dt&gt;  小标题
+      &lt;dd&gt;收货地址&lt;/dd&gt; 列表项
+      &lt;dd&gt;在线支付&lt;/dd&gt;
+      &lt;dd&gt;客服电话&lt;/dd&gt;
+   &lt;/dl&gt;
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="4特殊字符">4.特殊字符</h3>
+
+<p>常用的几个特殊字符</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>空格符  &amp;nbsp
+&lt;      &amp;It
+&gt;      &amp;gt
+
+</code></pre></div></div>
+
+<h1 id="二meta标签介绍">二、Meta标签介绍</h1>
+
+<h2 id="1-meta介绍">1 Meta介绍</h2>
+<h3 id="11-编码格式">1.1 编码格式</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;meta  charset="utf-8"&gt;
+</code></pre></div></div>
+<ul>
+  <li>Charset：字符集</li>
+  <li>utf-8 : 编码格式</li>
+</ul>
+
+<h4 id="12-对网站进行优化的作用--seo">1.2 对网站进行优化的作用  SEO</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;meta  name="keywords"  content="p2p理财,互联网金融,投资"&gt;
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;meta  name="description" content="互联网金融,投资出借,p2p借贷"&gt;
+</code></pre></div></div>
+
+<h4 id="13--网页重定向">1.3  网页重定向</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;meta http-equiv="refresh"  content="5;url=http://www.baidu.com"&gt;
+</code></pre></div></div>
+
+<h3 id="2-link标签介绍">2. Link标签介绍</h3>
+
+<h4 id="21-给网页titile中放置小图标内部样式">2.1 给网页titile中放置小图标(内部样式)</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;link  rel="icon"  href="favicon.ico"&gt;
+</code></pre></div></div>
+
+<h4 id="22-给网页titile中放置小图标外部样式">2.2 给网页titile中放置小图标(外部样式)</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;link rel="stylesheet"   href="1.css"&gt;
+</code></pre></div></div>
+<h1 id="三表格table">三、表格(table)</h1>
+
+<h4 id="0-作用显示数据">0. 作用：显示数据</h4>
+<h3 id="1-格式">1. 格式</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;table&gt;                        // 定义表格
+	&lt;tr&gt;                        // 行
+		&lt;td&gt;姓名&lt;/td&gt;
+		&lt;td&gt;年龄&lt;/td&gt;            // 列(单元格)
+		&lt;td&gt;职业&lt;/td&gt;
+		&lt;td&gt;籍贯&lt;/td&gt;
+	&lt;tr&gt;
+&lt;/table&gt;
+</code></pre></div></div>
+<h3 id="12-属性介绍">1.2 属性介绍</h3>
+
+<ul>
+  <li>border:   设置表格边框</li>
+  <li>width:  设置表格宽度</li>
+  <li>Height:   设置高度</li>
+  <li>cellspacing：设置单元格之间的距离</li>
+  <li>cellpadding：文字距离单元格边框的距离</li>
+  <li>bgcolor=”red”   设置背景颜色</li>
+  <li>align=center,left,right  给td或者tr设置让文字居中</li>
+  <li>table设置表格居中</li>
+  <li>设置表格标题，用法和td一样&lt;th&gt;&lt;/th&gt;</li>
+</ul>
+
+<h3 id="13-设置表格表头">1.3 设置表格表头</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;caption&gt; &lt;h4&gt;通讯录&lt;/h4&gt; &lt;/caption&gt;
+</code></pre></div></div>
+<h1 id="四表单form">四、表单(form)</h1>
+
+<h3 id="11-作用">1.1 作用</h3>
+
+<ul>
+  <li>表单的作用用来收集信息</li>
+</ul>
+
+<h4 id="12-组成">1.2 组成</h4>
+
+<ul>
+  <li>提示信息</li>
+  <li>表单控件</li>
+</ul>
+
+<h4 id="13-表单格式">1.3 表单格式</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	&lt;form action = "" method = "post"&gt;
+	
+	&lt;/form&gt;
+</code></pre></div></div>
+<h4 id="14-属性">1.4 属性</h4>
+<ul>
+  <li>action：  处理用户数据信息</li>
+  <li>Method：get 或者 post</li>
+</ul>
+
+<h3 id="2-表单控件">2. 表单控件</h3>
+
+<h4 id="21-文本输入框">2.1 文本输入框</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;input type= "text" maxlength="6"&gt;
+</code></pre></div></div>
+<ul>
+  <li>maxlength：  设置文本输入框最多能输多少字符</li>
+  <li>readonly=”readonly”   设置文本输入框为只读（只能读不能编辑）</li>
+  <li>disabled=”disabled”	  控件属于非激活的状态</li>
+  <li>name=”username”				  给输入框设置名称</li>
+  <li>Value=””				   设置或者显示输入的值</li>
+</ul>
+
+<h4 id="22-密码输入框">2.2 密码输入框</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;input type= "password"&gt;
+</code></pre></div></div>
+<ul>
+  <li>maxlength：  设置文本输入框最多能输多少字符</li>
+  <li>readonly=”readonly”   设置文本输入框为只读（只能读不能编辑）</li>
+  <li>disabled=”disabled”	  控件属于非激活的状态</li>
+  <li>name=”username”				  给输入框设置名称</li>
+  <li>Value=””				   设置或者显示输入的值</li>
+</ul>
+
+<h4 id="23-单选按钮">2.3 单选按钮</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;input type= "radio" name= "sex" checked= "checked"&gt;男
+&lt;input type= "radio" name= "sex"&gt;女
+</code></pre></div></div>
+<p><strong>
+	注意：实现单选效果一定要给控件设置相同的名称
+</strong></p>
+
+<ul>
+  <li>checked=”checked”    设置默认选中项</li>
+</ul>
+
+<h4 id="24-下拉列表">2.4 下拉列表</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;select  multiple="multiple"&gt; // 实现多选效果
+	&lt;option selected= "selected"&gt;北京&lt;/option&gt;  // 设置默认选中项
+	&lt;option&gt;上海&lt;/option&gt;
+	&lt;option&gt;深圳&lt;/option&gt;
+	&lt;option&gt;广州&lt;/option&gt;
+&lt;/select&gt;
+</code></pre></div></div>
+<h4 id="25-多选控件">2.5 多选控件</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;input type= "checkbox"  checked= "checked"&gt;抽烟
+&lt;input type= "checkbox"  checked= "checked"&gt;喝酒
+&lt;input type= "checkbox"  checked= "checked"&gt;写代码
+</code></pre></div></div>
+<p><strong>设置默认选中项： checked=checked</strong></p>
+
+<h4 id="26-多行文本输入框">2.6 多行文本输入框</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;textarea&gt;
+	
+&lt;/textarea&gt;
+</code></pre></div></div>
+<h4 id="27-上传图片控件">2.7 上传图片控件</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;input type="file"&gt;
+</code></pre></div></div>
+<h4 id="28-表单提交按钮">2.8 表单提交按钮</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;input type="submit"&gt;   // 表单提交按钮
+</code></pre></div></div>
+
+<h4 id="29-普通按钮">2.9 普通按钮</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;input type="button" value="普通按钮"&gt;   // 表单提交按钮
+</code></pre></div></div>
+<p><strong>注意：该按钮不能进行表单提交。通常和js代码配合使用</strong></p>
+
+<h4 id="210-重置按钮">2.10 重置按钮</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;input type="reset"&gt;  
+</code></pre></div></div>
+<p><strong>
+	将控件中的值恢复到默认值状态
+</strong></p>
+
+<h4 id="211-图片按钮">2.11 图片按钮</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;input type="image" src="button.jpg"&gt;  
+</code></pre></div></div>
+<p><strong>
+	该控件也可以进行表单的提交
+</strong></p>
+
+<h4 id="212-表单分支控件">2.12 表单分支控件</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;fieldset&gt;  
+	&lt;legend&gt;用户注册&lt;/legend&gt;
+&lt;/fieldset&gt;
+</code></pre></div></div>
+
+:ET

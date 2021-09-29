@@ -1,0 +1,194 @@
+I"�<h3 id="定位方案position-schemes">定位方案（Position Schemes）</h3>
+<ul>
+  <li>在CSS中，有3种常用的方法对元素进行定位、布局
+    <ul>
+      <li>normal flow：标准流、常规流、文档流</li>
+      <li>absolute positioning：绝对定位</li>
+      <li>float：浮动</li>
+    </ul>
+  </li>
+  <li>绝对定位、浮动都会让元素脱离标准流，以达到灵活布局的效果</li>
+</ul>
+
+<p><strong>注意:</strong></p>
+<blockquote>
+  <p>绝对定位和float都可以脱标,但是绝对定位属于完全脱标,而float属于不完全脱标,也就是说,绝对定位能够覆盖float</p>
+</blockquote>
+
+<h3 id="css属性---float">CSS属性 - float</h3>
+
+<ul>
+  <li>可以通过float属性让元素产生浮动效果，float的常用取值
+    <ul>
+      <li>none：不浮动，默认值</li>
+      <li>left：向左浮动</li>
+      <li>right：向右浮动</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="浮动的规则">浮动的规则</h3>
+
+<ul>
+  <li>元素一旦浮动后
+    <ul>
+      <li>脱离标准流</li>
+      <li>朝着向左或向右方向移动，直到自己的边界紧贴着包含块（一般是父元素）或者其他浮动元素的边界为止</li>
+    </ul>
+  </li>
+  <li>定位元素会层叠在浮动元素上面</li>
+</ul>
+
+<blockquote>
+  <p>层叠顺序(从下向上) : 普通元素(非定位元素position是static
+) &lt; 浮动元素(float为left或者right) &lt; 定位元素(position不是static
+)</p>
+</blockquote>
+
+<ul>
+  <li>浮动元素不能与行内级内容层叠，行内级内容将会被浮动元素推出
+    <ul>
+      <li>比如行内级元素、inline-block元素、块级元素的文字内容</li>
+      <li>利用此特性，可以轻松实现文字环绕功能</li>
+    </ul>
+  </li>
+  <li>行内级元素、inline-block元素浮动后，其顶部将与所在行的顶部对齐</li>
+  <li>如果元素是向左（右）浮动，浮动元素的左（右）边界不能超出包含块的左（右）边界</li>
+  <li>浮动元素之间不能层叠
+    <ul>
+      <li>如果一个元素浮动，另一个浮动元素已经在那个位置了，后浮动的元素将紧贴着前一个浮动元素（左浮找左浮，右浮找右浮）</li>
+      <li>如果水平方向剩余的空间不够显示浮动元素，浮动元素将向下移动，直到有充足的空间为止</li>
+    </ul>
+  </li>
+  <li>浮动元素的顶端不能超过包含块的顶端，也不能超过之前所有浮动元素的顶端</li>
+</ul>
+
+<h3 id="浮动的应用">浮动的应用</h3>
+
+<ul>
+  <li>解决行内级元素、inline-block元素的水平间隙问题</li>
+  <li>布局</li>
+</ul>
+
+<h3 id="浮动存在的问题">浮动存在的问题</h3>
+
+<ul>
+  <li>由于浮动元素脱离了标准流，变成了脱标元素，所以不再向父元素汇报高度</li>
+  <li>父元素计算总高度时，就不会计算浮动子元素的高度，导致了高度坍塌的问题</li>
+  <li>解决父元素高度坍塌问题的过程，一般叫做清浮动（清理浮动、清除浮动）</li>
+  <li>清浮动的目的是
+    <ul>
+      <li>让父元素计算总高度的时候，把浮动子元素的高度算进去</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="清浮动的常见方法">清浮动的常见方法</h3>
+
+<ul>
+  <li>给父元素设置固定高度
+    <ul>
+      <li>扩展性不好<strong>（不推荐）</strong></li>
+    </ul>
+  </li>
+  <li>让父元素浮动
+    <ul>
+      <li>可能导致页面中所有元素都浮动</li>
+      <li>父元素脱离了标准流</li>
+      <li>改变了元素的盒子特性<strong>（不推荐）</strong></li>
+    </ul>
+  </li>
+  <li>让父元素成为绝对定位元素（position设置为absolute或fixed）
+    <ul>
+      <li>父元素脱离了标准流</li>
+      <li>改变了元素的盒子特性<strong>（不推荐）</strong></li>
+    </ul>
+  </li>
+  <li>给父元素设置display为inline-block、inline-table、	* table、table-cell、table-caption
+    <ul>
+      <li>改变了父元素的盒子特性<strong>（不推荐）</strong></li>
+    </ul>
+  </li>
+  <li>给父元素设置overflow为visible以外的值（比如hidden、auto、scroll）
+    <ul>
+      <li>改变了父元素对内容溢出的默认行为<strong>（不推荐）</strong></li>
+    </ul>
+  </li>
+  <li>在父元素最后增加一个空的块级子元素，并且让它设置clear: both
+    <ul>
+      <li>会增加很多无意义的空标签，维护麻烦</li>
+      <li>违反了结构与样式分离的原则<strong>（不推荐）</strong></li>
+    </ul>
+  </li>
+  <li>在父元素最后增加一个br标签：<br clear="all" />
+    <ul>
+      <li>会增加很多无意义的空标签，维护麻烦</li>
+      <li>违反了结构与样式分离的原则<strong>（不推荐）</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="清浮动的推荐方法">清浮动的推荐方法</h4>
+
+<ul>
+  <li>给父元素增加::after伪元素</li>
+</ul>
+
+<blockquote>
+  <p>纯CSS样式解决，结构与样式分离（推荐）</p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.clear-fix::after {
+    content: "";
+    display: block;
+    clear: both;
+    height: 0;  /* 兼容旧浏览器 */
+    visibility: hidden;  /* 兼容旧浏览器 */
+}
+
+.clear-fix {
+    *zoom: 1;  /* 兼容旧浏览器 */
+}
+
+</code></pre></div></div>
+
+<h3 id="css属性---clear">CSS属性 - clear</h3>
+
+<ul>
+  <li>clear的常用取值
+    <ul>
+      <li>left：要求元素的顶部低于之前生成的所有左浮动元素的底部</li>
+      <li>right：要求元素的顶部低于之前生成的所有右浮动元素的底部</li>
+      <li>both：要求元素的顶部低于之前生成的所有浮动元素的底部</li>
+      <li>none：默认值，无特殊要求</li>
+    </ul>
+  </li>
+  <li>一般就只用在非浮动元素上，可以让非浮动元素与浮动元素不层叠</li>
+</ul>
+
+<h3 id="定位方案的对比">定位方案的对比</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">定位方案</th>
+      <th style="text-align: center">应用场景</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">normal flow（标准流）</td>
+      <td style="text-align: center">垂直布局</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">absolute positioning（绝对定位）</td>
+      <td style="text-align: center">层叠布局</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">float（浮动）</td>
+      <td style="text-align: center">水平布局</td>
+    </tr>
+  </tbody>
+</table>
+
+:ET

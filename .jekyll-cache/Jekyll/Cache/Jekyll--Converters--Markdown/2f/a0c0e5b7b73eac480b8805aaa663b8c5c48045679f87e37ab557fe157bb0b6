@@ -1,0 +1,152 @@
+I"�<h2 id="基本元素">基本元素</h2>
+
+<h3 id="doctype-html">&lt;!DOCTYPE html&gt;</h3>
+
+<ul>
+  <li>这是文档声明，不能省略</li>
+  <li>一定要放在最顶部</li>
+</ul>
+
+<h3 id="html">html</h3>
+
+<ul>
+  <li>是文档的根元素，只能有一个</li>
+  <li>其他所有元素都是它的后代元素</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h3 id="head">head</h3>
+
+<ul>
+  <li>它内部一般用来包含<a href="http://www.w3school.com.cn/tags/tag_meta.asp">meta</a> 、title元素</li>
+</ul>
+
+<h4 id="meta">meta</h4>
+<ul>
+  <li>用来设置网页的字符编码，一般是<strong>UTF-8</strong></li>
+</ul>
+
+<h4 id="title">title</h4>
+<ul>
+  <li>用来设置网页的标题</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;title&gt;</span>网页标题<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+</code></pre></div></div>
+
+<h3 id="body">body</h3>
+
+<ul>
+  <li>网页中显示的任何元素都应该是它的后代元素</li>
+</ul>
+
+<h2 id="文章相关">文章相关</h2>
+
+<h3 id="h1h6">h1~h6</h3>
+
+<ul>
+  <li>用来显示标题</li>
+  <li>h1最大，h6最小</li>
+  <li>一个网页中最好只有一个h1，作为最主要的标题</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h1&gt;</span>我是h1<span class="nt">&lt;/h1&gt;</span>
+</code></pre></div></div>
+
+<h3 id="p">p</h3>
+
+<ul>
+  <li>用来显示一个段落</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>这是一个段落<span class="nt">&lt;/p&gt;</span>
+</code></pre></div></div>
+
+<h3 id="strong">strong</h3>
+
+<ul>
+  <li>用来强调某一些文字</li>
+</ul>
+
+<h3 id="img">img</h3>
+
+<ul>
+  <li>用来显示一张图片</li>
+  <li>常用属性
+    <ul>
+      <li>src：图片的URL</li>
+      <li>width：图片的宽度</li>
+      <li>height：图片的高度</li>
+      <li>alt：占位文字（当图片显示失败的时候显示这个占位文字）</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"https://www.baidu.com/img/bd_logo1.png"</span>
+     <span class="na">alt=</span><span class="s">"这是百度的LOGO"</span>
+     <span class="na">height=</span><span class="s">"200"</span>
+     <span class="na">width=</span><span class="s">"100"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<h3 id="a">a</h3>
+
+<ul>
+  <li>用来显示一个超链接</li>
+  <li>常用属性
+    <ul>
+      <li>href：需要打开的URL</li>
+      <li>target：在哪里打开
+        <ul>
+          <li>_self：在当前页面中打开（覆盖当前页面）</li>
+          <li>_blank：当新页面中打开</li>
+          <li>_parent：在父页面中打开</li>
+          <li>_top：在顶层页面中打开</li>
+          <li>某个iframe的name属性值：在某个iframe中打开</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>图片链接</li>
+  <li>锚点链接</li>
+</ul>
+
+<h3 id="iframe">iframe</h3>
+
+<ul>
+  <li>在当前网页中嵌入其他网页</li>
+  <li>常用属性
+    <ul>
+      <li>src：其他页面的URL</li>
+      <li>frameborder：是否需要边框
+        <ul>
+          <li>1：需要</li>
+          <li>0：不需要</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="div">div</h3>
+
+<ul>
+  <li>一般作为其他元素的父容器，把其他元素包住，代表一个整体</li>
+  <li>用于把网页分割为多个独立的部分</li>
+</ul>
+
+<h3 id="span">span</h3>
+
+<ul>
+  <li>默认情况下，跟普通文本几乎没差别</li>
+  <li>用于区分特殊文本和普通文本，比如用来显示一些关键字</li>
+</ul>
+
+:ET
