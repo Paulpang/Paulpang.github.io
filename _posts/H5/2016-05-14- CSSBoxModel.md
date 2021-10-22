@@ -187,6 +187,7 @@ content-box
 包含四个属性,作用是获取对象的自身的尺寸
 
 > offsetWith = width + border + padding
+>
 
 ```
 <style>
@@ -206,27 +207,31 @@ content-box
 ```
 
 > offsetHeight = height + border + padding
+> 
 
 offsetLeft、offsetTop 指的是：返回距离上级带有**定位**盒子的距离
 > offsetLeft
+> 
 
 > offsetTop
+> 
 
-**注意：** 
+**注意：** <br>
 1、如果上级元素都没有定位，则以body为准<br>
 2、offsetLeft是从上级元素的padding开始计算，不包含上级元素的border宽度,即：就是子box到定位的上级box边框到边框的距离<br>
-
+>
 > offsetParent 
-> 
 > 返回该对象的带有定位的上级元素注意与parentNode的区别
+> 
 
-**注意：** 
+**注意：** <br>
 1、如果当前元素的父级元素没有进行css定位（position：absolute/relative）,offsetParent为Body<br>
 2、如果当前元素的父级元素有css定位（position：absolute/relative）,offsetParent为取最近的那个上级元素<br>
 
 ### top/right/bottom/left
 
 > top/right/bottom/left 适用于定位元素，也就是说，只有定位元素才有这几个属性，不是定位元素没有这几个属性
+> 
 
 #### offsetTop 和 style.top的区别
 
