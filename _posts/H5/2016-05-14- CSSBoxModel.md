@@ -163,15 +163,95 @@ content-box
 * border-box
 	* padding、border都布置在width、height里边
 
-## 元素的水平居中显示
+### 元素的水平居中显示
 
 在一些需求中，需要元素在父元素中水平居中显示（父元素一般都是块级元素、inline-block）
 
-### 行内级元素、inline-block元素
+#### 行内级元素、inline-block元素
 * 水平居中：在父元素中设置text-align: center
 
-### 块级元素
+#### 块级元素
 * 水平居中：给自己设置margin-left: auto、margin-right: auto
+
+#### 定位盒子想要水平居中的方式
+
+```
+{
+	left: 50%;
+	margin-left: 自身盒子宽度的一半；
+}
+```
+
+### offset
+
+包含四个属性,作用是获取对象的自身的尺寸
+
+> offsetWith = width + border + padding
+
+```
+<style>
+    #demo {
+     	 width: 200px;
+        height: 200px;
+        background-color: #00f;
+        border: 10px sandybrown solid;
+    }
+</style>
+    
+    
+<script>
+    var demo = document.getElementById("demo");
+    console.log(demo.offsetWidth)
+</script>        
+```
+
+> offsetHeight = height + border + padding
+
+offsetLeft、offsetTop 指的是：返回距离上级带有**定位**盒子的距离
+> offsetLeft
+
+> offsetTop
+
+**注意：** 
+1、如果上级元素都没有定位，则以body为准<br>
+2、offsetLeft是从上级元素的padding开始计算，不包含上级元素的border宽度,即：就是子box到定位的上级box边框到边框的距离<br>
+
+> offsetParent 
+> 
+> 返回该对象的带有定位的上级元素注意与parentNode的区别
+
+**注意：** 
+1、如果当前元素的父级元素没有进行css定位（position：absolute/relative）,offsetParent为Body<br>
+2、如果当前元素的父级元素有css定位（position：absolute/relative）,offsetParent为取最近的那个上级元素<br>
+
+### top/right/bottom/left
+
+> top/right/bottom/left 适用于定位元素，也就是说，只有定位元素才有这几个属性，不是定位元素没有这几个属性
+
+#### offsetTop 和 style.top的区别
+
+- 最大区别在于  offsetLeft  可以返回没有定位盒子的距离左侧的位置。 而 style.top 不可以  只有定位的盒子 才有 left  top right
+- ffsetTop 返回的是数字，而 style.top 返回的是字符串，除了数字外还带有单位：px
+
+```
+style.left = 300px      
+
+parseInt（300px）    结果  300
+
+parseInt（style.left） + parseInt（style.left）
+
+```
+- offsetTop 只读，而 style.top 可读写。
+- 如果没有给 HTML 元素指定过 top 样式，则 style.top 返回的是空字符串。
+- 最重要的区别  style.left 只能得到 行内样式     offsetLeft 随便
+
+```
+// 行内样式
+<div id="demo" style="width: 100px">
+    <div id="div1"></div>
+</div>
+```
+
 
 
 

@@ -68,7 +68,7 @@ none（什么也没有）
 * **list-style:** outside url("images/dot.png");
 * 一般最常用的还是设置为**none**，去掉li元素前面的默认标记 list-style: none;
 
-## 表格
+### 表格
 
 #### table (表格)
 
@@ -175,7 +175,7 @@ form常用属性
 * 默认情况下，敲回车键（Enter）会自动提交表单数据给服务器
 
 
-###textarea
+### textarea
 多行文本框
 
 缩放的CSS设置
