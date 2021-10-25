@@ -257,8 +257,173 @@ parseInt（style.left） + parseInt（style.left）
 </div>
 ```
 
+### flex布局
+
+> flex布局元素包含两部分 **flex container** 和 **flex items**
+> 
+> flex container ： 开启flex布局的元素
+> 
+> flex items ： flex container 里面的直接子元素叫做 flex items
+> 
+> 设置display属性为flex或者inline-flex可以成为flex container
+> 
+> flex：flex container以block-level形式存在
+> 
+> inline-flex：flex container以inline-level形式存在
+> 
+
+###  应用在flex container上的CSS属性
+
+#### flex-direction
+
+> 
+>  设置主轴（main axis）的方向
+> 
+> 包含如下属性：
+> row（默认）、row-reverse、cross、cross-reverse
+> 
+
+#### flex-wrap
+
+>
+>  设置是否换行，默认是单行（nowrap）
+>
+> 包含如下属性
+> nowrap(单行)、wrap（多行）、 wrap-reverse（多行相反）
+>
 
 
+#### flex-flow
+
+>
+> flex-flow是flex-direction || flex-wrap的缩写
+>
+
+
+#### justify-content
+
+>
+> justify-content 决定了flex items在main axis上的对齐方式，默认是（flex-start）
+> 
+> 包含以下属性值：
+> 
+> flex-start（默认）：与main start 对齐
+> 
+> flex-end： 与main end对齐
+> 
+> center： 居中对齐
+> 
+> space-betweem： flex items之间间距相等，与main start、main end两端对齐
+>
+>space-evenly：flex items之间间距相等，与main start、main end之间的间距等于flex items之间的间距
+>
+>space-around： lex items之间间距相等，与main start、main end之间的间距等于flex items之间的间距的一半
+
+
+#### align-content
+
+>
+> 设置flex items在 cross axis上的对齐方式，一般是针对多行
+>
+> 包含以下属性：
+>
+>stretch(默认值)：当flex items在cross axis方向的size为auto时，会自动拉伸至填充flex container
+>
+>flex-start: 与 cross start对齐
+>
+>flex-end： 与cross end 对齐
+>
+>center： 居中对齐
+>
+> space-between： flex item之间的间距相等，与cross start、cross end两端对齐
+> 
+> space-evenly： flex item之间的间距相等，与cross start、cross end之间的距离与flex items之间的间距相等
+>
+> space-around： flex item之间的间距相等，与cross start、cross end之间的距离与flex items之间的间距的一半
+> 
+
+#### align-items
+
+>
+> align-items设置flex items在cross axis上的对齐方式（一般是针对单行）
+>
+>包含以下属性：
+>
+>stretch(默认值)：当flex items在cross axis方向的size为auto时，会自动拉伸至填充flex container
+>
+>flex-start: 与 cross start对齐
+>
+>flex-end： 与cross end 对齐
+>
+>center： 居中对齐
+>
+>baseline： 与基线对齐
+>
+>
+
+### 应用在flex item上的CSS属性
+
+#### order
+
+>
+> order 决定了flex itms的排布顺序
+>
+> 可以设置任意整数（正整数、负整数、0），值越小，越排在前面
+> 
+> 默认值为0
+>
+
+#### align-self
+
+>
+> flex items 可以通过align-self覆盖 flex container设置的align-items
+> 
+> 属性如下
+> 
+> auto（默认值）：遵从flex container 的align-items设置
+> 
+> stretch、flex-start、flex-end、center、baseline，效果跟align-items一致
+>
+
+#### flex-grow
+
+>
+>flex-grow决定了flex items在main axis方向上如何扩展
+>
+
+#### flex-shrink
+
+>
+> flex-shrink决定了flex items在main axis方向上如何收缩
+>
+
+#### flex-basis
+
+>
+> flex-basis 设置flex items在main axis方向上如何收缩
+>
+>flex-basis用来设置flex items在main axis方向上的base size
+>
+>auto (默人値)、content: 取决于内容本身的size
+>
+
+决定**flex items**最终base size的因素,从优先级高到低
+
+* max-widthmax-heightmin-widthmin-height
+* flex- basis
+* width/height
+* 内容本身的size
+
+#### flex
+
+
+>flex 是 flex-grow flex-shrink? || flex-basis 的简写 
+>
+>默认值是 0 1 auto
+>
+>none:0 0 auto
+>
+ 
 
 
 
